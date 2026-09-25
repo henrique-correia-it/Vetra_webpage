@@ -7,23 +7,27 @@
   <link rel="icon" type="image/png" href="assets/icon-192.png">
   <style>
     :root[data-theme="dark"] {
-      --bg: #0B1110;
-      --bg-surface: #141C1A;
-      --bg-card: #182421;
+      --bg: #070C0B;
+      --bg-surface: #101A17;
+      --bg-card: #14221E;
       --text: #F1F5F9;
       --text-muted: #8E9F99;
       --primary: #28C88B;
       --primary-light: #56E0AC;
       --primary-dark: #087957;
-      --primary-glow: rgba(40, 200, 139, 0.15);
-      --border: #22332D;
-      --nav-bg: rgba(20, 28, 26, 0.85);
-      --card-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+      --primary-glow: rgba(40, 200, 139, 0.18);
+      --border: #1E3029;
+      --nav-bg: rgba(16, 26, 23, 0.82);
+      --card-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
       --badge-bg: rgba(40, 200, 139, 0.12);
       --badge-border: rgba(40, 200, 139, 0.28);
+      --toggle-bg: #1B2924;
+      --toggle-border: #2D423B;
+      --toggle-thumb: #28C88B;
+      --toggle-icon: #042A1D;
     }
     :root[data-theme="light"] {
-      --bg: #F8F9FA;
+      --bg: #F7F9F8;
       --bg-surface: #FFFFFF;
       --bg-card: #FFFFFF;
       --text: #0F172A;
@@ -34,9 +38,13 @@
       --primary-glow: rgba(13, 138, 91, 0.12);
       --border: #E2E8F0;
       --nav-bg: rgba(255, 255, 255, 0.88);
-      --card-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      --card-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
       --badge-bg: rgba(13, 138, 91, 0.08);
       --badge-border: rgba(13, 138, 91, 0.22);
+      --toggle-bg: #E2E8F0;
+      --toggle-border: #CBD5E1;
+      --toggle-thumb: #F59E0B;
+      --toggle-icon: #FFFFFF;
     }
     * {
       box-sizing: border-box;
@@ -68,11 +76,11 @@
       align-items: center;
       justify-content: space-between;
       background: var(--nav-bg);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--border);
       border-radius: 999px;
-      padding: 10px 20px;
+      padding: 8px 18px;
       box-shadow: var(--card-shadow);
     }
     .brand {
@@ -92,46 +100,105 @@
     .nav-controls {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
     .nav-link {
       color: var(--text-muted);
       text-decoration: none;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
       padding: 6px 12px;
       border-radius: 999px;
     }
     .nav-link:hover {
       color: var(--primary);
     }
+    .select-lang-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
     .select-lang {
+      appearance: none;
+      -webkit-appearance: none;
       background: var(--bg-surface);
       color: var(--text);
       border: 1px solid var(--border);
-      padding: 6px 10px;
+      padding: 6px 26px 6px 12px;
       border-radius: 999px;
       font-size: 13px;
       font-weight: 600;
       cursor: pointer;
       outline: none;
     }
-    .theme-toggle {
-      background: var(--bg-surface);
-      color: var(--text);
-      border: 1px solid var(--border);
-      width: 36px;
-      height: 36px;
+    .select-lang:hover {
+      border-color: var(--primary);
+    }
+    .select-arrow {
+      position: absolute;
+      right: 9px;
+      pointer-events: none;
+      width: 10px;
+      height: 10px;
+      fill: var(--text-muted);
+    }
+
+    /* Tactile Theme Switcher */
+    .theme-switch {
+      position: relative;
+      width: 58px;
+      height: 30px;
+      background: var(--toggle-bg);
+      border: 1px solid var(--toggle-border);
+      border-radius: 999px;
+      padding: 2px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      outline: none;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .theme-switch:hover {
+      border-color: var(--primary);
+    }
+    .theme-switch .switch-track-icon {
+      font-size: 11px;
+      width: 24px;
+      text-align: center;
+      user-select: none;
+      line-height: 1;
+    }
+    .theme-switch .switch-thumb {
+      position: absolute;
+      top: 2px;
+      left: 3px;
+      width: 24px;
+      height: 24px;
+      background: var(--toggle-thumb);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      font-size: 16px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.28s ease;
     }
-    .theme-toggle:hover, .select-lang:hover {
-      border-color: var(--primary);
+    .theme-switch .switch-thumb svg {
+      width: 13px;
+      height: 13px;
+      fill: var(--toggle-icon);
+      transition: transform 0.25s ease, opacity 0.25s ease;
     }
+    [data-theme="light"] .theme-switch .switch-thumb {
+      transform: translateX(27px);
+    }
+    [data-theme="dark"] .icon-sun {
+      display: none;
+    }
+    [data-theme="light"] .icon-moon {
+      display: none;
+    }
+
     .card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -150,7 +217,7 @@
       padding: 6px 14px;
       border-radius: 999px;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 16px;
     }
     h1 {
@@ -228,17 +295,46 @@
     <header>
       <nav class="navbar">
         <a href="index.html" class="brand">
-          <img src="assets/icon-192.png" alt="Vetra">
+          <img src="assets/icon-192.png" alt="Vetra Logo">
           <span>Vetra</span>
         </a>
         <div class="nav-controls">
           <a href="index.html" class="nav-link" data-i18n="nav_home">&larr; Início</a>
-          <select id="langSelect" class="select-lang" aria-label="Idioma">
-            <option value="pt">🇵🇹 PT</option>
-            <option value="en">🇬🇧 EN</option>
-            <option value="es">🇪🇸 ES</option>
-          </select>
-          <button id="themeToggle" class="theme-toggle" aria-label="Mudar tema">🌙</button>
+          
+          <div class="select-lang-wrap">
+            <select id="langSelect" class="select-lang" aria-label="Idioma">
+              <option value="pt">🇵🇹 PT</option>
+              <option value="en">🇬🇧 EN</option>
+              <option value="es">🇪🇸 ES</option>
+            </select>
+            <svg class="select-arrow" viewBox="0 0 10 6">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+
+          <!-- Tactile Theme Toggle Pill -->
+          <button id="themeToggle" class="theme-switch" aria-label="Alternar tema" title="Alternar tema">
+            <span class="switch-track-icon">🌙</span>
+            <span class="switch-track-icon">☀️</span>
+            <span class="switch-thumb">
+              <!-- Moon Icon -->
+              <svg class="icon-moon" viewBox="0 0 24 24">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+              <!-- Sun Icon -->
+              <svg class="icon-sun" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2"/>
+                <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2"/>
+                <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2"/>
+                <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </span>
+          </button>
         </div>
       </nav>
     </header>
@@ -410,13 +506,12 @@
       }
     };
 
-    // Theme Logic
+    // Theme Switch Logic
     const themeToggle = document.getElementById('themeToggle');
     const root = document.documentElement;
 
     function setTheme(theme) {
       root.setAttribute('data-theme', theme);
-      themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
       localStorage.setItem('vetra_theme', theme);
     }
 

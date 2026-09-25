@@ -3,34 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vetra — Gestão Financeira Privada e Soberana</title>
+  <title>Vetra — O teu dinheiro, bem organizado</title>
   <link rel="icon" type="image/png" href="assets/icon-192.png">
-  <meta name="description" content="A tua gestão financeira, privada e soberana. Cifragem local com SQLCipher, sincronização segura e zero anúncios.">
+  <meta name="description" content="Contas, despesas e orçamentos num só lugar. Simples, bonito, privado e sem anúncios.">
   <style>
     :root[data-theme="dark"] {
-      --bg: #0B1110;
-      --bg-surface: #141C1A;
-      --bg-card: #182421;
-      --bg-card-hover: #1E2D29;
+      --bg: #070C0B;
+      --bg-surface: #101A17;
+      --bg-card: #14221E;
+      --bg-card-hover: #192B26;
       --text: #F1F5F9;
       --text-muted: #8E9F99;
       --primary: #28C88B;
       --primary-light: #56E0AC;
       --primary-dark: #087957;
-      --primary-glow: rgba(40, 200, 139, 0.15);
+      --primary-glow: rgba(40, 200, 139, 0.18);
       --secondary: #5C8FEF;
-      --border: #22332D;
-      --border-hover: rgba(40, 200, 139, 0.4);
-      --nav-bg: rgba(20, 28, 26, 0.85);
-      --card-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+      --border: #1E3029;
+      --border-hover: rgba(40, 200, 139, 0.45);
+      --nav-bg: rgba(16, 26, 23, 0.82);
+      --card-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
       --badge-bg: rgba(40, 200, 139, 0.12);
       --badge-border: rgba(40, 200, 139, 0.28);
+      --toggle-bg: #1B2924;
+      --toggle-border: #2D423B;
+      --toggle-thumb: #28C88B;
+      --toggle-icon: #042A1D;
     }
     :root[data-theme="light"] {
-      --bg: #F8F9FA;
+      --bg: #F7F9F8;
       --bg-surface: #FFFFFF;
       --bg-card: #FFFFFF;
-      --bg-card-hover: #F1F5F3;
+      --bg-card-hover: #F0F5F2;
       --text: #0F172A;
       --text-muted: #64748B;
       --primary: #0D8A5B;
@@ -41,9 +45,13 @@
       --border: #E2E8F0;
       --border-hover: rgba(13, 138, 91, 0.4);
       --nav-bg: rgba(255, 255, 255, 0.88);
-      --card-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      --card-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
       --badge-bg: rgba(13, 138, 91, 0.08);
       --badge-border: rgba(13, 138, 91, 0.22);
+      --toggle-bg: #E2E8F0;
+      --toggle-border: #CBD5E1;
+      --toggle-thumb: #F59E0B;
+      --toggle-icon: #FFFFFF;
     }
     * {
       box-sizing: border-box;
@@ -59,7 +67,7 @@
       -webkit-font-smoothing: antialiased;
     }
     .container {
-      max-width: 1040px;
+      max-width: 1060px;
       margin: 0 auto;
       padding: 0 24px;
     }
@@ -75,11 +83,11 @@
       align-items: center;
       justify-content: space-between;
       background: var(--nav-bg);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--border);
       border-radius: 999px;
-      padding: 10px 20px;
+      padding: 8px 18px;
       box-shadow: var(--card-shadow);
     }
     .brand {
@@ -99,49 +107,109 @@
     .nav-controls {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
     .nav-link {
       color: var(--text-muted);
       text-decoration: none;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
       padding: 6px 12px;
       border-radius: 999px;
     }
     .nav-link:hover {
       color: var(--primary);
     }
+    .select-lang-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
     .select-lang {
+      appearance: none;
+      -webkit-appearance: none;
       background: var(--bg-surface);
       color: var(--text);
       border: 1px solid var(--border);
-      padding: 6px 10px;
+      padding: 6px 26px 6px 12px;
       border-radius: 999px;
       font-size: 13px;
       font-weight: 600;
       cursor: pointer;
       outline: none;
     }
-    .theme-toggle {
-      background: var(--bg-surface);
-      color: var(--text);
-      border: 1px solid var(--border);
-      width: 36px;
-      height: 36px;
+    .select-lang:hover {
+      border-color: var(--primary);
+    }
+    .select-arrow {
+      position: absolute;
+      right: 9px;
+      pointer-events: none;
+      width: 10px;
+      height: 10px;
+      fill: var(--text-muted);
+    }
+
+    /* Elegant Theme Switcher Toggle */
+    .theme-switch {
+      position: relative;
+      width: 58px;
+      height: 30px;
+      background: var(--toggle-bg);
+      border: 1px solid var(--toggle-border);
+      border-radius: 999px;
+      padding: 2px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      outline: none;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .theme-switch:hover {
+      border-color: var(--primary);
+    }
+    .theme-switch .switch-track-icon {
+      font-size: 11px;
+      width: 24px;
+      text-align: center;
+      user-select: none;
+      line-height: 1;
+    }
+    .theme-switch .switch-thumb {
+      position: absolute;
+      top: 2px;
+      left: 3px;
+      width: 24px;
+      height: 24px;
+      background: var(--toggle-thumb);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      font-size: 16px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.28s ease;
     }
-    .theme-toggle:hover, .select-lang:hover {
-      border-color: var(--primary);
+    .theme-switch .switch-thumb svg {
+      width: 13px;
+      height: 13px;
+      fill: var(--toggle-icon);
+      transition: transform 0.25s ease, opacity 0.25s ease;
     }
+    [data-theme="light"] .theme-switch .switch-thumb {
+      transform: translateX(27px);
+    }
+    [data-theme="dark"] .icon-sun {
+      display: none;
+    }
+    [data-theme="light"] .icon-moon {
+      display: none;
+    }
+
+    /* Hero Section */
     .hero {
       text-align: center;
-      padding: 64px 0 40px 0;
+      padding: 60px 0 36px 0;
     }
     .badge {
       display: inline-flex;
@@ -153,13 +221,14 @@
       padding: 6px 16px;
       border-radius: 999px;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: 0.5px;
       margin-bottom: 24px;
     }
     .hero h1 {
-      font-size: 48px;
+      font-size: 52px;
       font-weight: 800;
-      letter-spacing: -1.2px;
+      letter-spacing: -1.4px;
       line-height: 1.15;
       margin-bottom: 20px;
     }
@@ -169,10 +238,11 @@
       -webkit-text-fill-color: transparent;
     }
     .hero p {
-      font-size: 18px;
+      font-size: 19px;
       color: var(--text-muted);
-      max-width: 640px;
+      max-width: 620px;
       margin: 0 auto 36px auto;
+      line-height: 1.6;
     }
     .hero-actions {
       display: flex;
@@ -189,7 +259,7 @@
       padding: 13px 28px;
       border-radius: 12px;
       text-decoration: none;
-      box-shadow: 0 4px 16px var(--primary-glow);
+      box-shadow: 0 4px 18px var(--primary-glow);
     }
     .btn-primary:hover {
       transform: translateY(-2px);
@@ -209,14 +279,17 @@
       border-color: var(--primary);
       transform: translateY(-2px);
     }
-    .mockup-wrap {
+
+    /* Hero App Card Mockup */
+    .mockup-container {
       margin: 48px auto;
-      max-width: 580px;
+      max-width: 520px;
       background: var(--bg-surface);
       border: 1px solid var(--border);
-      border-radius: 24px;
+      border-radius: 26px;
       padding: 24px;
       box-shadow: var(--card-shadow);
+      position: relative;
     }
     .mockup-header {
       display: flex;
@@ -227,65 +300,127 @@
     .mockup-brand {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 9px;
       font-size: 15px;
       font-weight: 700;
     }
     .mockup-brand img {
-      width: 24px;
-      height: 24px;
-      border-radius: 6px;
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
     }
-    .mockup-status {
+    .mockup-status-dot {
+      display: flex;
+      align-items: center;
+      gap: 6px;
       font-size: 12px;
       color: var(--primary);
       background: var(--badge-bg);
-      padding: 3px 10px;
+      border: 1px solid var(--badge-border);
+      padding: 4px 12px;
       border-radius: 999px;
-      font-weight: 600;
+      font-weight: 700;
     }
-    .mockup-hero-card {
+    .status-pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+    .mockup-card-body {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 22px;
+      border-radius: 20px;
+      padding: 24px;
       text-align: left;
-      margin-bottom: 16px;
     }
-    .mockup-hero-label {
+    .mockup-label {
       font-size: 13px;
       color: var(--text-muted);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
-    .mockup-hero-balance {
-      font-size: 32px;
+    .mockup-balance {
+      font-size: 34px;
       font-weight: 800;
       color: var(--text);
-      letter-spacing: -0.5px;
+      letter-spacing: -0.6px;
     }
-    .mockup-metrics {
+    .mockup-metrics-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      margin-top: 16px;
+      margin-top: 18px;
     }
-    .mockup-metric {
+    .metric-box {
       background: var(--bg-surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px;
+      border-radius: 14px;
+      padding: 14px;
     }
-    .mockup-metric-label {
+    .metric-lbl {
       font-size: 12px;
       color: var(--text-muted);
     }
-    .mockup-metric-val {
+    .metric-val {
       font-size: 16px;
       font-weight: 700;
-      margin-top: 2px;
+      margin-top: 3px;
     }
     .val-income { color: #28C88B; }
     .val-expense { color: #E95868; }
+
+    /* Recent movements preview */
+    .mockup-movements {
+      margin-top: 16px;
+    }
+    .movement-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .movement-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+    }
+    .movement-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .movement-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+    .movement-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .movement-cat {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .movement-amt {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* Features Grid */
     .features {
       padding: 48px 0;
     }
@@ -294,9 +429,9 @@
       margin-bottom: 40px;
     }
     .section-head h2 {
-      font-size: 30px;
+      font-size: 32px;
       font-weight: 800;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.6px;
       margin-bottom: 10px;
     }
     .section-head p {
@@ -329,12 +464,15 @@
       font-size: 18px;
       font-weight: 700;
       margin-bottom: 8px;
+      color: var(--text);
     }
     .feature-card p {
       font-size: 14px;
       color: var(--text-muted);
       line-height: 1.55;
     }
+
+    /* Privacy Banner */
     .privacy-banner {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -347,14 +485,16 @@
     .privacy-banner h2 {
       font-size: 28px;
       font-weight: 800;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .privacy-banner p {
       font-size: 16px;
       color: var(--text-muted);
-      max-width: 620px;
+      max-width: 600px;
       margin: 0 auto 28px auto;
     }
+
+    /* Footer */
     footer {
       border-top: 1px solid var(--border);
       padding: 40px 0 60px 0;
@@ -370,12 +510,14 @@
     footer a:hover {
       color: var(--primary);
     }
+
     @media (max-width: 640px) {
-      .hero h1 { font-size: 34px; }
+      .hero h1 { font-size: 36px; }
       .hero p { font-size: 16px; }
       .navbar { padding: 8px 14px; }
       .brand span { display: none; }
-      .mockup-wrap { padding: 16px; }
+      .mockup-container { padding: 16px; }
+      .mockup-balance { font-size: 28px; }
     }
   </style>
 </head>
@@ -384,17 +526,46 @@
     <header>
       <nav class="navbar">
         <a href="index.html" class="brand">
-          <img src="assets/icon-192.png" alt="Vetra">
+          <img src="assets/icon-192.png" alt="Vetra Logo">
           <span>Vetra</span>
         </a>
         <div class="nav-controls">
           <a href="privacy.html" class="nav-link" data-i18n="nav_privacy">Privacidade</a>
-          <select id="langSelect" class="select-lang" aria-label="Idioma">
-            <option value="pt">🇵🇹 PT</option>
-            <option value="en">🇬🇧 EN</option>
-            <option value="es">🇪🇸 ES</option>
-          </select>
-          <button id="themeToggle" class="theme-toggle" aria-label="Mudar tema">🌙</button>
+          
+          <div class="select-lang-wrap">
+            <select id="langSelect" class="select-lang" aria-label="Idioma">
+              <option value="pt">🇵🇹 PT</option>
+              <option value="en">🇬🇧 EN</option>
+              <option value="es">🇪🇸 ES</option>
+            </select>
+            <svg class="select-arrow" viewBox="0 0 10 6">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+
+          <!-- Tactile Theme Toggle Pill -->
+          <button id="themeToggle" class="theme-switch" aria-label="Alternar tema" title="Alternar tema">
+            <span class="switch-track-icon">🌙</span>
+            <span class="switch-track-icon">☀️</span>
+            <span class="switch-thumb">
+              <!-- Moon Icon -->
+              <svg class="icon-moon" viewBox="0 0 24 24">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+              <!-- Sun Icon -->
+              <svg class="icon-sun" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2"/>
+                <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2"/>
+                <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2"/>
+                <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </span>
+          </button>
         </div>
       </nav>
     </header>
@@ -402,42 +573,70 @@
     <main>
       <section class="hero">
         <div class="badge">
-          <span>🛡️</span>
-          <span data-i18n="badge_title">Soberania &bull; Cifragem &bull; Simplicidade</span>
+          <span>✨</span>
+          <span data-i18n="badge_title">FINANÇAS PESSOAIS SIMPLES &bull; 100% PRIVADO</span>
         </div>
         <h1>
-          <span data-i18n="hero_title_1">A tua gestão financeira,</span><br>
-          <span class="gradient" data-i18n="hero_title_2">privada e soberana</span>
+          <span data-i18n="hero_title_1">O teu dinheiro,</span><br>
+          <span class="gradient" data-i18n="hero_title_2">bem organizado.</span>
         </h1>
         <p data-i18n="hero_desc">
-          Controla despesas, contas bancárias e orçamentos mensais com a máxima segurança. Cifragem local por hardware, sincronização segura e zero publicidade.
+          Contas, despesas e orçamentos num só lugar. Rápido, bonito, privado e sem anúncios.
         </p>
         <div class="hero-actions">
           <a href="privacy.html" class="btn-primary" data-i18n="cta_privacy">Conhecer a Política de Privacidade &rarr;</a>
-          <a href="#features" class="btn-secondary" data-i18n="cta_features">Explorar Recursos</a>
+          <a href="#features" class="btn-secondary" data-i18n="cta_features">Explorar Funcionalidades</a>
         </div>
       </section>
 
-      <!-- Mockup Card -->
-      <section class="mockup-wrap">
+      <!-- App Card Mockup -->
+      <section class="mockup-container">
         <div class="mockup-header">
           <div class="mockup-brand">
             <img src="assets/icon-192.png" alt="Vetra Logo">
-            <span>Vetra Mobile</span>
+            <span>Vetra</span>
           </div>
-          <div class="mockup-status" data-i18n="mockup_encrypted">● Cifrado com SQLCipher</div>
+          <div class="mockup-status-dot">
+            <span class="status-pulse"></span>
+            <span data-i18n="mockup_status">Ativo</span>
+          </div>
         </div>
-        <div class="mockup-hero-card">
-          <div class="mockup-hero-label" data-i18n="mockup_patrimonio">Património Líquido Total</div>
-          <div class="mockup-hero-balance">€ 8.450,20</div>
-          <div class="mockup-metrics">
-            <div class="mockup-metric">
-              <div class="mockup-metric-label" data-i18n="mockup_receitas">Receitas do Mês</div>
-              <div class="mockup-metric-val val-income">+ € 2.450,00</div>
+        <div class="mockup-card-body">
+          <div class="mockup-label" data-i18n="mockup_patrimonio">Património Líquido Total</div>
+          <div class="mockup-balance">€ 8.450,20</div>
+          
+          <div class="mockup-metrics-grid">
+            <div class="metric-box">
+              <div class="metric-lbl" data-i18n="mockup_receitas">Receitas este mês</div>
+              <div class="metric-val val-income">+ € 2.450,00</div>
             </div>
-            <div class="mockup-metric">
-              <div class="mockup-metric-label" data-i18n="mockup_despesas">Despesas do Mês</div>
-              <div class="mockup-metric-val val-expense">- € 985,40</div>
+            <div class="metric-box">
+              <div class="metric-lbl" data-i18n="mockup_despesas">Despesas este mês</div>
+              <div class="metric-val val-expense">- € 985,40</div>
+            </div>
+          </div>
+
+          <div class="mockup-movements">
+            <div class="movement-title" data-i18n="mockup_recent_title">Últimos Movimentos</div>
+            <div class="movement-item">
+              <div class="movement-left">
+                <div class="movement-icon">🛒</div>
+                <div>
+                  <div class="movement-name" data-i18n="mockup_tx1_name">Supermercado Semanal</div>
+                  <div class="movement-cat" data-i18n="mockup_tx1_cat">Conta Principal &bull; Alimentação</div>
+                </div>
+              </div>
+              <div class="movement-amt">- € 74,50</div>
+            </div>
+            <div class="movement-item">
+              <div class="movement-left">
+                <div class="movement-icon">💰</div>
+                <div>
+                  <div class="movement-name" data-i18n="mockup_tx2_name">Salário Mensal</div>
+                  <div class="movement-cat" data-i18n="mockup_tx2_cat">Transferência &bull; Trabalho</div>
+                </div>
+              </div>
+              <div class="movement-amt val-income">+ € 2.450,00</div>
             </div>
           </div>
         </div>
@@ -446,37 +645,37 @@
       <!-- Features Section -->
       <section class="features" id="features">
         <div class="section-head">
-          <h2 data-i18n="features_title">Construída para proteger o teu património</h2>
-          <p data-i18n="features_subtitle">Privacidade real e engenharia financeira moderna em harmonia.</p>
+          <h2 data-i18n="features_title">Tudo o que precisas para gerir o teu dinheiro</h2>
+          <p data-i18n="features_subtitle">Pensada para o teu dia a dia, com velocidade e privacidade garantida.</p>
         </div>
         <div class="features-grid">
           <div class="feature-card">
-            <div class="feature-icon">🔐</div>
-            <h3 data-i18n="feat_1_title">Cifragem SQLCipher</h3>
-            <p data-i18n="feat_1_desc">A base de dados no teu dispositivo é cifrada com AES-256. Ninguém acede às tuas finanças sem a tua chave local.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">☁️</div>
-            <h3 data-i18n="feat_2_title">Sincronização Segura</h3>
-            <p data-i18n="feat_2_desc">Sincronização na nuvem com Supabase e isolamento estrito por Row Level Security. Os teus registos são só teus.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">⚡</div>
-            <h3 data-i18n="feat_3_title">100% Offline-First</h3>
-            <p data-i18n="feat_3_desc">Regista despesas e analisa gráficos em qualquer lugar, mesmo sem rede. Tudo sincroniza quando voltares a ter Internet.</p>
+            <div class="feature-icon">📊</div>
+            <h3 data-i18n="feat_1_title">Gastos & Contas num Só Lugar</h3>
+            <p data-i18n="feat_1_desc">Adiciona despesas em segundos, organiza contas bancárias e acompanha o teu saldo com gráficos claros e objetivos.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">🎯</div>
-            <h3 data-i18n="feat_4_title">Orçamentos e Cofres</h3>
-            <p data-i18n="feat_4_desc">Planeia orçamentos mensais por categoria e reserva poupanças dedicadas nos teus Cofres sem duplicar dinheiro.</p>
+            <h3 data-i18n="feat_2_title">Orçamentos e Metas Claras</h3>
+            <p data-i18n="feat_2_desc">Define limites mensais por categoria e guarda dinheiro nos teus Cofres dedicados para férias, poupanças ou emergências.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3 data-i18n="feat_3_title">100% Privado e Seguro</h3>
+            <p data-i18n="feat_3_desc">Os teus dados são encriptados no teu dispositivo. Sem venda de dados a empresas terceiras, sem anúncios e sem rastreio.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3 data-i18n="feat_4_title">Sempre Disponível, Mesmo Offline</h3>
+            <p data-i18n="feat_4_desc">Funciona em qualquer lugar, mesmo sem rede móvel ou em modo avião. Quando voltares a ter Internet, tudo sincroniza automaticamente.</p>
           </div>
         </div>
       </section>
 
       <!-- Privacy Callout -->
       <section class="privacy-banner">
-        <h2 data-i18n="privacy_banner_title">O nosso compromisso inegociável com a privacidade</h2>
-        <p data-i18n="privacy_banner_desc">Sem venda de dados, sem publicidade invasiva e sem rastreio comercial. Tens controlo total para exportar ou eliminar a tua conta permanentemente.</p>
+        <h2 data-i18n="privacy_banner_title">O teu dinheiro é assunto teu</h2>
+        <p data-i18n="privacy_banner_desc">Sem anúncios invasivos, sem venda de dados e sem rastreadores comerciais. Podes exportar ou eliminar a tua conta permanentemente a qualquer momento.</p>
         <a href="privacy.html" class="btn-primary" data-i18n="privacy_banner_btn">Ler a Política de Privacidade Completa</a>
       </section>
     </main>
@@ -494,28 +693,33 @@
     const i18n = {
       pt: {
         nav_privacy: "Privacidade",
-        badge_title: "Soberania • Cifragem • Simplicidade",
-        hero_title_1: "A tua gestão financeira,",
-        hero_title_2: "privada e soberana",
-        hero_desc: "Controla despesas, contas bancárias e orçamentos mensais com a máxima segurança. Cifragem local por hardware, sincronização segura e zero publicidade.",
+        badge_title: "FINANÇAS PESSOAIS SIMPLES • 100% PRIVADO",
+        hero_title_1: "O teu dinheiro,",
+        hero_title_2: "bem organizado.",
+        hero_desc: "Contas, despesas e orçamentos num só lugar. Rápido, bonito, privado e sem anúncios.",
         cta_privacy: "Conhecer a Política de Privacidade →",
-        cta_features: "Explorar Recursos",
-        mockup_encrypted: "● Cifrado com SQLCipher",
+        cta_features: "Explorar Funcionalidades",
+        mockup_status: "Ativo",
         mockup_patrimonio: "Património Líquido Total",
-        mockup_receitas: "Receitas do Mês",
-        mockup_despesas: "Despesas do Mês",
-        features_title: "Construída para proteger o teu património",
-        features_subtitle: "Privacidade real e engenharia financeira moderna em harmonia.",
-        feat_1_title: "Cifragem SQLCipher",
-        feat_1_desc: "A base de dados no teu dispositivo é cifrada com AES-256. Ninguém acede às tuas finanças sem a tua chave local.",
-        feat_2_title: "Sincronização Segura",
-        feat_2_desc: "Sincronização na nuvem com Supabase e isolamento estrito por Row Level Security. Os teus registos são só teus.",
-        feat_3_title: "100% Offline-First",
-        feat_3_desc: "Regista despesas e analisa gráficos em qualquer lugar, mesmo sem rede. Tudo sincroniza quando voltares a ter Internet.",
-        feat_4_title: "Orçamentos e Cofres",
-        feat_4_desc: "Planeia orçamentos mensais por categoria e reserva poupanças dedicadas nos teus Cofres sem duplicar dinheiro.",
-        privacy_banner_title: "O nosso compromisso inegociável com a privacidade",
-        privacy_banner_desc: "Sem venda de dados, sem publicidade invasiva e sem rastreio comercial. Tens controlo total para exportar ou eliminar a tua conta permanentemente.",
+        mockup_receitas: "Receitas este mês",
+        mockup_despesas: "Despesas este mês",
+        mockup_recent_title: "Últimos Movimentos",
+        mockup_tx1_name: "Supermercado Semanal",
+        mockup_tx1_cat: "Conta Principal • Alimentação",
+        mockup_tx2_name: "Salário Mensal",
+        mockup_tx2_cat: "Transferência • Trabalho",
+        features_title: "Tudo o que precisas para gerir o teu dinheiro",
+        features_subtitle: "Pensada para o teu dia a dia, com velocidade e privacidade garantida.",
+        feat_1_title: "Gastos & Contas num Só Lugar",
+        feat_1_desc: "Adiciona despesas em segundos, organiza contas bancárias e acompanha o teu saldo com gráficos claros e objetivos.",
+        feat_2_title: "Orçamentos e Metas Claras",
+        feat_2_desc: "Define limites mensais por categoria e guarda dinheiro nos teus Cofres dedicados para férias, poupanças ou emergências.",
+        feat_3_title: "100% Privado e Seguro",
+        feat_3_desc: "Os teus dados são encriptados no teu dispositivo. Sem venda de dados a empresas terceiras, sem anúncios e sem rastreio.",
+        feat_4_title: "Sempre Disponível, Mesmo Offline",
+        feat_4_desc: "Funciona em qualquer lugar, mesmo sem rede móvel ou em modo avião. Quando voltares a ter Internet, tudo sincroniza automaticamente.",
+        privacy_banner_title: "O teu dinheiro é assunto teu",
+        privacy_banner_desc: "Sem anúncios invasivos, sem venda de dados e sem rastreadores comerciais. Podes exportar ou eliminar a tua conta permanentemente a qualquer momento.",
         privacy_banner_btn: "Ler a Política de Privacidade Completa",
         footer_rights: "Todos os direitos reservados.",
         footer_home: "Início",
@@ -523,28 +727,33 @@
       },
       en: {
         nav_privacy: "Privacy",
-        badge_title: "Sovereignty • Encryption • Simplicity",
-        hero_title_1: "Your financial management,",
-        hero_title_2: "private and sovereign",
-        hero_desc: "Track expenses, bank accounts, and monthly budgets with uncompromising security. Hardware-backed local encryption, secure sync, and zero ads.",
+        badge_title: "SIMPLE PERSONAL FINANCE • 100% PRIVATE",
+        hero_title_1: "Your money,",
+        hero_title_2: "well organized.",
+        hero_desc: "Accounts, expenses, and budgets in one place. Fast, elegant, private, and zero ads.",
         cta_privacy: "Read Privacy Policy →",
         cta_features: "Explore Features",
-        mockup_encrypted: "● Encrypted with SQLCipher",
+        mockup_status: "Active",
         mockup_patrimonio: "Total Net Worth",
-        mockup_receitas: "Monthly Income",
-        mockup_despesas: "Monthly Expenses",
-        features_title: "Built to protect your wealth",
-        features_subtitle: "Genuine privacy and modern financial engineering in harmony.",
-        feat_1_title: "SQLCipher Encryption",
-        feat_1_desc: "The local database on your device is encrypted with AES-256. Nobody accesses your finances without your local key.",
-        feat_2_title: "Secure Cloud Sync",
-        feat_2_desc: "Cloud sync powered by Supabase with strict Row Level Security. Your records belong exclusively to you.",
-        feat_3_title: "100% Offline-First",
-        feat_3_desc: "Add movements and inspect analytics anywhere, even without cellular connection. Seamless auto-sync when online.",
-        feat_4_title: "Budgets & Vaults",
-        feat_4_desc: "Plan monthly category allocations and reserve dedicated goal savings in your Vaults without duplicate balances.",
-        privacy_banner_title: "Our non-negotiable commitment to privacy",
-        privacy_banner_desc: "No data brokers, no intrusive advertisements, and no tracking SDKs. You have full sovereignty to export or permanently erase your account.",
+        mockup_receitas: "Income this month",
+        mockup_despesas: "Expenses this month",
+        mockup_recent_title: "Recent Movements",
+        mockup_tx1_name: "Weekly Groceries",
+        mockup_tx1_cat: "Main Account • Groceries",
+        mockup_tx2_name: "Monthly Salary",
+        mockup_tx2_cat: "Transfer • Career",
+        features_title: "Everything you need to manage your money",
+        features_subtitle: "Crafted for daily peace of mind, speed, and uncompromising privacy.",
+        feat_1_title: "Accounts & Expenses in One Place",
+        feat_1_desc: "Log expenses in seconds, organize bank accounts, and track your balance with clear, actionable charts.",
+        feat_2_title: "Budgets & Clear Goals",
+        feat_2_desc: "Set monthly category budgets and save money in dedicated Vaults for holidays, savings, or emergencies.",
+        feat_3_title: "100% Private & Secure",
+        feat_3_desc: "Your data is encrypted on your device. No data selling to third parties, zero advertisements, and zero tracking.",
+        feat_4_title: "Always Available, Even Offline",
+        feat_4_desc: "Works everywhere, even without cell coverage or in airplane mode. Seamlessly syncs when you reconnect.",
+        privacy_banner_title: "Your money is your own business",
+        privacy_banner_desc: "No intrusive ads, no data brokers, and no tracking. You can export your data or permanently delete your account anytime.",
         privacy_banner_btn: "Read Complete Privacy Policy",
         footer_rights: "All rights reserved.",
         footer_home: "Home",
@@ -552,28 +761,33 @@
       },
       es: {
         nav_privacy: "Privacidad",
-        badge_title: "Soberanía • Cifrado • Simplicidad",
-        hero_title_1: "Tu gestión financiera,",
-        hero_title_2: "privada y soberana",
-        hero_desc: "Controla gastos, cuentas bancarias y presupuestos mensuales con la máxima seguridad. Cifrado local por hardware, sincronización segura y cero anuncios.",
+        badge_title: "FINANZAS PERSONALES SENCILLAS • 100% PRIVADAS",
+        hero_title_1: "Tu dinero,",
+        hero_title_2: "bien organizado.",
+        hero_desc: "Cuentas, gastos y presupuestos en un solo lugar. Rápido, elegante, privado y sin anuncios.",
         cta_privacy: "Conocer la Política de Privacidad →",
         cta_features: "Explorar Funciones",
-        mockup_encrypted: "● Cifrado con SQLCipher",
+        mockup_status: "Activo",
         mockup_patrimonio: "Patrimonio Neto Total",
-        mockup_receitas: "Ingresos del Mes",
-        mockup_despesas: "Gastos del Mes",
-        features_title: "Diseñada para proteger tu patrimonio",
-        features_subtitle: "Privacidad auténtica e ingeniería financiera moderna en armonía.",
-        feat_1_title: "Cifrado SQLCipher",
-        feat_1_desc: "La base de datos local en tu dispositivo está cifrada con AES-256. Nadie accede a tus finanzas sin tu clave local.",
-        feat_2_title: "Sincronización Segura",
-        feat_2_desc: "Sincronización en la nube con Supabase y aislamiento estricto por Row Level Security. Tus registros son solo tuyos.",
-        feat_3_title: "100% Offline-First",
-        feat_3_desc: "Registra movimientos y analiza gráficos en cualquier lugar, incluso sin conexión. Se sincroniza al recuperar red.",
-        feat_4_title: "Presupuestos y Bóvedas",
-        feat_4_desc: "Planifica presupuestos mensuales por categoría y reserva ahorros dedicados en tus Bóvedas sin duplicar saldo.",
-        privacy_banner_title: "Nuestro compromiso innegociable con la privacidad",
-        privacy_banner_desc: "Sin venta de datos, sin anuncios invasivos y sin rastreo comercial. Tienes control total para exportar o eliminar tu cuenta permanentemente.",
+        mockup_receitas: "Ingresos este mes",
+        mockup_despesas: "Gastos este mes",
+        mockup_recent_title: "Últimos Movimientos",
+        mockup_tx1_name: "Supermercado Semanal",
+        mockup_tx1_cat: "Cuenta Principal • Comida",
+        mockup_tx2_name: "Salario Mensual",
+        mockup_tx2_cat: "Transferencia • Trabajo",
+        features_title: "Todo lo que necesitas para gestionar tu dinero",
+        features_subtitle: "Diseñada para tu día a día, con rapidez y privacidad garantizada.",
+        feat_1_title: "Gastos y Cuentas en un Solo Lugar",
+        feat_1_desc: "Añade gastos en segundos, organiza cuentas bancarias y sigue tus saldos con gráficos claros y directos.",
+        feat_2_title: "Presupuestos y Metas Claras",
+        feat_2_desc: "Define límites mensuales por categoría y guarda ahorros en Bóvedas dedicadas para vacaciones o emergencias.",
+        feat_3_title: "100% Privado y Seguro",
+        feat_3_desc: "Tus datos se cifran en tu dispositivo. Sin venta de datos a terceros, sin anuncios y sin rastreo comercial.",
+        feat_4_title: "Siempre Disponible, Incluso Offline",
+        feat_4_desc: "Funciona en cualquier lugar, incluso sin cobertura o en modo avión. Se sincroniza al recuperar conexión.",
+        privacy_banner_title: "Tu dinero es asunto tuyo",
+        privacy_banner_desc: "Sin anuncios invasivos, sin venta de datos y sin rastreadores comerciales. Puedes exportar o eliminar tu cuenta permanentemente.",
         privacy_banner_btn: "Leer la Política de Privacidad Completa",
         footer_rights: "Todos los derechos reservados.",
         footer_home: "Inicio",
@@ -581,13 +795,12 @@
       }
     };
 
-    // Theme Logic
+    // Theme Switch Logic
     const themeToggle = document.getElementById('themeToggle');
     const root = document.documentElement;
 
     function setTheme(theme) {
       root.setAttribute('data-theme', theme);
-      themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
       localStorage.setItem('vetra_theme', theme);
     }
 
