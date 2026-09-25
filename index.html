@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vetra — Finanças Pessoais de Alta Precisão</title>
+  <title>Vetra — Finanças Pessoais com Rigor Contabilístico</title>
   <link rel="icon" type="image/png" href="assets/icon-192.png">
-  <meta name="description" content="Gestão financeira pessoal de alta precisão. Rápida, local-first, desenhada com cuidado cirúrgico. Sem anúncios, sem rastreio e 100% privada.">
+  <meta name="description" content="Gestão financeira pessoal em EUR com rigor contabilístico. Rápida, local-first, orçamentos por envelopes, controlo de cartões e privacidade integral sem anúncios.">
   
   <!-- Premium Modern Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     /* --------------------------------------------------
-       AWARD-WINNING DESIGN TOKENS
+       DESIGN SYSTEM & THEME TOKENS
        -------------------------------------------------- */
     :root[data-theme="dark"] {
       --bg: #060908;
       --bg-surface: #0C1310;
       --bg-surface-elevated: #111A17;
-      --bg-card: rgba(16, 25, 22, 0.68);
-      --bg-card-hover: rgba(22, 36, 31, 0.85);
-      --bg-glass: rgba(12, 19, 16, 0.72);
+      --bg-card: rgba(16, 25, 22, 0.72);
+      --bg-card-hover: rgba(22, 36, 31, 0.88);
+      --bg-glass: rgba(12, 19, 16, 0.76);
       
       --text: #F8FAFC;
       --text-muted: #8A9C95;
@@ -31,7 +31,7 @@
       --primary: #2BD48D;
       --primary-light: #5EEAD4;
       --primary-dark: #059669;
-      --primary-glow: rgba(43, 212, 141, 0.25);
+      --primary-glow: rgba(43, 212, 141, 0.22);
       --primary-glow-subtle: rgba(43, 212, 141, 0.08);
       
       --accent-blue: #38BDF8;
@@ -39,12 +39,12 @@
       
       --border: rgba(255, 255, 255, 0.08);
       --border-light: rgba(255, 255, 255, 0.14);
-      --border-hover: rgba(43, 212, 141, 0.5);
+      --border-hover: rgba(43, 212, 141, 0.45);
       
       --card-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.8), 0 0 1px 1px rgba(255, 255, 255, 0.07);
-      --glow-mesh-1: radial-gradient(circle at 50% -10%, rgba(43, 212, 141, 0.18) 0%, transparent 60%);
-      --glow-mesh-2: radial-gradient(circle at 90% 25%, rgba(56, 189, 248, 0.12) 0%, transparent 50%);
-      --glow-mesh-3: radial-gradient(circle at 10% 70%, rgba(43, 212, 141, 0.08) 0%, transparent 45%);
+      --glow-mesh-1: radial-gradient(circle at 50% -10%, rgba(43, 212, 141, 0.16) 0%, transparent 60%);
+      --glow-mesh-2: radial-gradient(circle at 90% 25%, rgba(56, 189, 248, 0.10) 0%, transparent 50%);
+      --glow-mesh-3: radial-gradient(circle at 10% 70%, rgba(43, 212, 141, 0.07) 0%, transparent 45%);
       
       --badge-bg: rgba(43, 212, 141, 0.10);
       --badge-border: rgba(43, 212, 141, 0.28);
@@ -61,7 +61,7 @@
       --bg: #F7FAF8;
       --bg-surface: #FFFFFF;
       --bg-surface-elevated: #F0F5F2;
-      --bg-card: rgba(255, 255, 255, 0.90);
+      --bg-card: rgba(255, 255, 255, 0.92);
       --bg-card-hover: #FFFFFF;
       --bg-glass: rgba(255, 255, 255, 0.85);
       
@@ -83,9 +83,9 @@
       --border-hover: rgba(10, 130, 88, 0.38);
       
       --card-shadow: 0 20px 48px -10px rgba(10, 30, 22, 0.07), 0 0 1px 1px rgba(0, 0, 0, 0.04);
-      --glow-mesh-1: radial-gradient(circle at 50% -10%, rgba(43, 212, 141, 0.14) 0%, transparent 65%);
-      --glow-mesh-2: radial-gradient(circle at 90% 25%, rgba(56, 189, 248, 0.08) 0%, transparent 55%);
-      --glow-mesh-3: radial-gradient(circle at 10% 70%, rgba(43, 212, 141, 0.06) 0%, transparent 50%);
+      --glow-mesh-1: radial-gradient(circle at 50% -10%, rgba(43, 212, 141, 0.12) 0%, transparent 65%);
+      --glow-mesh-2: radial-gradient(circle at 90% 25%, rgba(56, 189, 248, 0.07) 0%, transparent 55%);
+      --glow-mesh-3: radial-gradient(circle at 10% 70%, rgba(43, 212, 141, 0.05) 0%, transparent 50%);
       
       --badge-bg: rgba(10, 130, 88, 0.08);
       --badge-border: rgba(10, 130, 88, 0.22);
@@ -99,7 +99,7 @@
     }
 
     /* --------------------------------------------------
-       RESET & BASE STYLES
+       BASE & RESET
        -------------------------------------------------- */
     *, *::before, *::after {
       box-sizing: border-box;
@@ -132,11 +132,10 @@
       height: 100vh;
       pointer-events: none;
       z-index: 9999;
-      opacity: 0.028;
+      opacity: 0.026;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
-    /* Ambient Meshes */
     .bg-mesh {
       position: absolute;
       top: 0;
@@ -171,7 +170,7 @@
     }
 
     /* --------------------------------------------------
-       NAVBAR (FLOATING GLASS PILL)
+       FLOATING GLASS NAVBAR
        -------------------------------------------------- */
     header {
       position: sticky;
@@ -205,13 +204,6 @@
       font-weight: 800;
       font-size: 21px;
       letter-spacing: -0.6px;
-    }
-
-    .brand-icon-wrap {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .brand img {
@@ -363,11 +355,6 @@
       margin-bottom: 26px;
       box-shadow: 0 4px 18px var(--primary-glow);
       backdrop-filter: blur(12px);
-      transition: transform 0.2s ease;
-    }
-
-    .badge-pill:hover {
-      transform: scale(1.02);
     }
 
     .badge-dot {
@@ -408,7 +395,7 @@
     .hero p {
       font-size: clamp(17px, 2.2vw, 20px);
       color: var(--text-muted);
-      max-width: 660px;
+      max-width: 680px;
       margin: 0 auto 38px auto;
       line-height: 1.55;
       font-weight: 500;
@@ -435,8 +422,6 @@
       border-radius: 14px;
       text-decoration: none;
       box-shadow: 0 10px 30px var(--primary-glow);
-      position: relative;
-      overflow: hidden;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -446,10 +431,11 @@
       box-shadow: 0 14px 38px var(--primary-glow);
     }
 
+    /* Fixed Centered Shield-Check Icon */
     .btn-main svg {
       width: 18px;
       height: 18px;
-      fill: currentColor;
+      flex-shrink: 0;
     }
 
     .btn-outline {
@@ -510,7 +496,6 @@
       align-items: center;
     }
 
-    /* Ambient Soft Spotlight behind Phone */
     .phone-spotlight {
       position: absolute;
       top: 50%;
@@ -526,7 +511,6 @@
       opacity: 0.65;
     }
 
-    /* Floating Feature Badges */
     .floating-pill {
       position: absolute;
       background: var(--bg-surface);
@@ -606,7 +590,7 @@
       box-shadow: 0 44px 100px -18px rgba(0, 0, 0, 0.8), 0 0 45px var(--primary-glow);
     }
 
-    /* Dynamic Island Notch */
+    /* Dynamic Island */
     .device-notch {
       width: 96px;
       height: 20px;
@@ -634,7 +618,7 @@
       background: #1E293B;
     }
 
-    /* Inner Screen */
+    /* App Screen */
     .app-screen {
       background: var(--bg);
       border-radius: 34px;
@@ -681,10 +665,9 @@
       background: linear-gradient(145deg, var(--bg-surface-elevated), var(--bg-card));
       border: 1px solid var(--border-light);
       border-radius: 22px;
-      padding: 18px;
+      padding: 18px 18px 10px 18px;
       text-align: left;
       position: relative;
-      overflow: hidden;
       margin-bottom: 14px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     }
@@ -713,17 +696,19 @@
       font-size: 32px;
       font-weight: 900;
       letter-spacing: -1.2px;
-      margin: 6px 0 8px 0;
+      margin: 6px 0 10px 0;
       color: var(--text);
     }
 
-    /* Sparkline SVG Chart with Gradient Fill */
+    /* Unclipped Sparkline SVG Chart with Top Breathing Room */
     .sparkline-svg {
       width: 100%;
-      height: 48px;
+      height: 56px;
+      overflow: visible;
+      display: block;
     }
 
-    /* Mini Metrics Dual Column */
+    /* Dual Metrics */
     .dual-metrics {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -810,11 +795,6 @@
       border-radius: 13px;
       padding: 10px 12px;
       margin-bottom: 6px;
-      transition: background 0.2s ease;
-    }
-
-    .tx-item:hover {
-      background: var(--bg-surface-elevated);
     }
 
     .tx-left {
@@ -849,7 +829,6 @@
       font-weight: 800;
     }
 
-    /* Mini Bottom Navigation Bar inside Phone */
     .phone-bottom-nav {
       display: flex;
       justify-content: space-around;
@@ -867,7 +846,7 @@
     }
 
     /* --------------------------------------------------
-       BENTO GRID (ASYMMETRIC LUXURY TILES)
+       BENTO GRID (HONEST & RIGOROUS PRODUCT ARCHITECTURE)
        -------------------------------------------------- */
     .bento-section {
       padding: 80px 0 60px 0;
@@ -875,7 +854,7 @@
 
     .section-header {
       text-align: center;
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto 52px auto;
     }
 
@@ -960,7 +939,7 @@
       line-height: 1.65;
     }
 
-    /* Bento Visual Highlights */
+    /* Diagram Pill */
     .bento-diagram {
       display: flex;
       align-items: center;
@@ -1019,48 +998,136 @@
     }
 
     /* --------------------------------------------------
-       COMPARISON SECTION
+       REDESIGNED COMPARISON MATRIX (LINEAR/STRIPE CARDS)
        -------------------------------------------------- */
     .compare-section {
-      padding: 60px 0 80px 0;
+      padding: 70px 0 90px 0;
     }
 
-    .compare-table-wrapper {
-      background: var(--bg-card);
+    .compare-matrix-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .compare-matrix-card {
+      border-radius: 28px;
+      padding: 40px 34px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Vetra Card (Hero Glow) */
+    .matrix-vetra {
+      background: linear-gradient(160deg, var(--bg-surface-elevated), var(--bg-card));
+      border: 2px solid var(--primary);
+      box-shadow: 0 24px 60px -12px rgba(43, 212, 141, 0.15), var(--card-shadow);
+    }
+
+    .matrix-tag-vetra {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary);
+      color: #042A1D;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      width: fit-content;
+      margin-bottom: 16px;
+    }
+
+    /* Others Card (Muted) */
+    .matrix-others {
+      background: var(--bg-surface);
       border: 1px solid var(--border);
-      border-radius: 26px;
-      padding: 10px;
-      box-shadow: var(--card-shadow);
-      overflow-x: auto;
+      opacity: 0.88;
     }
 
-    .compare-table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
+    .matrix-tag-others {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--border);
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      width: fit-content;
+      margin-bottom: 16px;
     }
 
-    .compare-table th, .compare-table td {
-      padding: 20px 26px;
-      border-bottom: 1px solid var(--border);
+    .compare-matrix-card h3 {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -0.6px;
+      margin-bottom: 8px;
+    }
+
+    .compare-matrix-card p.matrix-desc {
       font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 26px;
+      line-height: 1.5;
     }
 
-    .compare-table th {
-      font-weight: 800;
-      font-size: 15px;
-      color: var(--text);
+    .matrix-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
 
-    .compare-table tr:last-child td {
-      border-bottom: none;
+    .matrix-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      line-height: 1.5;
     }
 
-    .compare-table .vetra-col {
+    .matrix-item-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 12px;
+      font-weight: 900;
+      margin-top: 1px;
+    }
+
+    .icon-pass {
+      background: rgba(43, 212, 141, 0.2);
       color: var(--primary);
-      font-weight: 800;
-      background: var(--badge-bg);
-      border-radius: 14px;
+    }
+
+    .icon-fail {
+      background: rgba(244, 63, 94, 0.16);
+      color: #F43F5E;
+    }
+
+    .matrix-item-text strong {
+      display: block;
+      color: var(--text);
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+
+    .matrix-item-text span {
+      color: var(--text-muted);
+      font-size: 13px;
     }
 
     /* --------------------------------------------------
@@ -1147,6 +1214,9 @@
       .bento-col-2 {
         grid-column: span 1;
       }
+      .compare-matrix-grid {
+        grid-template-columns: 1fr;
+      }
       .floating-pill {
         display: none;
       }
@@ -1161,7 +1231,7 @@
       .section-header h2 { font-size: 28px; }
       .privacy-manifesto { padding: 42px 22px; }
       .privacy-manifesto h2 { font-size: 26px; }
-      .compare-table th, .compare-table td { padding: 14px 16px; font-size: 13px; }
+      .compare-matrix-card { padding: 28px 20px; }
     }
   </style>
 </head>
@@ -1178,9 +1248,7 @@
     <header>
       <nav class="navbar">
         <a href="index.html" class="brand">
-          <div class="brand-icon-wrap">
-            <img src="assets/icon-192.png" alt="Vetra Logo">
-          </div>
+          <img src="assets/icon-192.png" alt="Vetra Logo">
           <span>Vetra</span>
         </a>
 
@@ -1233,19 +1301,23 @@
       <section class="hero">
         <div class="badge-pill">
           <span class="badge-dot"></span>
-          <span data-i18n="badge_title">FINANÇAS PESSOAIS EM EUR • 100% PRIVADO & LOCAL-FIRST</span>
+          <span data-i18n="badge_title">FINANÇAS PESSOAIS EM EUR • LOCAL-FIRST & SEM ANÚNCIOS</span>
         </div>
         <h1>
           <span data-i18n="hero_title_1">O teu dinheiro,</span><br>
           <span class="gradient-text" data-i18n="hero_title_2">sob controlo absoluto.</span>
         </h1>
         <p data-i18n="hero_desc">
-          Contas, orçamentos e cofres numa experiência de nível cirúrgico. Rápida, local-first, desenhada com cuidado milimétrico e sem anúncios invasivos.
+          Contas, orçamentos por envelopes, cofres e dívidas a receber com rigor contabilístico. Rápida, local-first, desenhada com cuidado milimétrico e 100% privada.
         </p>
 
         <div class="hero-actions">
           <a href="privacy.html" class="btn-main">
-            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            <!-- Centered Shield Check SVG -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
             <span data-i18n="cta_primary">Conhecer a Política de Privacidade &rarr;</span>
           </a>
           <a href="#features" class="btn-outline" data-i18n="cta_secondary">Explorar Recursos</a>
@@ -1275,12 +1347,12 @@
       <section class="showcase-stage">
         <div class="phone-spotlight"></div>
 
-        <!-- Floating Pills -->
+        <!-- Floating Feature Pills -->
         <div class="floating-pill pill-left">
           <div class="pill-icon green">⚡</div>
           <div class="pill-text">
-            <div class="pill-title" data-i18n="float_left_title">Registo em 1.2s</div>
-            <div class="pill-sub" data-i18n="float_left_sub">Sem esperas nem ecrãs lentos</div>
+            <div class="pill-title" data-i18n="float_left_title">Registo Instantâneo</div>
+            <div class="pill-sub" data-i18n="float_left_sub">Funciona sem rede móvel</div>
           </div>
         </div>
 
@@ -1288,11 +1360,11 @@
           <div class="pill-icon blue">🛡️</div>
           <div class="pill-text">
             <div class="pill-title" data-i18n="float_right_title">Privacidade Blindada</div>
-            <div class="pill-sub" data-i18n="float_right_sub">Dados cifrados no telemóvel</div>
+            <div class="pill-sub" data-i18n="float_right_sub">Dados cifrados no dispositivo</div>
           </div>
         </div>
 
-        <!-- Phone Mockup Frame -->
+        <!-- Phone Shell -->
         <div class="device-shell">
           <div class="device-notch">
             <div class="notch-camera"></div>
@@ -1312,7 +1384,7 @@
               </div>
             </div>
 
-            <!-- Net Worth Card with Sparkline Gradient -->
+            <!-- Net Worth Card with Unclipped SVG Chart -->
             <div class="net-worth-card">
               <div class="nw-title">
                 <span data-i18n="mock_nw_title">Património Líquido</span>
@@ -1320,16 +1392,17 @@
               </div>
               <div class="nw-amount">€ 8.450,20</div>
               
-              <!-- SVG Curve with Area Gradient -->
-              <svg class="sparkline-svg" viewBox="0 0 200 48">
+              <!-- Perfectly Padded Sparkline Curve with Pulse Dot -->
+              <svg class="sparkline-svg" viewBox="0 0 240 64">
                 <defs>
                   <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#2BD48D" stop-opacity="0.35"/>
+                    <stop offset="0%" stop-color="#2BD48D" stop-opacity="0.30"/>
                     <stop offset="100%" stop-color="#2BD48D" stop-opacity="0.0"/>
                   </linearGradient>
                 </defs>
-                <path d="M 0,38 Q 35,42 70,26 T 130,22 T 170,12 T 200,6 L 200,48 L 0,48 Z" fill="url(#chartGradient)"/>
-                <path d="M 0,38 Q 35,42 70,26 T 130,22 T 170,12 T 200,6" fill="none" stroke="#2BD48D" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M 0,52 C 45,54 70,38 100,34 C 145,28 170,20 205,16 C 220,14 232,13 240,11 L 240,64 L 0,64 Z" fill="url(#chartGradient)"/>
+                <path d="M 0,52 C 45,54 70,38 100,34 C 145,28 170,20 205,16 C 220,14 232,13 240,11" fill="none" stroke="#2BD48D" stroke-width="2.6" stroke-linecap="round"/>
+                <circle cx="239" cy="11" r="3.5" fill="#2BD48D" />
               </svg>
             </div>
 
@@ -1376,7 +1449,7 @@
                   <div class="tx-icon-box">💰</div>
                   <div>
                     <div class="tx-name" data-i18n="mock_tx2_name">Vencimento Mensal</div>
-                    <div class="tx-cat" data-i18n="mock_tx2_cat">Transferência &bull; Trabalho</div>
+                    <div class="tx-cat" data-i18n="mock_tx2_cat">Transferência &bull; Salário</div>
                   </div>
                 </div>
                 <div class="tx-amount" style="color: #2BD48D;">+ € 2.450,00</div>
@@ -1397,9 +1470,9 @@
       <!-- Bento Grid Section -->
       <section class="bento-section" id="features">
         <div class="section-header">
-          <div class="section-eyebrow" data-i18n="bento_eyebrow">ENGENHARIA DE DETALHE</div>
-          <h2 data-i18n="bento_title">Construída para quem leva o dinheiro a sério</h2>
-          <p data-i18n="bento_sub">Unimos a profundidade analítica dos melhores sistemas contabilísticos com a velocidade de uma app móvel nativa.</p>
+          <div class="section-eyebrow" data-i18n="bento_eyebrow">ENGENHARIA REAL E TRANSPARENTE</div>
+          <h2 data-i18n="bento_title">O que a Vetra realmente faz por ti</h2>
+          <p data-i18n="bento_sub">Sem promessas falsas. Construída com precisão para resolver os problemas reais de quem quer o dinheiro organizado.</p>
         </div>
 
         <div class="bento-grid">
@@ -1407,33 +1480,33 @@
           <div class="bento-card bento-col-2">
             <div>
               <div class="bento-icon-wrapper">⚡</div>
-              <h3 data-i18n="bento_1_title">Arquitetura Local-First. Zero latência.</h3>
-              <p data-i18n="bento_1_desc">A Vetra grava primeiro no teu dispositivo em SQLite e só depois sincroniza em segundo plano. Não ficas refém de redes lentas ou do modo avião. O teu telemóvel responde instantaneamente a 120 FPS.</p>
+              <h3 data-i18n="bento_1_title">Arquitetura Local-First. Funciona 100% sem rede.</h3>
+              <p data-i18n="bento_1_desc">A Vetra grava primeiro na base de dados SQLite no teu telemóvel e sincroniza silenciosamente em segundo plano quando há Internet. Não ficas bloqueado na fila do supermercado nem em garagens sem cobertura.</p>
             </div>
             <div class="bento-diagram">
               <div class="step">📱 <span>SQLite Local</span></div>
-              <div class="arrow">&rarr; 0ms &rarr;</div>
-              <div class="step">⚡ <span>Ecrã a 120 FPS</span></div>
+              <div class="arrow">&rarr; Gravação Imediata &rarr;</div>
+              <div class="step">⚡ <span>Ecrã Fluido</span></div>
               <div class="arrow">&rarr; Sync &rarr;</div>
               <div class="step">☁️ <span>Supabase Cifrado</span></div>
             </div>
           </div>
 
-          <!-- Card 2: Envelopes & Vaults -->
+          <!-- Card 2: Envelopes com Ciclo Flexível -->
           <div class="bento-card">
             <div>
               <div class="bento-icon-wrapper">🎯</div>
-              <h3 data-i18n="bento_2_title">Orçamentos & Cofres</h3>
-              <p data-i18n="bento_2_desc">Orçamento por envelopes com rollover real. Isola objetivos de poupança em cofres protegidos para nunca gastares o dinheiro das férias sem querer.</p>
+              <h3 data-i18n="bento_2_title">Orçamentos com Ciclo Real</h3>
+              <p data-i18n="bento_2_desc">Recebes o ordenado a dia 25? Podes configurar o mês orçamental para acompanhar o teu dia real de pagamento (ex: 25 a 25), com rollover automático de sobras.</p>
             </div>
           </div>
 
-          <!-- Card 3: Cartões de Crédito & Ciclos Reais (SUBSTITUIÇÃO DAS MOEDAS) -->
+          <!-- Card 3: Cartões de Crédito & Prestações -->
           <div class="bento-card">
             <div>
               <div class="bento-icon-wrapper">💳</div>
               <h3 data-i18n="bento_3_title">Cartões de Crédito & Prestações</h3>
-              <p data-i18n="bento_3_desc">Ciclos de faturação com data de fecho e vencimento. Compras em prestações com dívida futura devidamente separada do saldo atual em EUR.</p>
+              <p data-i18n="bento_3_desc">Controlo de fatura com data de fecho e vencimento. Compras parceladas têm a dívida futura separada para não distorcer o teu saldo corrente em EUR.</p>
             </div>
             <div class="credit-cycle-box">
               <div class="credit-cycle-header">
@@ -1447,12 +1520,21 @@
             </div>
           </div>
 
-          <!-- Card 4: Radical Privacy (Col 2) -->
+          <!-- Card 4: Dívidas a Receber & Anexos -->
+          <div class="bento-card">
+            <div>
+              <div class="bento-icon-wrapper">🤝</div>
+              <h3 data-i18n="bento_debts_title">Dinheiro que te Devem & Anexos</h3>
+              <p data-i18n="bento_debts_desc">Regista empréstimos a amigos com pagamentos parciais sem misturar com dinheiro disponível. Guarda até 10 fotos de faturas e recibos por despesa.</p>
+            </div>
+          </div>
+
+          <!-- Card 5: Radical Privacy (Col 2) -->
           <div class="bento-card bento-col-2">
             <div>
               <div class="bento-icon-wrapper">🔒</div>
-              <h3 data-i18n="bento_4_title">Privacidade Radical: Nem nós sabemos o que gastas</h3>
-              <p data-i18n="bento_4_desc">Sem anúncios invasivos, sem venda de dados a empresas financeiras terceiras e sem recolha abusiva de telemetria. Os teus dados pertencem-te e podes exportar cópias integrais em CSV ou apagar tudo a qualquer momento.</p>
+              <h3 data-i18n="bento_4_title">Privacidade Radical: Sem anúncios, sem venda de dados</h3>
+              <p data-i18n="bento_4_desc">Não há AdMob, não há parcerias com corretores de crédito e não há telemetria para traçar o teu perfil comercial. Podes exportar cópias completas em CSV ou relatório PDF, e apagar a tua conta permanentemente quando quiseres.</p>
             </div>
             <div class="bento-diagram" style="background: rgba(43, 212, 141, 0.07); border-color: rgba(43, 212, 141, 0.22);">
               <span>🛡️ Cifra SQLCipher AES-256</span>
@@ -1465,51 +1547,104 @@
         </div>
       </section>
 
-      <!-- Comparison Section -->
+      <!-- Modern Comparison Matrix -->
       <section class="compare-section" id="compare">
         <div class="section-header">
           <div class="section-eyebrow" data-i18n="compare_eyebrow">TRANSPARÊNCIA TOTAL</div>
           <h2 data-i18n="compare_title">Porque a Vetra é diferente</h2>
-          <p data-i18n="compare_sub">Compara a filosofia da Vetra com as apps financeiras convencionais do mercado.</p>
+          <p data-i18n="compare_sub">Compara a filosofia da Vetra com as opções convencionais de mercado.</p>
         </div>
 
-        <div class="compare-table-wrapper">
-          <table class="compare-table">
-            <thead>
-              <tr>
-                <th data-i18n="th_feature">Característica</th>
-                <th class="vetra-col">Vetra</th>
-                <th data-i18n="th_others">Apps Convencionais</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td data-i18n="cmp_1_lbl">Privacidade de Dados</td>
-                <td class="vetra-col" data-i18n="cmp_1_vetra">100% Privado. Sem venda de dados.</td>
-                <td data-i18n="cmp_1_others">Muitas vendem padrões a agregadores</td>
-              </tr>
-              <tr>
-                <td data-i18n="cmp_2_lbl">Publicidade & Anúncios</td>
-                <td class="vetra-col" data-i18n="cmp_2_vetra">Zero anúncios. Limpa para sempre.</td>
-                <td data-i18n="cmp_2_others">Banners, popups e cartões de crédito</td>
-              </tr>
-              <tr>
-                <td data-i18n="cmp_3_lbl">Funcionamento Offline</td>
-                <td class="vetra-col" data-i18n="cmp_3_vetra">Integral e instantâneo (Local-First)</td>
-                <td data-i18n="cmp_3_others">Bloqueia ou dá erro sem ligação</td>
-              </tr>
-              <tr>
-                <td data-i18n="cmp_4_lbl">Velocidade & Interface</td>
-                <td class="vetra-col" data-i18n="cmp_4_vetra">Moderna, fluida a 120 FPS nativo</td>
-                <td data-i18n="cmp_4_others">Interfaces antigas ou webviews pesadas</td>
-              </tr>
-              <tr>
-                <td data-i18n="cmp_5_lbl">Moeda de Referência</td>
-                <td class="vetra-col" data-i18n="cmp_5_vetra">Especializada em EUR com precisão decimal exata</td>
-                <td data-i18n="cmp_5_others">Arredondamentos e conversões inconsistentes</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="compare-matrix-grid">
+          <!-- Vetra Card -->
+          <div class="compare-matrix-card matrix-vetra">
+            <div class="matrix-tag-vetra">Vetra</div>
+            <h3 data-i18n="matrix_vetra_title">A Tua Liberdade Financeira</h3>
+            <p class="matrix-desc" data-i18n="matrix_vetra_desc">Feita com o cuidado de quem usa a aplicação todos os dias.</p>
+            
+            <ul class="matrix-list">
+              <li class="matrix-item">
+                <div class="matrix-item-icon icon-pass">✓</div>
+                <div class="matrix-item-text">
+                  <strong data-i18n="mat_v1_title">100% Privada e Segura</strong>
+                  <span data-i18n="mat_v1_sub">Criptografia local e zero venda de dados a bancos ou terceiros.</span>
+                </div>
+              </li>
+              <li class="matrix-item">
+                <div class="matrix-item-icon icon-pass">✓</div>
+                <div class="matrix-item-text">
+                  <strong data-i18n="mat_v2_title">Zero Anúncios e Promoções</strong>
+                  <span data-i18n="mat_v2_sub">Interface limpa, focada no teu dinheiro e sem popups irritantes.</span>
+                </div>
+              </li>
+              <li class="matrix-item">
+                <div class="matrix-item-icon icon-pass">✓</div>
+                <div class="matrix-item-text">
+                  <strong data-i18n="mat_v3_title">Funciona Sempre (Local-First)</strong>
+                  <span data-i18n="mat_v3_sub">Regista despesas sem esperar por rede móvel; sincroniza quando puder.</span>
+                </div>
+              </li>
+              <li class="matrix-item">
+                <div class="matrix-item-icon icon-pass">✓</div>
+                <div class="matrix-item-text">
+                  <strong data-i18n="mat_v4_title">Orçamentos e Ciclos Flexíveis</strong>
+                  <span data-i18n="mat_v4_sub">Acompanha o teu dia de ordenado (ex: dia 25) com rollover real.</span>
+                </div>
+              </li>
+              <li class="matrix-item">
+                <div class="matrix-item-icon icon-pass">✓</div>
+                <div class="matrix-item-text">
+                  <strong data-i18n="mat_v5_title">Exportação Completa em CSV e PDF</strong>
+                  <span data-i18n="mat_v5_sub">Os dados são teus: exporta tudo com 1 clique sem bloqueios de plataforma.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Conventional Apps Card -->
+          <div class="compare-matrix-card matrix-others">
+            <div class="matrix-tag-others" data-i18n="matrix_others_tag">Apps Convencionais</div>
+            <h3 data-i18n="matrix_others_title">O Modelo Tradicional</h3>
+            <p class="matrix-desc" data-i18n="matrix_others_desc">Onde o utilizador muitas vezes é o produto a rentabilizar.</p>
+            
+            <ul class="matrix-list">
+              <li class="matrix-item">
+                <div class="matrix-item-icon icon-fail">✕</div>
+                <div class="matrix-item-text">
+                  <strong data-i18n="mat_o1_title">Monetização de Dados</strong>
+                  <span data-i18n="mat_o1_sub">Venda de hábitos de consumo a agregadores e seguradoras.</span>
+                </div>
+              </li>
+              <li class="matrix-item">
+                <div class="matrix-item-icon icon-fail">✕</div>
+                <div class="matrix-item-text">
+                  <strong data-i18n="mat_o2_title">Poluição Visual</strong>
+                  <span data-i18n="mat_o2_sub">Banners de empréstimos, publicidade e alertas de marketing.</span>
+                </div>
+              </li>
+              <li class="matrix-item">
+                <div class="matrix-item-icon icon-fail">✕</div>
+                <div class="matrix-item-text">
+                  <strong data-i18n="mat_o3_title">Bloqueio Sem Ligação</strong>
+                  <span data-i18n="mat_o3_sub">Ecrãs de erro ou lentidão desesperante sem cobertura de rede.</span>
+                </div>
+              </li>
+              <li class="matrix-item">
+                <div class="matrix-item-icon icon-fail">✕</div>
+                <div class="matrix-item-text">
+                  <strong data-i18n="mat_o4_title">Orçamentos Rígidos</strong>
+                  <span data-i18n="mat_o4_sub">Forçam meses fixos de 1 a 31 sem se adaptarem ao teu ciclo de salário.</span>
+                </div>
+              </li>
+              <li class="matrix-item">
+                <div class="matrix-item-icon icon-fail">✕</div>
+                <div class="matrix-item-text">
+                  <strong data-i18n="mat_o5_title">Subscrições Abusivas</strong>
+                  <span data-i18n="mat_o5_sub">Planos de 50€ a 100€ por ano apenas para ver relatórios básicos.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -1547,20 +1682,20 @@
         nav_features: "Funcionalidades",
         nav_compare: "Diferenciais",
         nav_privacy: "Privacidade",
-        badge_title: "FINANÇAS PESSOAIS EM EUR • 100% PRIVADO & LOCAL-FIRST",
+        badge_title: "FINANÇAS PESSOAIS EM EUR • LOCAL-FIRST & SEM ANÚNCIOS",
         hero_title_1: "O teu dinheiro,",
         hero_title_2: "sob controlo absoluto.",
-        hero_desc: "Contas, orçamentos e cofres numa experiência de nível cirúrgico. Rápida, local-first, desenhada com cuidado milimétrico e sem anúncios invasivos.",
+        hero_desc: "Contas, orçamentos por envelopes, cofres e dívidas a receber com rigor contabilístico. Rápida, local-first, desenhada com cuidado milimétrico e 100% privada.",
         cta_primary: "Conhecer a Política de Privacidade →",
         cta_secondary: "Explorar Recursos",
         trust_1: "100% Local-First",
         trust_2: "Zero Anúncios",
         trust_3: "Base Cifrada SQLite",
         trust_4: "Precisão Decimal em EUR",
-        float_left_title: "Registo em 1.2s",
-        float_left_sub: "Sem esperas nem ecrãs lentos",
+        float_left_title: "Registo Instantâneo",
+        float_left_sub: "Funciona sem rede móvel",
         float_right_title: "Privacidade Blindada",
-        float_right_sub: "Dados cifrados no telemóvel",
+        float_right_sub: "Dados cifrados no dispositivo",
         mock_sync: "Sincronizado",
         mock_nw_title: "Património Líquido",
         mock_inc_title: "Receitas este mês",
@@ -1570,43 +1705,53 @@
         mock_tx1_name: "Supermercado Semanal",
         mock_tx1_cat: "Conta Corrente • Alimentação",
         mock_tx2_name: "Vencimento Mensal",
-        mock_tx2_cat: "Transferência • Trabalho",
+        mock_tx2_cat: "Transferência • Salário",
         nav_inicio: "● Início",
         nav_mov: "Movimentos",
         nav_plan: "Planeamento",
         nav_contas: "Contas",
-        bento_eyebrow: "ENGENHARIA DE DETALHE",
-        bento_title: "Construída para quem leva o dinheiro a sério",
-        bento_sub: "Unimos a profundidade analítica dos melhores sistemas contabilísticos com a velocidade de uma app móvel nativa.",
-        bento_1_title: "Arquitetura Local-First. Zero latência.",
-        bento_1_desc: "A Vetra grava primeiro no teu dispositivo em SQLite e só depois sincroniza em segundo plano. Não ficas refém de redes lentas ou do modo avião. O teu telemóvel responde instantaneamente a 120 FPS.",
-        bento_2_title: "Orçamentos & Cofres",
-        bento_2_desc: "Orçamento por envelopes com rollover real. Isola objetivos de poupança em cofres protegidos para nunca gastares o dinheiro das férias sem querer.",
+        bento_eyebrow: "ENGENHARIA REAL E TRANSPARENTE",
+        bento_title: "O que a Vetra realmente faz por ti",
+        bento_sub: "Sem promessas falsas. Construída com precisão para resolver os problemas reais de quem quer o dinheiro organizado.",
+        bento_1_title: "Arquitetura Local-First. Funciona 100% sem rede.",
+        bento_1_desc: "A Vetra grava primeiro na base de dados SQLite no teu telemóvel e sincroniza silenciosamente em segundo plano quando há Internet. Não ficas bloqueado na fila do supermercado nem em garagens sem cobertura.",
+        bento_2_title: "Orçamentos com Ciclo Real",
+        bento_2_desc: "Recebes o ordenado a dia 25? Podes configurar o mês orçamental para acompanhar o teu dia real de pagamento (ex: 25 a 25), com rollover automático de sobras.",
         bento_3_title: "Cartões de Crédito & Prestações",
-        bento_3_desc: "Ciclos de faturação com data de fecho e vencimento. Compras em prestações com dívida futura devidamente separada do saldo atual em EUR.",
+        bento_3_desc: "Controlo de fatura com data de fecho e vencimento. Compras parceladas têm a dívida futura separada para não distorcer o teu saldo corrente em EUR.",
         credit_cycle_hint: "Fecha a 28 deste mês",
-        bento_4_title: "Privacidade Radical: Nem nós sabemos o que gastas",
-        bento_4_desc: "Sem anúncios invasivos, sem venda de dados a empresas financeiras terceiras e sem recolha abusiva de telemetria. Os teus dados pertencem-te e podes exportar cópias integrais em CSV ou apagar tudo a qualquer momento.",
+        bento_debts_title: "Dinheiro que te Devem & Anexos",
+        bento_debts_desc: "Regista empréstimos a amigos com pagamentos parciais sem misturar com dinheiro disponível. Guarda até 10 fotos de faturas e recibos por despesa.",
+        bento_4_title: "Privacidade Radical: Sem anúncios, sem venda de dados",
+        bento_4_desc: "Não há AdMob, não há parcerias com corretores de crédito e não há telemetria para traçar o teu perfil comercial. Podes exportar cópias completas em CSV ou relatório PDF, e apagar a tua conta permanentemente quando quiseres.",
         compare_eyebrow: "TRANSPARÊNCIA TOTAL",
         compare_title: "Porque a Vetra é diferente",
-        compare_sub: "Compara a filosofia da Vetra com as apps financeiras convencionais do mercado.",
-        th_feature: "Característica",
-        th_others: "Apps Convencionais",
-        cmp_1_lbl: "Privacidade de Dados",
-        cmp_1_vetra: "100% Privado. Sem venda de dados.",
-        cmp_1_others: "Muitas vendem padrões a agregadores",
-        cmp_2_lbl: "Publicidade & Anúncios",
-        cmp_2_vetra: "Zero anúncios. Limpa para sempre.",
-        cmp_2_others: "Banners, popups e cartões de crédito",
-        cmp_3_lbl: "Funcionamento Offline",
-        cmp_3_vetra: "Integral e instantâneo (Local-First)",
-        cmp_3_others: "Bloqueia ou dá erro sem ligação",
-        cmp_4_lbl: "Velocidade & Interface",
-        cmp_4_vetra: "Moderna, fluida a 120 FPS nativo",
-        cmp_4_others: "Interfaces antigas ou webviews pesadas",
-        cmp_5_lbl: "Moeda de Referência",
-        cmp_5_vetra: "Especializada em EUR com precisão decimal exata",
-        cmp_5_others: "Arredondamentos e conversões inconsistentes",
+        compare_sub: "Compara a filosofia da Vetra com as opções convencionais de mercado.",
+        matrix_vetra_title: "A Tua Liberdade Financeira",
+        matrix_vetra_desc: "Feita com o cuidado de quem usa a aplicação todos os dias.",
+        mat_v1_title: "100% Privada e Segura",
+        mat_v1_sub: "Criptografia local e zero venda de dados a bancos ou terceiros.",
+        mat_v2_title: "Zero Anúncios e Promoções",
+        mat_v2_sub: "Interface limpa, focada no teu dinheiro e sem popups irritantes.",
+        mat_v3_title: "Funciona Sempre (Local-First)",
+        mat_v3_sub: "Regista despesas sem esperar por rede móvel; sincroniza quando puder.",
+        mat_v4_title: "Orçamentos e Ciclos Flexíveis",
+        mat_v4_sub: "Acompanha o teu dia de ordenado (ex: dia 25) com rollover real.",
+        mat_v5_title: "Exportação Completa em CSV e PDF",
+        mat_v5_sub: "Os dados são teus: exporta tudo com 1 clique sem bloqueios de plataforma.",
+        matrix_others_tag: "Apps Convencionais",
+        matrix_others_title: "O Modelo Tradicional",
+        matrix_others_desc: "Onde o utilizador muitas vezes é o produto a rentabilizar.",
+        mat_o1_title: "Monetização de Dados",
+        mat_o1_sub: "Venda de hábitos de consumo a agregadores e seguradoras.",
+        mat_o2_title: "Poluição Visual",
+        mat_o2_sub: "Banners de empréstimos, publicidade e alertas de marketing.",
+        mat_o3_title: "Bloqueio Sem Ligação",
+        mat_o3_sub: "Ecrãs de erro ou lentidão desesperante sem cobertura de rede.",
+        mat_o4_title: "Orçamentos Rígidos",
+        mat_o4_sub: "Forçam meses fixos de 1 a 31 sem se adaptarem ao teu ciclo de salário.",
+        mat_o5_title: "Subscrições Abusivas",
+        mat_o5_sub: "Planos de 50€ a 100€ por ano apenas para ver relatórios básicos.",
         manifesto_title: "O teu dinheiro é assunto estritamente teu.",
         manifesto_desc: "Criámos a Vetra porque estávamos fartos de aplicações cheias de publicidade a cartões de crédito e termos de serviço que vendem a tua vida a corretores de publicidade. Na Vetra, a segurança não é um extra: é a base de tudo.",
         manifesto_btn: "Ler a Política de Privacidade Completa →",
@@ -1619,18 +1764,18 @@
         nav_features: "Features",
         nav_compare: "Why Vetra",
         nav_privacy: "Privacy",
-        badge_title: "PERSONAL FINANCE IN EUR • 100% PRIVATE & LOCAL-FIRST",
+        badge_title: "PERSONAL FINANCE IN EUR • LOCAL-FIRST & ZERO ADS",
         hero_title_1: "Your money,",
         hero_title_2: "under absolute control.",
-        hero_desc: "Accounts, budgets, and vaults in a surgical, ultra-fast experience. Local-first, crafted with millimeter precision, and zero intrusive ads.",
+        hero_desc: "Accounts, envelope budgeting, vaults, and receivables with true accounting rigor. Ultra-fast, local-first, crafted with millimeter care, and 100% private.",
         cta_primary: "Explore Privacy Policy →",
         cta_secondary: "Explore Features",
         trust_1: "100% Local-First",
         trust_2: "Zero Ads",
         trust_3: "Encrypted SQLite",
         trust_4: "Exact EUR Precision",
-        float_left_title: "Logged in 1.2s",
-        float_left_sub: "No loading spinners or lags",
+        float_left_title: "Instant Logging",
+        float_left_sub: "Works completely offline",
         float_right_title: "Ironclad Privacy",
         float_right_sub: "Encrypted on your device",
         mock_sync: "Synced",
@@ -1642,43 +1787,53 @@
         mock_tx1_name: "Weekly Groceries",
         mock_tx1_cat: "Checking Account • Food",
         mock_tx2_name: "Monthly Salary",
-        mock_tx2_cat: "Wire Transfer • Career",
+        mock_tx2_cat: "Wire Transfer • Salary",
         nav_inicio: "● Home",
         nav_mov: "Transactions",
         nav_plan: "Planning",
         nav_contas: "Accounts",
-        bento_eyebrow: "PRECISION ENGINEERING",
-        bento_title: "Crafted for people who take money seriously",
-        bento_sub: "We unite the analytical depth of double-entry financial software with the blistering speed of native mobile code.",
-        bento_1_title: "Local-First Architecture. Zero latency.",
-        bento_1_desc: "Vetra writes directly to your local SQLite database and syncs peacefully in the background. Never get blocked by poor cell reception or airplane mode. Responds at a fluid 120 FPS.",
-        bento_2_title: "Envelopes & Goal Vaults",
-        bento_2_desc: "Envelope budgeting with authentic rollover. Lock money inside dedicated Vaults so you never accidentally spend your savings.",
+        bento_eyebrow: "TRANSPARENT & REAL CRAFTSMANSHIP",
+        bento_title: "What Vetra actually delivers for you",
+        bento_sub: "No fake marketing promises. Built with precision to solve the real daily frustrations of personal money management.",
+        bento_1_title: "Local-First Architecture. Works 100% offline.",
+        bento_1_desc: "Vetra commits directly to local SQLite database storage first, and synchronizes peacefully in the background when connectivity exists. Never get stuck at a supermarket counter.",
+        bento_2_title: "Budgets with Real Salary Cycles",
+        bento_2_desc: "Get paid on the 25th? Configure your monthly cycle to match your actual payday (e.g., 25th to 25th), featuring genuine unspent balance rollover.",
         bento_3_title: "Credit Cards & Installment Cycles",
-        bento_3_desc: "Full billing cycles with statement closing and due dates. Purchases in installments with future debt cleanly separated from current cash balance in EUR.",
+        bento_3_desc: "Statement closing dates and payment due dates. Installment purchases isolate future unpaid debt from your immediate cash balance in EUR.",
         credit_cycle_hint: "Closes on the 28th of this month",
-        bento_4_title: "Radical Privacy: Even we can't see your transactions",
-        bento_4_desc: "Zero intrusive ads, zero financial broker partnerships, and zero invasive tracking. Your data is strictly yours. Export complete CSV backups or wipe your account anytime.",
+        bento_debts_title: "Receivables & Invoice Attachments",
+        bento_debts_desc: "Track money lent to friends with partial repayments without mixing it into available cash. Attach up to 10 sanitized receipts per transaction.",
+        bento_4_title: "Radical Privacy: Zero ads, zero data selling",
+        bento_4_desc: "No AdMob, no credit card affiliate popups, and no consumer tracking. Export full CSV records or complete PDF reports, and permanently wipe your account anytime.",
         compare_eyebrow: "TOTAL TRANSPARENCY",
         compare_title: "Why Vetra stands apart",
-        compare_sub: "Compare Vetra's craftsmanship against conventional budget apps.",
-        th_feature: "Feature",
-        th_others: "Conventional Apps",
-        cmp_1_lbl: "Data Privacy",
-        cmp_1_vetra: "100% Private. We never sell data.",
-        cmp_1_others: "Often sell anonymized spending data",
-        cmp_2_lbl: "Ads & Promotions",
-        cmp_2_vetra: "Zero ads. Clean forever.",
-        cmp_2_others: "Credit card banners and popups",
-        cmp_3_lbl: "Offline Capability",
-        cmp_3_vetra: "Full, instant local-first operation",
-        cmp_3_others: "Fails or displays error without signal",
-        cmp_4_lbl: "Speed & Fluidity",
-        cmp_4_vetra: "Modern, native 120 FPS UI",
-        cmp_4_others: "Dated 2014 designs or laggy webviews",
-        cmp_5_lbl: "Currency Precision",
-        cmp_5_vetra: "Specialized in EUR with exact accounting decimals",
-        cmp_5_others: "Inconsistent rounding errors",
+        compare_sub: "Compare Vetra's philosophy against conventional budgeting software.",
+        matrix_vetra_title: "Your Financial Independence",
+        matrix_vetra_desc: "Crafted by people who rely on the app every single day.",
+        mat_v1_title: "100% Private & Secure",
+        mat_v1_sub: "Local encryption and zero data selling to banks or brokers.",
+        mat_v2_title: "Zero Ads & Zero Promotions",
+        mat_v2_sub: "Clean interface focused strictly on your finances.",
+        mat_v3_title: "Always Works (Local-First)",
+        mat_v3_sub: "Instant inputs without relying on mobile signal; syncs later.",
+        mat_v4_title: "Flexible Budgets & Salary Cycles",
+        mat_v4_sub: "Matches your real payday (e.g. 25th) with authentic rollover.",
+        mat_v5_title: "Complete CSV & PDF Export",
+        mat_v5_sub: "Your data belongs to you: 1-click portable exports without lock-in.",
+        matrix_others_tag: "Conventional Apps",
+        matrix_others_title: "The Legacy Model",
+        matrix_others_desc: "Where the user is often the product being monetized.",
+        mat_o1_title: "Data Monetization",
+        mat_o1_sub: "Selling aggregated consumer spending data to data brokers.",
+        mat_o2_title: "Visual Clutter",
+        mat_o2_sub: "Loan banners, third-party ads, and push marketing.",
+        mat_o3_title: "Blocked Without Signal",
+        mat_o3_sub: "Laggy webviews or error screens when coverage drops.",
+        mat_o4_title: "Rigid Monthly Envelopes",
+        mat_o4_sub: "Forced 1-to-31 schedules that ignore when you actually get paid.",
+        mat_o5_title: "Aggressive Subscriptions",
+        mat_o5_sub: "Charging €50 to €100 every year just for basic reports.",
         manifesto_title: "Your money is strictly your own business.",
         manifesto_desc: "We built Vetra because we were tired of apps cluttered with loan ads and terms of service that monetize your personal life. With Vetra, security isn't a feature: it's the foundation.",
         manifesto_btn: "Read Complete Privacy Policy →",
@@ -1691,18 +1846,18 @@
         nav_features: "Funciones",
         nav_compare: "Diferenciales",
         nav_privacy: "Privacidad",
-        badge_title: "FINANZAS PERSONALES EN EUR • 100% PRIVADA & LOCAL-FIRST",
+        badge_title: "FINANZAS PERSONALES EN EUR • LOCAL-FIRST & SIN ANUNCIOS",
         hero_title_1: "Tu dinero,",
         hero_title_2: "bajo control absoluto.",
-        hero_desc: "Cuentas, presupuestos y bóvedas en una experiencia de nivel quirúrgico. Rápida, local-first, diseñada con precisión milimétrica y sin anuncios molestos.",
+        hero_desc: "Cuentas, sobres presupuestarios, bóvedas y préstamos pendientes con rigor contable. Rápida, local-first, diseñada con precisión milimétrica y 100% privada.",
         cta_primary: "Conocer la Política de Privacidad →",
         cta_secondary: "Explorar Funciones",
         trust_1: "100% Local-First",
         trust_2: "Cero Publicidad",
         trust_3: "Base Cifrada SQLite",
         trust_4: "Precisión Decimal en EUR",
-        float_left_title: "Registro en 1.2s",
-        float_left_sub: "Sin pantallas de carga ni demoras",
+        float_left_title: "Registro Instantáneo",
+        float_left_sub: "Funciona completamente offline",
         float_right_title: "Privacidad Blindada",
         float_right_sub: "Datos cifrados en tu dispositivo",
         mock_sync: "Sincronizado",
@@ -1714,43 +1869,53 @@
         mock_tx1_name: "Supermercado Semanal",
         mock_tx1_cat: "Cuenta Corriente • Alimentación",
         mock_tx2_name: "Nómina Mensual",
-        mock_tx2_cat: "Transferencia • Empleo",
+        mock_tx2_cat: "Transferencia • Salario",
         nav_inicio: "● Inicio",
         nav_mov: "Movimientos",
         nav_plan: "Planificación",
         nav_contas: "Cuentas",
-        bento_eyebrow: "INGENIERÍA DE DETALLE",
-        bento_title: "Diseñada para quienes se toman el dinero en serio",
-        bento_sub: "Unimos la profundidad analítica del software contable con la velocidad deslumbrante de una aplicación nativa.",
-        bento_1_title: "Arquitectura Local-First. Cero latencia.",
-        bento_1_desc: "Vetra escribe primero en tu base SQLite local y sincroniza plácidamente en segundo plano. Nunca dependes de coberturas débiles ni de modo avión. Fluidez nativa a 120 FPS.",
-        bento_2_title: "Presupuestos y Bóvedas",
-        bento_2_desc: "Presupuesto por sobres con traspaso acumulativo real. Aísla tus metas de ahorro en Bóvedas seguras para no gastarlas por error.",
+        bento_eyebrow: "INGENIERÍA REAL Y TRANSPARENTE",
+        bento_title: "Lo que Vetra realmente hace por ti",
+        bento_sub: "Sin falsas promesas. Construida con precisión para resolver las dificultades reales de la gestión financiera.",
+        bento_1_title: "Arquitectura Local-First. Funciona 100% sin red.",
+        bento_1_desc: "Vetra guarda primero en tu base SQLite local y sincroniza en segundo plano cuando hay cobertura. Nunca te quedas bloqueado en la caja de una tienda.",
+        bento_2_title: "Presupuestos con Ciclo de Nómina Real",
+        bento_2_desc: "¿Cobras el 25? Configura tu mes presupuestario para seguir tu fecha real de cobro (ej. 25 a 25), con traspaso acumulativo de saldos no gastados.",
         bento_3_title: "Tarjetas de Crédito y Cuotas",
-        bento_3_desc: "Ciclos de facturación con fechas de corte y vencimiento. Compras a plazos con deuda futura separada limpiamente del saldo actual en EUR.",
+        bento_3_desc: "Control de ciclo con fecha de corte y vencimiento. Compras a plazos con deuda futura separada para no falsear tu saldo actual en EUR.",
         credit_cycle_hint: "Corta el 28 de este mes",
-        bento_4_title: "Privacidad Radical: Ni nosotros vemos tus compras",
-        bento_4_desc: "Sin anuncios intrusivos, sin venta de datos a entidades financieras y sin rastreo publicitario. Tus datos son tuyos. Exporta copias CSV o elimina tu cuenta en cualquier momento.",
+        bento_debts_title: "Dinero que te Deben y Adjuntos",
+        bento_debts_desc: "Registra dinero prestado a amigos con pagos parciales sin mezclarlo con tu dinero disponible. Guarda hasta 10 fotos de recibos por gasto.",
+        bento_4_title: "Privacidad Radical: Sin anuncios ni venta de datos",
+        bento_4_desc: "Cero AdMob, cero ofertas de préstamos bancarios y cero telemetría comercial. Exporta copias completas en CSV o informes PDF, y borra tu cuenta cuando quieras.",
         compare_eyebrow: "TRANSPARENCIA TOTAL",
         compare_title: "Por qué Vetra es diferente",
-        compare_sub: "Compara los principios de Vetra frente a las aplicaciones de finanzas convencionales.",
-        th_feature: "Característica",
-        th_others: "Apps Convencionales",
-        cmp_1_lbl: "Privacidad de Datos",
-        cmp_1_vetra: "100% Privado. No vendemos datos.",
-        cmp_1_others: "Suelen vender perfiles a agregadores",
-        cmp_2_lbl: "Publicidad y Anuncios",
-        cmp_2_vetra: "Cero anuncios. Limpia para siempre.",
-        cmp_2_others: "Banners y promociones de tarjetas",
-        cmp_3_lbl: "Operación Sin Conexión",
-        cmp_3_vetra: "Integral e inmediata (Local-First)",
-        cmp_3_others: "Falla o muestra errores sin red",
-        cmp_4_lbl: "Velocidad e Interfaz",
-        cmp_4_vetra: "Moderna, fluida a 120 FPS nativos",
-        cmp_4_others: "Interfaces de 2014 o webviews lentas",
-        cmp_5_lbl: "Precisión de Divisa",
-        cmp_5_vetra: "Especializada en EUR con contabilidad exacta",
-        cmp_5_others: "Errores de redondeo y conversión",
+        compare_sub: "Compara los principios de Vetra frente a las opciones convencionales de mercado.",
+        matrix_vetra_title: "Tu Libertad Financiera",
+        matrix_vetra_desc: "Creada con el esmero de quienes usan la aplicación cada día.",
+        mat_v1_title: "100% Privada y Segura",
+        mat_v1_sub: "Cifrado local y cero cesión de datos a bancos o intermediarios.",
+        mat_v2_title: "Cero Anuncios y Promociones",
+        mat_v2_sub: "Interfaz limpia, centrada en tu dinero y sin popups molestos.",
+        mat_v3_title: "Funciona Siempre (Local-First)",
+        mat_v3_sub: "Añade gastos sin esperar cobertura; se sincroniza al recuperar red.",
+        mat_v4_title: "Presupuestos y Ciclos Flexibles",
+        mat_v4_sub: "Acompaña tu día de nómina (ej. día 25) con traspaso real de sobrantes.",
+        mat_v5_title: "Exportación Completa en CSV y PDF",
+        mat_v5_sub: "Tus datos son tuyos: descárgalo todo en 1 clic sin ataduras.",
+        matrix_others_tag: "Apps Convencionales",
+        matrix_others_title: "El Modelo Tradicional",
+        matrix_others_desc: "Donde el usuario a menudo es el producto comercial a rentabilizar.",
+        mat_o1_title: "Monetización de Datos",
+        mat_o1_sub: "Venta de perfiles de consumo a terceros y aseguradoras.",
+        mat_o2_title: "Contaminación Visual",
+        mat_o2_sub: "Banners de tarjetas, préstamos y notificaciones comerciales.",
+        mat_o3_title: "Bloqueo Sin Red",
+        mat_o3_sub: "Pantallas de error o lentitud desesperante sin señal móvil.",
+        mat_o4_title: "Meses Rígidos 1 a 31",
+        mat_o4_sub: "Calendarios forzados que ignoran tu fecha real de ingresos.",
+        mat_o5_title: "Suscripciones Desmedidas",
+        mat_o5_sub: "Cobros de 50€ a 100€ al año por gráficos e informes elementales.",
         manifesto_title: "Tu dinero es asunto estrictamente tuyo.",
         manifesto_desc: "Creamos Vetra porque estábamos cansados de aplicaciones llenas de publicidad bancaria y cláusulas que monetizan tu vida diaria. En Vetra, la seguridad no es un extra: es el cimiento.",
         manifesto_btn: "Leer la Política de Privacidad Completa →",

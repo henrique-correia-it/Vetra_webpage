@@ -5,209 +5,152 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Política de Privacidade — Vetra</title>
   <link rel="icon" type="image/png" href="assets/icon-192.png">
-  <meta name="description" content="Política de Privacidade oficial da aplicação Vetra. Transparência total, sem anúncios e com criptografia local.">
-
-  <!-- Premium Modern Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
   <style>
     :root[data-theme="dark"] {
-      --bg: #070B0A;
-      --bg-surface: #0E1614;
-      --bg-surface-elevated: #131E1B;
-      --bg-card: rgba(19, 30, 27, 0.72);
-      --text: #F8FAFC;
+      --bg: #070C0B;
+      --bg-surface: #101A17;
+      --bg-card: #14221E;
+      --text: #F1F5F9;
       --text-muted: #8E9F99;
-      --text-dim: #556B64;
-      
       --primary: #28C88B;
       --primary-light: #56E0AC;
-      --primary-dark: #0A8258;
-      --primary-glow: rgba(40, 200, 139, 0.22);
-      
-      --border: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(40, 200, 139, 0.45);
-      --nav-bg: rgba(14, 22, 20, 0.78);
-      --nav-border: rgba(255, 255, 255, 0.1);
-      
-      --card-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.75), 0 0 1px 1px rgba(255, 255, 255, 0.06);
-      --glow-mesh-1: radial-gradient(circle at 50% 0%, rgba(40, 200, 139, 0.12) 0%, transparent 60%);
-      
-      --badge-bg: rgba(40, 200, 139, 0.10);
-      --badge-border: rgba(40, 200, 139, 0.25);
-      --toggle-bg: #131E1B;
-      --toggle-border: #1E302A;
+      --primary-dark: #087957;
+      --primary-glow: rgba(40, 200, 139, 0.18);
+      --border: #1E3029;
+      --nav-bg: rgba(16, 26, 23, 0.82);
+      --card-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+      --badge-bg: rgba(40, 200, 139, 0.12);
+      --badge-border: rgba(40, 200, 139, 0.28);
+      --toggle-bg: #1B2924;
+      --toggle-border: #2D423B;
       --toggle-thumb: #28C88B;
       --toggle-icon: #042A1D;
     }
-
     :root[data-theme="light"] {
-      --bg: #F8FAF9;
+      --bg: #F7F9F8;
       --bg-surface: #FFFFFF;
-      --bg-surface-elevated: #F1F5F3;
-      --bg-card: rgba(255, 255, 255, 0.92);
-      --text: #091310;
-      --text-muted: #5B6F68;
-      --text-dim: #94A3B8;
-      
-      --primary: #0A8258;
+      --bg-card: #FFFFFF;
+      --text: #0F172A;
+      --text-muted: #64748B;
+      --primary: #0D8A5B;
       --primary-light: #28C88B;
-      --primary-dark: #055438;
-      --primary-glow: rgba(10, 130, 88, 0.16);
-      
-      --border: rgba(0, 0, 0, 0.07);
-      --border-hover: rgba(10, 130, 88, 0.35);
-      --nav-bg: rgba(255, 255, 255, 0.82);
-      --nav-border: rgba(0, 0, 0, 0.08);
-      
-      --card-shadow: 0 16px 40px -10px rgba(10, 30, 22, 0.07), 0 0 1px 1px rgba(0, 0, 0, 0.04);
-      --glow-mesh-1: radial-gradient(circle at 50% 0%, rgba(40, 200, 139, 0.09) 0%, transparent 65%);
-      
-      --badge-bg: rgba(10, 130, 88, 0.08);
-      --badge-border: rgba(10, 130, 88, 0.20);
-      --toggle-bg: #E7EEEB;
-      --toggle-border: #D1DED9;
+      --primary-dark: #07513C;
+      --primary-glow: rgba(13, 138, 91, 0.12);
+      --border: #E2E8F0;
+      --nav-bg: rgba(255, 255, 255, 0.88);
+      --card-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      --badge-bg: rgba(13, 138, 91, 0.08);
+      --badge-border: rgba(13, 138, 91, 0.22);
+      --toggle-bg: #E2E8F0;
+      --toggle-border: #CBD5E1;
       --toggle-thumb: #F59E0B;
       --toggle-icon: #FFFFFF;
     }
-
-    *, *::before, *::after {
+    * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
     }
-
     body {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background-color: var(--bg);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.68;
       -webkit-font-smoothing: antialiased;
-      position: relative;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      overflow-x: hidden;
     }
-
-    .bg-mesh {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 800px;
-      pointer-events: none;
-      z-index: 0;
-      background: var(--glow-mesh-1);
-    }
-
     .container {
-      max-width: 900px;
+      max-width: 860px;
       margin: 0 auto;
       padding: 0 24px;
-      position: relative;
-      z-index: 1;
     }
-
     header {
       position: sticky;
-      top: 18px;
-      z-index: 1000;
-      margin: 18px auto 40px auto;
+      top: 16px;
+      z-index: 100;
+      margin-top: 16px;
+      margin-bottom: 32px;
     }
-
     .navbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       background: var(--nav-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--nav-border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
       border-radius: 999px;
-      padding: 10px 22px;
+      padding: 8px 18px;
       box-shadow: var(--card-shadow);
     }
-
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
       text-decoration: none;
       color: var(--text);
-      font-weight: 800;
-      font-size: 21px;
-      letter-spacing: -0.5px;
+      font-weight: 700;
+      font-size: 20px;
     }
-
     .brand img {
       width: 34px;
       height: 34px;
-      border-radius: 10px;
-      box-shadow: 0 4px 14px var(--primary-glow);
+      border-radius: 9px;
     }
-
     .nav-controls {
       display: flex;
       align-items: center;
       gap: 14px;
     }
-
     .nav-link {
       color: var(--text-muted);
       text-decoration: none;
       font-size: 14px;
-      font-weight: 700;
-      padding: 7px 16px;
+      font-weight: 600;
+      padding: 6px 12px;
       border-radius: 999px;
-      transition: all 0.2s ease;
     }
-
     .nav-link:hover {
-      color: var(--text);
-      background: var(--border);
+      color: var(--primary);
     }
-
     .select-lang-wrap {
       position: relative;
       display: flex;
       align-items: center;
     }
-
     .select-lang {
       appearance: none;
       -webkit-appearance: none;
       background: var(--bg-surface);
       color: var(--text);
       border: 1px solid var(--border);
-      padding: 7px 28px 7px 14px;
+      padding: 6px 26px 6px 12px;
       border-radius: 999px;
       font-size: 13px;
-      font-weight: 700;
-      font-family: inherit;
+      font-weight: 600;
       cursor: pointer;
       outline: none;
-      transition: all 0.2s ease;
     }
-
-    .select-lang:hover, .select-lang:focus {
+    .select-lang:hover {
       border-color: var(--primary);
     }
-
     .select-arrow {
       position: absolute;
-      right: 10px;
+      right: 9px;
       pointer-events: none;
       width: 10px;
       height: 10px;
-      stroke: var(--text-muted);
+      fill: var(--text-muted);
     }
 
     /* Tactile Theme Switcher */
     .theme-switch {
       position: relative;
       width: 58px;
-      height: 32px;
+      height: 30px;
       background: var(--toggle-bg);
       border: 1px solid var(--toggle-border);
       border-radius: 999px;
@@ -219,22 +162,19 @@
       outline: none;
       transition: background 0.3s ease, border-color 0.3s ease;
     }
-
     .theme-switch:hover {
       border-color: var(--primary);
     }
-
     .theme-switch .switch-track-icon {
-      font-size: 12px;
-      width: 26px;
+      font-size: 11px;
+      width: 24px;
       text-align: center;
       user-select: none;
       line-height: 1;
     }
-
     .theme-switch .switch-thumb {
       position: absolute;
-      top: 3px;
+      top: 2px;
       left: 3px;
       width: 24px;
       height: 24px;
@@ -243,153 +183,125 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
-      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.25s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.28s ease;
     }
-
     .theme-switch .switch-thumb svg {
       width: 13px;
       height: 13px;
       fill: var(--toggle-icon);
+      transition: transform 0.25s ease, opacity 0.25s ease;
     }
-
     [data-theme="light"] .theme-switch .switch-thumb {
-      transform: translateX(26px);
+      transform: translateX(27px);
+    }
+    [data-theme="dark"] .icon-sun {
+      display: none;
+    }
+    [data-theme="light"] .icon-moon {
+      display: none;
     }
 
-    [data-theme="dark"] .icon-sun { display: none; }
-    [data-theme="light"] .icon-moon { display: none; }
-
-    /* Policy Content Card */
     .card {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 52px 44px;
+      border-radius: 24px;
+      padding: 44px 36px;
       box-shadow: var(--card-shadow);
-      margin-bottom: 56px;
-      backdrop-filter: blur(16px);
+      margin-bottom: 48px;
     }
-
     .badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       background: var(--badge-bg);
       color: var(--primary);
       border: 1px solid var(--badge-border);
-      padding: 6px 16px;
+      padding: 6px 14px;
       border-radius: 999px;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.8px;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: 38px;
-      font-weight: 900;
-      letter-spacing: -1.2px;
-      line-height: 1.15;
-      margin-bottom: 10px;
-    }
-
-    .date {
-      color: var(--text-dim);
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 32px;
-    }
-
-    h2 {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.4px;
-      margin-top: 42px;
+      font-size: 13px;
+      font-weight: 700;
       margin-bottom: 16px;
-      padding-bottom: 10px;
+    }
+    h1 {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      margin-bottom: 8px;
+    }
+    .date {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-top: 36px;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
       border-bottom: 1px solid var(--border);
       color: var(--text);
     }
-
     p, li {
       color: var(--text-muted);
       font-size: 15px;
-      line-height: 1.7;
+      line-height: 1.65;
     }
-
     strong {
       color: var(--text);
-      font-weight: 700;
     }
-
     ul {
-      padding-left: 24px;
-      margin: 14px 0 22px 0;
+      padding-left: 22px;
+      margin: 12px 0 20px 0;
     }
-
     li {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
-
     .callout {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--primary);
-      border-radius: 16px;
-      padding: 20px 24px;
-      margin: 28px 0;
+      background: var(--badge-bg);
+      border: 1px solid var(--badge-border);
+      border-radius: 14px;
+      padding: 18px 22px;
+      margin: 24px 0;
     }
-
     .callout p {
       color: var(--text);
       font-size: 14px;
       margin: 0;
     }
-
     .callout p + p {
       margin-top: 10px;
     }
-
     .card a {
       color: var(--primary);
       font-weight: 700;
-      text-decoration: none;
+      text-underline-offset: 3px;
     }
-
-    .card a:hover {
-      text-decoration: underline;
-    }
-
     footer {
       border-top: 1px solid var(--border);
-      padding: 36px 0 60px 0;
+      padding: 32px 0 60px 0;
       text-align: center;
       font-size: 13px;
       color: var(--text-muted);
     }
-
     footer a {
       color: var(--text-muted);
       text-decoration: none;
       margin: 0 10px;
-      font-weight: 600;
     }
-
     footer a:hover {
       color: var(--primary);
     }
-
-    @media (max-width: 680px) {
-      .card { padding: 30px 20px; border-radius: 20px; }
-      h1 { font-size: 28px; }
-      .navbar { padding: 8px 16px; }
+    @media (max-width: 640px) {
+      .card { padding: 26px 20px; }
+      h1 { font-size: 26px; }
+      .navbar { padding: 8px 14px; }
       .brand span { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="bg-mesh"></div>
   <div class="container">
     <header>
       <nav class="navbar">
