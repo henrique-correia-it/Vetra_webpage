@@ -65,7 +65,6 @@
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
     }
     .container {
       max-width: 1060px;
@@ -99,7 +98,6 @@
       color: var(--text);
       font-weight: 700;
       font-size: 20px;
-      flex-shrink: 0;
     }
     .brand img {
       width: 34px;
@@ -118,7 +116,6 @@
       font-weight: 600;
       padding: 6px 12px;
       border-radius: 999px;
-      white-space: nowrap;
     }
     .nav-link:hover {
       color: var(--primary);
@@ -153,7 +150,7 @@
       fill: var(--text-muted);
     }
 
-    /* Elegant Tactile Theme Switcher */
+    /* Elegant Theme Switcher Toggle */
     .theme-switch {
       position: relative;
       width: 58px;
@@ -168,7 +165,6 @@
       justify-content: space-between;
       outline: none;
       transition: background 0.3s ease, border-color 0.3s ease;
-      flex-shrink: 0;
     }
     .theme-switch:hover {
       border-color: var(--primary);
@@ -264,9 +260,6 @@
       border-radius: 12px;
       text-decoration: none;
       box-shadow: 0 4px 18px var(--primary-glow);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
     }
     .btn-primary:hover {
       transform: translateY(-2px);
@@ -281,9 +274,6 @@
       padding: 13px 24px;
       border-radius: 12px;
       text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
     }
     .btn-secondary:hover {
       border-color: var(--primary);
@@ -294,7 +284,6 @@
     .mockup-container {
       margin: 48px auto;
       max-width: 520px;
-      width: 100%;
       background: var(--bg-surface);
       border: 1px solid var(--border);
       border-radius: 26px;
@@ -416,7 +405,6 @@
       align-items: center;
       justify-content: center;
       font-size: 14px;
-      flex-shrink: 0;
     }
     .movement-name {
       font-size: 13px;
@@ -430,42 +418,37 @@
     .movement-amt {
       font-size: 13px;
       font-weight: 700;
-      white-space: nowrap;
     }
 
-    /* Features Grid (Exactly 3 Cards) */
+    /* Features Grid */
     .features {
-      padding: 56px 0;
+      padding: 48px 0;
     }
     .section-head {
       text-align: center;
-      margin-bottom: 44px;
+      margin-bottom: 40px;
     }
     .section-head h2 {
-      font-size: 34px;
+      font-size: 32px;
       font-weight: 800;
-      letter-spacing: -0.8px;
-      margin-bottom: 12px;
+      letter-spacing: -0.6px;
+      margin-bottom: 10px;
     }
     .section-head p {
       color: var(--text-muted);
-      font-size: 17px;
-      max-width: 580px;
-      margin: 0 auto;
+      font-size: 16px;
     }
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
     }
     .feature-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 32px 26px;
+      border-radius: 20px;
+      padding: 30px 24px;
       box-shadow: var(--card-shadow);
-      display: flex;
-      flex-direction: column;
     }
     .feature-card:hover {
       border-color: var(--border-hover);
@@ -474,28 +457,27 @@
     }
     .feature-icon {
       font-size: 32px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       display: inline-block;
     }
     .feature-card h3 {
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       color: var(--text);
-      letter-spacing: -0.3px;
     }
     .feature-card p {
-      font-size: 14.5px;
+      font-size: 14px;
       color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.55;
     }
 
     /* Privacy Banner */
     .privacy-banner {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 26px;
-      padding: 52px 36px;
+      border-radius: 24px;
+      padding: 48px 32px;
       margin: 56px 0;
       text-align: center;
       box-shadow: var(--card-shadow);
@@ -503,15 +485,13 @@
     .privacy-banner h2 {
       font-size: 28px;
       font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .privacy-banner p {
       font-size: 16px;
       color: var(--text-muted);
       max-width: 600px;
-      margin: 0 auto 30px auto;
-      line-height: 1.6;
+      margin: 0 auto 28px auto;
     }
 
     /* Footer */
@@ -531,206 +511,13 @@
       color: var(--primary);
     }
 
-    /* Responsive Design (Tablet & Mobile) */
-    @media (max-width: 900px) {
-      .features-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
-      }
-    }
-
     @media (max-width: 640px) {
-      .container {
-        padding: 0 16px;
-      }
-      header {
-        top: 10px;
-        margin-top: 12px;
-        margin-bottom: 24px;
-      }
-      .navbar {
-        padding: 6px 12px;
-      }
-      .brand {
-        gap: 8px;
-        font-size: 18px;
-      }
-      .brand img {
-        width: 30px;
-        height: 30px;
-      }
-      .nav-controls {
-        gap: 8px;
-      }
-      .nav-link {
-        font-size: 13px;
-        padding: 5px 8px;
-      }
-      .select-lang {
-        padding: 5px 22px 5px 8px;
-        font-size: 12px;
-      }
-      .select-arrow {
-        right: 6px;
-      }
-      .theme-switch {
-        width: 52px;
-        height: 28px;
-      }
-      .theme-switch .switch-thumb {
-        width: 22px;
-        height: 22px;
-      }
-      [data-theme="light"] .theme-switch .switch-thumb {
-        transform: translateX(24px);
-      }
-
-      /* Hero Mobile */
-      .hero {
-        padding: 32px 0 20px 0;
-      }
-      .badge {
-        font-size: 11px;
-        padding: 5px 12px;
-        letter-spacing: 0.3px;
-        margin-bottom: 18px;
-      }
-      .hero h1 {
-        font-size: 34px;
-        line-height: 1.18;
-        letter-spacing: -0.8px;
-        margin-bottom: 16px;
-      }
-      .hero p {
-        font-size: 16px;
-        line-height: 1.55;
-        margin-bottom: 28px;
-      }
-      .hero-actions {
-        flex-direction: column;
-        width: 100%;
-        gap: 12px;
-      }
-      .btn-primary, .btn-secondary {
-        width: 100%;
-        text-align: center;
-        padding: 13px 20px;
-      }
-
-      /* Mockup Card Mobile */
-      .mockup-container {
-        margin: 32px auto;
-        padding: 16px;
-        border-radius: 20px;
-      }
-      .mockup-card-body {
-        padding: 18px 16px;
-        border-radius: 16px;
-      }
-      .mockup-balance {
-        font-size: 28px;
-      }
-      .mockup-metrics-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        margin-top: 14px;
-      }
-      .metric-box {
-        padding: 10px 12px;
-        border-radius: 12px;
-      }
-      .metric-lbl {
-        font-size: 11px;
-      }
-      .metric-val {
-        font-size: 14px;
-      }
-      .movement-item {
-        padding: 8px 10px;
-      }
-      .movement-icon {
-        width: 28px;
-        height: 28px;
-        font-size: 13px;
-      }
-      .movement-name {
-        font-size: 12px;
-      }
-      .movement-cat {
-        font-size: 10px;
-      }
-      .movement-amt {
-        font-size: 12px;
-      }
-
-      /* Features Mobile */
-      .features {
-        padding: 36px 0;
-      }
-      .section-head {
-        margin-bottom: 28px;
-      }
-      .section-head h2 {
-        font-size: 24px;
-        line-height: 1.25;
-      }
-      .section-head p {
-        font-size: 15px;
-      }
-      .feature-card {
-        padding: 24px 20px;
-        border-radius: 18px;
-      }
-      .feature-icon {
-        font-size: 28px;
-        margin-bottom: 12px;
-      }
-      .feature-card h3 {
-        font-size: 17px;
-      }
-      .feature-card p {
-        font-size: 14px;
-      }
-
-      /* Privacy Banner Mobile */
-      .privacy-banner {
-        padding: 32px 20px;
-        margin: 36px 0;
-        border-radius: 20px;
-      }
-      .privacy-banner h2 {
-        font-size: 22px;
-        line-height: 1.25;
-      }
-      .privacy-banner p {
-        font-size: 15px;
-        margin-bottom: 22px;
-      }
-      .privacy-banner .btn-primary {
-        width: 100%;
-      }
-
-      /* Footer Mobile */
-      footer {
-        padding: 32px 0 48px 0;
-      }
-    }
-
-    @media (max-width: 420px) {
-      .brand span {
-        display: none;
-      }
-      .nav-link {
-        padding: 4px 6px;
-        font-size: 12px;
-      }
-      .select-lang {
-        padding: 4px 18px 4px 6px;
-        font-size: 11px;
-      }
-      .hero h1 {
-        font-size: 30px;
-      }
+      .hero h1 { font-size: 36px; }
+      .hero p { font-size: 16px; }
+      .navbar { padding: 8px 14px; }
+      .brand span { display: none; }
+      .mockup-container { padding: 16px; }
+      .mockup-balance { font-size: 28px; }
     }
   </style>
 </head>
@@ -855,7 +642,7 @@
         </div>
       </section>
 
-      <!-- Features Section (Exactly 3 Cards) -->
+      <!-- Features Section -->
       <section class="features" id="features">
         <div class="section-head">
           <h2 data-i18n="features_title">Tudo o que precisas para gerir o teu dinheiro</h2>
@@ -865,17 +652,22 @@
           <div class="feature-card">
             <div class="feature-icon">📊</div>
             <h3 data-i18n="feat_1_title">Gastos & Contas num Só Lugar</h3>
-            <p data-i18n="feat_1_desc">Adiciona despesas em segundos, organiza contas e acompanha a evolução do teu saldo com gráficos claros e objetivos.</p>
+            <p data-i18n="feat_1_desc">Adiciona despesas em segundos, organiza contas bancárias e acompanha o teu saldo com gráficos claros e objetivos.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">🎯</div>
-            <h3 data-i18n="feat_2_title">Orçamentos & Metas Claras</h3>
-            <p data-i18n="feat_2_desc">Define limites mensais por categoria e poupa nos teus Cofres dedicados para férias, compras ou emergências.</p>
+            <h3 data-i18n="feat_2_title">Orçamentos e Metas Claras</h3>
+            <p data-i18n="feat_2_desc">Define limites mensais por categoria e guarda dinheiro nos teus Cofres dedicados para férias, poupanças ou emergências.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">🔒</div>
-            <h3 data-i18n="feat_3_title">Privado & Sempre Disponível</h3>
-            <p data-i18n="feat_3_desc">Os teus dados ficam seguros no teu telemóvel: 100% funcional offline, sem anúncios, sem rastreadores e sem venda de dados.</p>
+            <h3 data-i18n="feat_3_title">100% Privado e Seguro</h3>
+            <p data-i18n="feat_3_desc">Os teus dados são encriptados no teu dispositivo. Sem venda de dados a empresas terceiras, sem anúncios e sem rastreio.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3 data-i18n="feat_4_title">Sempre Disponível, Mesmo Offline</h3>
+            <p data-i18n="feat_4_desc">Funciona em qualquer lugar, mesmo sem rede móvel ou em modo avião. Quando voltares a ter Internet, tudo sincroniza automaticamente.</p>
           </div>
         </div>
       </section>
@@ -919,11 +711,13 @@
         features_title: "Tudo o que precisas para gerir o teu dinheiro",
         features_subtitle: "Pensada para o teu dia a dia, com velocidade e privacidade garantida.",
         feat_1_title: "Gastos & Contas num Só Lugar",
-        feat_1_desc: "Adiciona despesas em segundos, organiza contas e acompanha a evolução do teu saldo com gráficos claros e objetivos.",
-        feat_2_title: "Orçamentos & Metas Claras",
-        feat_2_desc: "Define limites mensais por categoria e poupa nos teus Cofres dedicados para férias, compras ou emergências.",
-        feat_3_title: "Privado & Sempre Disponível",
-        feat_3_desc: "Os teus dados ficam seguros no teu telemóvel: 100% funcional offline, sem anúncios, sem rastreadores e sem venda de dados.",
+        feat_1_desc: "Adiciona despesas em segundos, organiza contas bancárias e acompanha o teu saldo com gráficos claros e objetivos.",
+        feat_2_title: "Orçamentos e Metas Claras",
+        feat_2_desc: "Define limites mensais por categoria e guarda dinheiro nos teus Cofres dedicados para férias, poupanças ou emergências.",
+        feat_3_title: "100% Privado e Seguro",
+        feat_3_desc: "Os teus dados são encriptados no teu dispositivo. Sem venda de dados a empresas terceiras, sem anúncios e sem rastreio.",
+        feat_4_title: "Sempre Disponível, Mesmo Offline",
+        feat_4_desc: "Funciona em qualquer lugar, mesmo sem rede móvel ou em modo avião. Quando voltares a ter Internet, tudo sincroniza automaticamente.",
         privacy_banner_title: "O teu dinheiro é assunto teu",
         privacy_banner_desc: "Sem anúncios invasivos, sem venda de dados e sem rastreadores comerciais. Podes exportar ou eliminar a tua conta permanentemente a qualquer momento.",
         privacy_banner_btn: "Ler a Política de Privacidade Completa",
@@ -951,11 +745,13 @@
         features_title: "Everything you need to manage your money",
         features_subtitle: "Crafted for daily peace of mind, speed, and uncompromising privacy.",
         feat_1_title: "Accounts & Expenses in One Place",
-        feat_1_desc: "Log transactions in seconds, track bank accounts, and visualize your balance trends with intuitive charts.",
+        feat_1_desc: "Log expenses in seconds, organize bank accounts, and track your balance with clear, actionable charts.",
         feat_2_title: "Budgets & Clear Goals",
-        feat_2_desc: "Set category budgets and grow your dedicated Vaults for holidays, investments, or rainy days.",
-        feat_3_title: "Private & Always Available",
-        feat_3_desc: "Your finances stay safe on your device: fully functional offline, zero ads, zero trackers, and zero data selling.",
+        feat_2_desc: "Set monthly category budgets and save money in dedicated Vaults for holidays, savings, or emergencies.",
+        feat_3_title: "100% Private & Secure",
+        feat_3_desc: "Your data is encrypted on your device. No data selling to third parties, zero advertisements, and zero tracking.",
+        feat_4_title: "Always Available, Even Offline",
+        feat_4_desc: "Works everywhere, even without cell coverage or in airplane mode. Seamlessly syncs when you reconnect.",
         privacy_banner_title: "Your money is your own business",
         privacy_banner_desc: "No intrusive ads, no data brokers, and no tracking. You can export your data or permanently delete your account anytime.",
         privacy_banner_btn: "Read Complete Privacy Policy",
@@ -986,8 +782,10 @@
         feat_1_desc: "Añade gastos en segundos, organiza cuentas bancarias y sigue tus saldos con gráficos claros y directos.",
         feat_2_title: "Presupuestos y Metas Claras",
         feat_2_desc: "Define límites mensuales por categoría y guarda ahorros en Bóvedas dedicadas para vacaciones o emergencias.",
-        feat_3_title: "Privado y Siempre Disponible",
-        feat_3_desc: "Tus datos se mantienen seguros en tu dispositivo: 100% funcional offline, sin anuncios, sin rastreadores y sin venta de datos.",
+        feat_3_title: "100% Privado y Seguro",
+        feat_3_desc: "Tus datos se cifran en tu dispositivo. Sin venta de datos a terceros, sin anuncios y sin rastreo comercial.",
+        feat_4_title: "Siempre Disponible, Incluso Offline",
+        feat_4_desc: "Funciona en cualquier lugar, incluso sin cobertura o en modo avión. Se sincroniza al recuperar conexión.",
         privacy_banner_title: "Tu dinero es asunto tuyo",
         privacy_banner_desc: "Sin anuncios invasivos, sin venta de datos y sin rastreadores comerciales. Puedes exportar o eliminar tu cuenta permanentemente.",
         privacy_banner_btn: "Leer la Política de Privacidad Completa",
