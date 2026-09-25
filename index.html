@@ -3,92 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vetra — O teu dinheiro, sob controlo absoluto</title>
+  <title>Vetra — Finanças Pessoais de Alta Precisão</title>
   <link rel="icon" type="image/png" href="assets/icon-192.png">
-  <meta name="description" content="Gestão financeira pessoal de alta precisão. Rápida, local-first, segura e sem anúncios. Contas, orçamentos e cofres num só lugar.">
+  <meta name="description" content="Gestão financeira pessoal de alta precisão. Rápida, local-first, desenhada com cuidado cirúrgico. Sem anúncios, sem rastreio e 100% privada.">
   
   <!-- Premium Modern Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
     /* --------------------------------------------------
-       DESIGN SYSTEM & CSS VARIABLES
+       AWARD-WINNING DESIGN TOKENS
        -------------------------------------------------- */
     :root[data-theme="dark"] {
-      --bg: #070B0A;
-      --bg-surface: #0E1614;
-      --bg-surface-elevated: #131E1B;
-      --bg-card: rgba(19, 30, 27, 0.72);
-      --bg-card-hover: rgba(26, 42, 38, 0.85);
-      --text: #F8FAFC;
-      --text-muted: #8E9F99;
-      --text-dim: #556B64;
+      --bg: #060908;
+      --bg-surface: #0C1310;
+      --bg-surface-elevated: #111A17;
+      --bg-card: rgba(16, 25, 22, 0.68);
+      --bg-card-hover: rgba(22, 36, 31, 0.85);
+      --bg-glass: rgba(12, 19, 16, 0.72);
       
-      --primary: #28C88B;
-      --primary-light: #56E0AC;
-      --primary-dark: #0A8258;
-      --primary-glow: rgba(40, 200, 139, 0.22);
-      --accent-cyan: #38BDF8;
-      --accent-purple: #A855F7;
+      --text: #F8FAFC;
+      --text-muted: #8A9C95;
+      --text-dim: #4E635C;
+      
+      --primary: #2BD48D;
+      --primary-light: #5EEAD4;
+      --primary-dark: #059669;
+      --primary-glow: rgba(43, 212, 141, 0.25);
+      --primary-glow-subtle: rgba(43, 212, 141, 0.08);
+      
+      --accent-blue: #38BDF8;
+      --accent-purple: #A78BFA;
       
       --border: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(40, 200, 139, 0.45);
-      --nav-bg: rgba(14, 22, 20, 0.78);
-      --nav-border: rgba(255, 255, 255, 0.1);
+      --border-light: rgba(255, 255, 255, 0.14);
+      --border-hover: rgba(43, 212, 141, 0.5);
       
-      --card-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.75), 0 0 1px 1px rgba(255, 255, 255, 0.06);
-      --glow-mesh-1: radial-gradient(circle at 50% 0%, rgba(40, 200, 139, 0.15) 0%, transparent 60%);
-      --glow-mesh-2: radial-gradient(circle at 85% 35%, rgba(56, 189, 248, 0.10) 0%, transparent 50%);
+      --card-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.8), 0 0 1px 1px rgba(255, 255, 255, 0.07);
+      --glow-mesh-1: radial-gradient(circle at 50% -10%, rgba(43, 212, 141, 0.18) 0%, transparent 60%);
+      --glow-mesh-2: radial-gradient(circle at 90% 25%, rgba(56, 189, 248, 0.12) 0%, transparent 50%);
+      --glow-mesh-3: radial-gradient(circle at 10% 70%, rgba(43, 212, 141, 0.08) 0%, transparent 45%);
       
-      --badge-bg: rgba(40, 200, 139, 0.10);
-      --badge-border: rgba(40, 200, 139, 0.25);
-      --toggle-bg: #131E1B;
-      --toggle-border: #1E302A;
-      --toggle-thumb: #28C88B;
+      --badge-bg: rgba(43, 212, 141, 0.10);
+      --badge-border: rgba(43, 212, 141, 0.28);
+      --toggle-bg: #111A17;
+      --toggle-border: #1C2B26;
+      --toggle-thumb: #2BD48D;
       --toggle-icon: #042A1D;
       
-      --grid-pattern: rgba(255, 255, 255, 0.025);
+      --grid-dot: rgba(255, 255, 255, 0.04);
+      --phone-rim: #1A2723;
     }
 
     :root[data-theme="light"] {
-      --bg: #F8FAF9;
+      --bg: #F7FAF8;
       --bg-surface: #FFFFFF;
-      --bg-surface-elevated: #F1F5F3;
-      --bg-card: rgba(255, 255, 255, 0.88);
+      --bg-surface-elevated: #F0F5F2;
+      --bg-card: rgba(255, 255, 255, 0.90);
       --bg-card-hover: #FFFFFF;
+      --bg-glass: rgba(255, 255, 255, 0.85);
+      
       --text: #091310;
-      --text-muted: #5B6F68;
+      --text-muted: #576B64;
       --text-dim: #94A3B8;
       
       --primary: #0A8258;
-      --primary-light: #28C88B;
-      --primary-dark: #055438;
+      --primary-light: #2BD48D;
+      --primary-dark: #045237;
       --primary-glow: rgba(10, 130, 88, 0.16);
-      --accent-cyan: #0284C7;
+      --primary-glow-subtle: rgba(10, 130, 88, 0.06);
+      
+      --accent-blue: #0284C7;
       --accent-purple: #7C3AED;
       
       --border: rgba(0, 0, 0, 0.07);
-      --border-hover: rgba(10, 130, 88, 0.35);
-      --nav-bg: rgba(255, 255, 255, 0.82);
-      --nav-border: rgba(0, 0, 0, 0.08);
+      --border-light: rgba(0, 0, 0, 0.12);
+      --border-hover: rgba(10, 130, 88, 0.38);
       
-      --card-shadow: 0 16px 40px -10px rgba(10, 30, 22, 0.07), 0 0 1px 1px rgba(0, 0, 0, 0.04);
-      --glow-mesh-1: radial-gradient(circle at 50% 0%, rgba(40, 200, 139, 0.12) 0%, transparent 65%);
-      --glow-mesh-2: radial-gradient(circle at 85% 35%, rgba(56, 189, 248, 0.08) 0%, transparent 55%);
+      --card-shadow: 0 20px 48px -10px rgba(10, 30, 22, 0.07), 0 0 1px 1px rgba(0, 0, 0, 0.04);
+      --glow-mesh-1: radial-gradient(circle at 50% -10%, rgba(43, 212, 141, 0.14) 0%, transparent 65%);
+      --glow-mesh-2: radial-gradient(circle at 90% 25%, rgba(56, 189, 248, 0.08) 0%, transparent 55%);
+      --glow-mesh-3: radial-gradient(circle at 10% 70%, rgba(43, 212, 141, 0.06) 0%, transparent 50%);
       
       --badge-bg: rgba(10, 130, 88, 0.08);
-      --badge-border: rgba(10, 130, 88, 0.20);
-      --toggle-bg: #E7EEEB;
-      --toggle-border: #D1DED9;
+      --badge-border: rgba(10, 130, 88, 0.22);
+      --toggle-bg: #E4ECE8;
+      --toggle-border: #CEDCD5;
       --toggle-thumb: #F59E0B;
       --toggle-icon: #FFFFFF;
       
-      --grid-pattern: rgba(0, 0, 0, 0.02);
+      --grid-dot: rgba(0, 0, 0, 0.035);
+      --phone-rim: #E2E8F0;
     }
 
-    /* Reset & Global */
+    /* --------------------------------------------------
+       RESET & BASE STYLES
+       -------------------------------------------------- */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -111,16 +123,29 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* Ambient Background Mesh */
+    /* Tactile Fine Grain Texture Overlay */
+    .noise-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Ambient Meshes */
     .bg-mesh {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 1200px;
+      height: 1400px;
       pointer-events: none;
       z-index: 0;
-      background: var(--glow-mesh-1), var(--glow-mesh-2);
+      background: var(--glow-mesh-1), var(--glow-mesh-2), var(--glow-mesh-3);
     }
 
     .bg-grid {
@@ -128,15 +153,13 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 900px;
+      height: 1000px;
       pointer-events: none;
       z-index: 0;
-      background-size: 40px 40px;
-      background-image: 
-        linear-gradient(to right, var(--grid-pattern) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--grid-pattern) 1px, transparent 1px);
-      mask-image: radial-gradient(ellipse at 50% 25%, black 40%, transparent 80%);
-      -webkit-mask-image: radial-gradient(ellipse at 50% 25%, black 40%, transparent 80%);
+      background-size: 32px 32px;
+      background-image: radial-gradient(circle, var(--grid-dot) 1px, transparent 1px);
+      mask-image: radial-gradient(ellipse at 50% 20%, black 40%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 20%, black 40%, transparent 80%);
     }
 
     .container {
@@ -148,13 +171,13 @@
     }
 
     /* --------------------------------------------------
-       FLOATING GLASS NAVBAR
+       NAVBAR (FLOATING GLASS PILL)
        -------------------------------------------------- */
     header {
       position: sticky;
       top: 18px;
       z-index: 1000;
-      margin: 18px auto 40px auto;
+      margin: 18px auto 44px auto;
       max-width: 1040px;
       padding: 0 16px;
     }
@@ -163,10 +186,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: var(--nav-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--nav-border);
+      background: var(--bg-glass);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid var(--border-light);
       border-radius: 999px;
       padding: 10px 22px;
       box-shadow: var(--card-shadow);
@@ -181,7 +204,14 @@
       color: var(--text);
       font-weight: 800;
       font-size: 21px;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.6px;
+    }
+
+    .brand-icon-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .brand img {
@@ -189,12 +219,13 @@
       height: 34px;
       border-radius: 10px;
       box-shadow: 0 4px 14px var(--primary-glow);
+      display: block;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     .nav-link {
@@ -218,7 +249,6 @@
       gap: 12px;
     }
 
-    /* Language Dropdown Pill */
     .select-lang-wrap {
       position: relative;
       display: flex;
@@ -254,7 +284,6 @@
       stroke: var(--text-muted);
     }
 
-    /* Tactile Theme Switcher */
     .theme-switch {
       position: relative;
       width: 58px;
@@ -316,63 +345,68 @@
        -------------------------------------------------- */
     .hero {
       text-align: center;
-      padding: 48px 0 20px 0;
+      padding: 40px 0 24px 0;
     }
 
     .badge-pill {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       background: var(--badge-bg);
       color: var(--primary);
       border: 1px solid var(--badge-border);
-      padding: 7px 18px;
+      padding: 7px 20px;
       border-radius: 999px;
       font-size: 13px;
       font-weight: 800;
       letter-spacing: 0.6px;
-      margin-bottom: 24px;
-      box-shadow: 0 4px 16px var(--primary-glow);
-      backdrop-filter: blur(8px);
+      margin-bottom: 26px;
+      box-shadow: 0 4px 18px var(--primary-glow);
+      backdrop-filter: blur(12px);
+      transition: transform 0.2s ease;
+    }
+
+    .badge-pill:hover {
+      transform: scale(1.02);
     }
 
     .badge-dot {
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: var(--primary);
       box-shadow: 0 0 10px var(--primary);
-      animation: pulse 2s infinite ease-in-out;
+      animation: pulseDot 2s infinite ease-in-out;
     }
 
-    @keyframes pulse {
+    @keyframes pulseDot {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
+      50% { opacity: 0.35; transform: scale(0.8); }
     }
 
     .hero h1 {
-      font-size: 64px;
+      font-size: clamp(42px, 6.8vw, 74px);
       font-weight: 900;
-      letter-spacing: -2.2px;
-      line-height: 1.08;
+      letter-spacing: -2.8px;
+      line-height: 1.05;
       margin-bottom: 22px;
     }
 
     .hero h1 .gradient-text {
-      background: linear-gradient(135deg, #28C88B 0%, #56E0AC 45%, #38BDF8 100%);
+      background: linear-gradient(135deg, #2BD48D 0%, #5EEAD4 40%, #38BDF8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       display: inline-block;
     }
 
     [data-theme="light"] .hero h1 .gradient-text {
-      background: linear-gradient(135deg, #0A8258 0%, #28C88B 50%, #0284C7 100%);
+      background: linear-gradient(135deg, #0A8258 0%, #2BD48D 45%, #0284C7 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero p {
-      font-size: 20px;
+      font-size: clamp(17px, 2.2vw, 20px);
       color: var(--text-muted);
       max-width: 660px;
       margin: 0 auto 38px auto;
@@ -397,17 +431,19 @@
       color: #042A1D;
       font-weight: 800;
       font-size: 15px;
-      padding: 14px 30px;
+      padding: 15px 32px;
       border-radius: 14px;
       text-decoration: none;
-      box-shadow: 0 8px 26px var(--primary-glow);
+      box-shadow: 0 10px 30px var(--primary-glow);
+      position: relative;
+      overflow: hidden;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .btn-main:hover {
       transform: translateY(-2px);
-      filter: brightness(1.1);
-      box-shadow: 0 12px 32px var(--primary-glow);
+      filter: brightness(1.08);
+      box-shadow: 0 14px 38px var(--primary-glow);
     }
 
     .btn-main svg {
@@ -422,10 +458,10 @@
       gap: 8px;
       background: var(--bg-surface);
       color: var(--text);
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-light);
       font-weight: 700;
       font-size: 15px;
-      padding: 14px 26px;
+      padding: 15px 28px;
       border-radius: 14px;
       text-decoration: none;
       transition: all 0.25s ease;
@@ -442,7 +478,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 20px;
+      gap: 22px;
       flex-wrap: wrap;
       font-size: 13px;
       font-weight: 700;
@@ -452,72 +488,88 @@
     .trust-chip {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 7px;
     }
 
     .trust-chip svg {
-      width: 15px;
-      height: 15px;
+      width: 16px;
+      height: 16px;
       fill: var(--primary);
     }
 
     /* --------------------------------------------------
-       AWARD-WINNING INTERACTIVE MOBILE CANVAS
+       SHOWCASE STAGE: REALISTIC HIGH-PRECISION PHONE CANVAS
        -------------------------------------------------- */
     .showcase-stage {
       position: relative;
-      margin: 64px auto 80px auto;
-      max-width: 860px;
-      padding: 20px;
+      margin: 60px auto 84px auto;
+      max-width: 880px;
+      padding: 20px 10px;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    /* Floating Feature Badges around device */
+    /* Ambient Soft Spotlight behind Phone */
+    .phone-spotlight {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 480px;
+      height: 480px;
+      background: var(--primary-glow);
+      filter: blur(80px);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.65;
+    }
+
+    /* Floating Feature Badges */
     .floating-pill {
       position: absolute;
       background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
+      border: 1px solid var(--border-light);
+      border-radius: 18px;
       padding: 12px 18px;
       box-shadow: var(--card-shadow);
       display: flex;
       align-items: center;
       gap: 12px;
-      z-index: 10;
-      backdrop-filter: blur(12px);
+      z-index: 15;
+      backdrop-filter: blur(16px);
       animation: floatSlow 6s ease-in-out infinite;
     }
 
     .pill-left {
-      left: 10px;
-      top: 25%;
+      left: 12px;
+      top: 26%;
     }
 
     .pill-right {
-      right: 10px;
+      right: 12px;
       bottom: 28%;
       animation-delay: -3s;
     }
 
     @keyframes floatSlow {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+      50% { transform: translateY(-9px); }
     }
 
     .pill-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 16px;
     }
 
-    .pill-icon.green { background: rgba(40, 200, 139, 0.15); color: #28C88B; }
-    .pill-icon.blue { background: rgba(56, 189, 248, 0.15); color: #38BDF8; }
+    .pill-icon.green { background: rgba(43, 212, 141, 0.16); color: #2BD48D; }
+    .pill-icon.blue { background: rgba(56, 189, 248, 0.16); color: #38BDF8; }
 
     .pill-text {
       text-align: left;
@@ -535,38 +587,58 @@
       color: var(--text-muted);
     }
 
-    /* Device Mockup Shell */
+    /* Device Titanium Shell */
     .device-shell {
+      position: relative;
+      z-index: 10;
       width: 380px;
       max-width: 100%;
       background: var(--bg-surface);
-      border: 6px solid var(--border);
-      border-radius: 46px;
-      padding: 16px 14px 20px 14px;
-      box-shadow: 0 32px 80px -16px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
-      position: relative;
+      border: 7px solid var(--phone-rim);
+      border-radius: 48px;
+      padding: 14px 12px 18px 12px;
+      box-shadow: 0 36px 90px -18px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.1);
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
     }
 
     .device-shell:hover {
-      transform: translateY(-4px) scale(1.01);
-      box-shadow: 0 40px 90px -16px rgba(0, 0, 0, 0.7), 0 0 40px var(--primary-glow);
+      transform: translateY(-6px) scale(1.012);
+      box-shadow: 0 44px 100px -18px rgba(0, 0, 0, 0.8), 0 0 45px var(--primary-glow);
     }
 
-    /* Device Top Notch */
-    .device-camera {
-      width: 90px;
-      height: 18px;
-      background: #000;
+    /* Dynamic Island Notch */
+    .device-notch {
+      width: 96px;
+      height: 20px;
+      background: #000000;
       border-radius: 999px;
-      margin: 0 auto 16px auto;
+      margin: 0 auto 14px auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
     }
 
-    /* Screen UI Components */
+    .notch-camera {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #0F172A;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .notch-sensor {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #1E293B;
+    }
+
+    /* Inner Screen */
     .app-screen {
       background: var(--bg);
-      border-radius: 32px;
-      padding: 18px;
+      border-radius: 34px;
+      padding: 18px 16px;
       border: 1px solid var(--border);
     }
 
@@ -581,7 +653,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 800;
     }
 
@@ -596,7 +668,7 @@
       align-items: center;
       gap: 6px;
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--primary);
       background: var(--badge-bg);
       border: 1px solid var(--badge-border);
@@ -607,53 +679,48 @@
     /* Net Worth Main Card */
     .net-worth-card {
       background: linear-gradient(145deg, var(--bg-surface-elevated), var(--bg-card));
-      border: 1px solid var(--border);
-      border-radius: 20px;
+      border: 1px solid var(--border-light);
+      border-radius: 22px;
       padding: 18px;
       text-align: left;
       position: relative;
       overflow: hidden;
       margin-bottom: 14px;
-    }
-
-    .net-worth-card::after {
-      content: '';
-      position: absolute;
-      top: -30px;
-      right: -30px;
-      width: 100px;
-      height: 100px;
-      background: var(--primary-glow);
-      filter: blur(28px);
-      border-radius: 50%;
-      pointer-events: none;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     }
 
     .nw-title {
-      font-size: 12px;
-      font-weight: 700;
+      font-size: 11px;
+      font-weight: 800;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nw-currency-tag {
+      background: var(--badge-bg);
+      color: var(--primary);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 900;
     }
 
     .nw-amount {
       font-size: 32px;
       font-weight: 900;
-      letter-spacing: -1px;
-      margin: 4px 0 10px 0;
+      letter-spacing: -1.2px;
+      margin: 6px 0 8px 0;
       color: var(--text);
     }
 
-    /* Sparkline SVG Chart */
+    /* Sparkline SVG Chart with Gradient Fill */
     .sparkline-svg {
       width: 100%;
-      height: 38px;
-      stroke: var(--primary);
-      fill: none;
-      stroke-width: 2.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+      height: 48px;
     }
 
     /* Mini Metrics Dual Column */
@@ -661,7 +728,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .metric-card {
@@ -681,13 +748,13 @@
     .metric-value {
       font-size: 15px;
       font-weight: 800;
-      margin-top: 2px;
+      margin-top: 3px;
     }
 
-    .metric-value.inc { color: #28C88B; }
+    .metric-value.inc { color: #2BD48D; }
     .metric-value.exp { color: #F43F5E; }
 
-    /* Envelopes & Vaults Progress */
+    /* Vault Progress Widget */
     .vault-widget {
       background: var(--bg-surface);
       border: 1px solid var(--border);
@@ -716,11 +783,11 @@
     .vault-bar-fill {
       height: 100%;
       width: 78%;
-      background: linear-gradient(90deg, var(--primary), var(--accent-cyan));
+      background: linear-gradient(90deg, var(--primary), var(--accent-blue));
       border-radius: 999px;
     }
 
-    /* Movements List */
+    /* Recent Movements */
     .screen-tx-list {
       text-align: left;
     }
@@ -729,7 +796,7 @@
       font-size: 11px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.6px;
       color: var(--text-dim);
       margin-bottom: 8px;
     }
@@ -740,9 +807,14 @@
       justify-content: space-between;
       background: var(--bg-surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 13px;
       padding: 10px 12px;
       margin-bottom: 6px;
+      transition: background 0.2s ease;
+    }
+
+    .tx-item:hover {
+      background: var(--bg-surface-elevated);
     }
 
     .tx-left {
@@ -754,7 +826,7 @@
     .tx-icon-box {
       width: 32px;
       height: 32px;
-      border-radius: 8px;
+      border-radius: 9px;
       background: var(--bg-surface-elevated);
       display: flex;
       align-items: center;
@@ -777,8 +849,25 @@
       font-weight: 800;
     }
 
+    /* Mini Bottom Navigation Bar inside Phone */
+    .phone-bottom-nav {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding-top: 14px;
+      margin-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .nav-item-active {
+      color: var(--primary);
+    }
+
     /* --------------------------------------------------
-       BENTO GRID FEATURES
+       BENTO GRID (ASYMMETRIC LUXURY TILES)
        -------------------------------------------------- */
     .bento-section {
       padding: 80px 0 60px 0;
@@ -794,15 +883,15 @@
       font-size: 12px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 1.2px;
+      letter-spacing: 1.4px;
       color: var(--primary);
       margin-bottom: 12px;
     }
 
     .section-header h2 {
-      font-size: 40px;
+      font-size: clamp(32px, 4.4vw, 44px);
       font-weight: 900;
-      letter-spacing: -1.2px;
+      letter-spacing: -1.4px;
       line-height: 1.15;
       margin-bottom: 14px;
     }
@@ -816,18 +905,18 @@
     .bento-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 22px;
     }
 
     .bento-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 26px;
-      padding: 34px 28px;
+      border-radius: 28px;
+      padding: 36px 30px;
       box-shadow: var(--card-shadow);
       position: relative;
       overflow: hidden;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -836,7 +925,8 @@
     .bento-card:hover {
       border-color: var(--border-hover);
       background: var(--bg-card-hover);
-      transform: translateY(-4px);
+      transform: translateY(-5px);
+      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7), 0 0 25px var(--primary-glow-subtle);
     }
 
     .bento-col-2 {
@@ -844,8 +934,8 @@
     }
 
     .bento-icon-wrapper {
-      width: 48px;
-      height: 48px;
+      width: 50px;
+      height: 50px;
       border-radius: 14px;
       background: var(--badge-bg);
       border: 1px solid var(--badge-border);
@@ -853,64 +943,83 @@
       align-items: center;
       justify-content: center;
       font-size: 22px;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     .bento-card h3 {
-      font-size: 21px;
+      font-size: 22px;
       font-weight: 800;
-      letter-spacing: -0.4px;
-      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
       color: var(--text);
     }
 
     .bento-card p {
       font-size: 15px;
       color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
-    /* Bento Visual Highlights inside cards */
-    .bento-preview-sync {
+    /* Bento Visual Highlights */
+    .bento-diagram {
       display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: space-between;
       background: var(--bg-surface);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 12px 16px;
-      margin-top: 24px;
+      border-radius: 16px;
+      padding: 14px 18px;
+      margin-top: 26px;
       font-size: 13px;
-      font-weight: 700;
-    }
-
-    .bento-preview-sync .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #28C88B;
-      box-shadow: 0 0 8px #28C88B;
-    }
-
-    .bento-currencies-row {
-      display: flex;
-      gap: 8px;
-      margin-top: 24px;
+      font-weight: 800;
       flex-wrap: wrap;
+      gap: 10px;
     }
 
-    .curr-tag {
+    .bento-diagram .step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bento-diagram .arrow {
+      color: var(--primary);
+    }
+
+    .credit-cycle-box {
       background: var(--bg-surface);
       border: 1px solid var(--border);
-      padding: 5px 12px;
-      border-radius: 8px;
+      border-radius: 16px;
+      padding: 16px 20px;
+      margin-top: 26px;
+      text-align: left;
+    }
+
+    .credit-cycle-header {
+      display: flex;
+      justify-content: space-between;
       font-size: 12px;
       font-weight: 800;
-      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .credit-cycle-bar {
+      width: 100%;
+      height: 6px;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 8px 0;
+    }
+
+    .credit-cycle-bar-fill {
+      width: 42%;
+      height: 100%;
+      background: var(--accent-purple);
     }
 
     /* --------------------------------------------------
-       COMPARISON SECTION (VETRA VS OTHERS)
+       COMPARISON SECTION
        -------------------------------------------------- */
     .compare-section {
       padding: 60px 0 80px 0;
@@ -919,8 +1028,8 @@
     .compare-table-wrapper {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 8px;
+      border-radius: 26px;
+      padding: 10px;
       box-shadow: var(--card-shadow);
       overflow-x: auto;
     }
@@ -932,7 +1041,7 @@
     }
 
     .compare-table th, .compare-table td {
-      padding: 18px 24px;
+      padding: 20px 26px;
       border-bottom: 1px solid var(--border);
       font-size: 14px;
     }
@@ -951,17 +1060,17 @@
       color: var(--primary);
       font-weight: 800;
       background: var(--badge-bg);
-      border-radius: 12px;
+      border-radius: 14px;
     }
 
     /* --------------------------------------------------
-       RADICAL PRIVACY MANIFESTO CALLOUT
+       RADICAL PRIVACY MANIFESTO
        -------------------------------------------------- */
     .privacy-manifesto {
       background: linear-gradient(145deg, var(--bg-surface), var(--bg-surface-elevated));
-      border: 1px solid var(--border);
-      border-radius: 32px;
-      padding: 64px 40px;
+      border: 1px solid var(--border-light);
+      border-radius: 34px;
+      padding: 68px 44px;
       text-align: center;
       margin: 40px 0 80px 0;
       position: relative;
@@ -972,30 +1081,30 @@
     .privacy-manifesto::before {
       content: '';
       position: absolute;
-      top: -50px;
+      top: -60px;
       left: 50%;
       transform: translateX(-50%);
-      width: 320px;
-      height: 180px;
+      width: 360px;
+      height: 200px;
       background: var(--primary-glow);
-      filter: blur(50px);
+      filter: blur(60px);
       border-radius: 50%;
       pointer-events: none;
     }
 
     .privacy-manifesto h2 {
-      font-size: 38px;
+      font-size: clamp(28px, 4vw, 40px);
       font-weight: 900;
-      letter-spacing: -1.2px;
-      margin-bottom: 16px;
+      letter-spacing: -1.4px;
+      margin-bottom: 18px;
     }
 
     .privacy-manifesto p {
       font-size: 18px;
       color: var(--text-muted);
-      max-width: 640px;
-      margin: 0 auto 36px auto;
-      line-height: 1.6;
+      max-width: 660px;
+      margin: 0 auto 38px auto;
+      line-height: 1.65;
     }
 
     /* --------------------------------------------------
@@ -1003,7 +1112,7 @@
        -------------------------------------------------- */
     footer {
       border-top: 1px solid var(--border);
-      padding: 48px 0 60px 0;
+      padding: 50px 0 70px 0;
       text-align: center;
       font-size: 14px;
       color: var(--text-muted);
@@ -1012,8 +1121,8 @@
     .footer-links {
       display: flex;
       justify-content: center;
-      gap: 24px;
-      margin: 16px 0;
+      gap: 26px;
+      margin: 18px 0;
       flex-wrap: wrap;
     }
 
@@ -1031,7 +1140,7 @@
     /* --------------------------------------------------
        RESPONSIVE BREAKPOINTS
        -------------------------------------------------- */
-    @media (max-width: 900px) {
+    @media (max-width: 920px) {
       .bento-grid {
         grid-template-columns: 1fr;
       }
@@ -1044,18 +1153,22 @@
     }
 
     @media (max-width: 680px) {
-      .hero h1 { font-size: 42px; letter-spacing: -1.2px; }
-      .hero p { font-size: 17px; }
+      .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+      .hero p { font-size: 16px; }
       .navbar { padding: 8px 16px; }
       .nav-links { display: none; }
-      .device-shell { width: 100%; border-width: 3px; border-radius: 34px; padding: 10px; }
-      .section-header h2 { font-size: 30px; }
-      .privacy-manifesto { padding: 40px 20px; }
-      .privacy-manifesto h2 { font-size: 28px; }
+      .device-shell { width: 100%; border-width: 4px; border-radius: 36px; padding: 10px; }
+      .section-header h2 { font-size: 28px; }
+      .privacy-manifesto { padding: 42px 22px; }
+      .privacy-manifesto h2 { font-size: 26px; }
+      .compare-table th, .compare-table td { padding: 14px 16px; font-size: 13px; }
     }
   </style>
 </head>
 <body>
+  <!-- Micro Noise Texture Overlay -->
+  <div class="noise-overlay"></div>
+
   <!-- Ambient Glow & Pattern -->
   <div class="bg-mesh"></div>
   <div class="bg-grid"></div>
@@ -1065,7 +1178,9 @@
     <header>
       <nav class="navbar">
         <a href="index.html" class="brand">
-          <img src="assets/icon-192.png" alt="Vetra Logo">
+          <div class="brand-icon-wrap">
+            <img src="assets/icon-192.png" alt="Vetra Logo">
+          </div>
           <span>Vetra</span>
         </a>
 
@@ -1118,7 +1233,7 @@
       <section class="hero">
         <div class="badge-pill">
           <span class="badge-dot"></span>
-          <span data-i18n="badge_title">FINANÇAS PESSOAIS DE ALTA PRECISÃO • 100% PRIVADO</span>
+          <span data-i18n="badge_title">FINANÇAS PESSOAIS EM EUR • 100% PRIVADO & LOCAL-FIRST</span>
         </div>
         <h1>
           <span data-i18n="hero_title_1">O teu dinheiro,</span><br>
@@ -1151,13 +1266,15 @@
           </div>
           <div class="trust-chip">
             <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-            <span data-i18n="trust_4">Multi-moeda 150+</span>
+            <span data-i18n="trust_4">Precisão Decimal em EUR</span>
           </div>
         </div>
       </section>
 
       <!-- Centerpiece Interactive Device Mockup -->
       <section class="showcase-stage">
+        <div class="phone-spotlight"></div>
+
         <!-- Floating Pills -->
         <div class="floating-pill pill-left">
           <div class="pill-icon green">⚡</div>
@@ -1177,7 +1294,10 @@
 
         <!-- Phone Mockup Frame -->
         <div class="device-shell">
-          <div class="device-camera"></div>
+          <div class="device-notch">
+            <div class="notch-camera"></div>
+            <div class="notch-sensor"></div>
+          </div>
           
           <div class="app-screen">
             <!-- Screen Header -->
@@ -1192,14 +1312,24 @@
               </div>
             </div>
 
-            <!-- Net Worth Card with Sparkline -->
+            <!-- Net Worth Card with Sparkline Gradient -->
             <div class="net-worth-card">
-              <div class="nw-title" data-i18n="mock_nw_title">Património Líquido Total</div>
+              <div class="nw-title">
+                <span data-i18n="mock_nw_title">Património Líquido</span>
+                <span class="nw-currency-tag">EUR €</span>
+              </div>
               <div class="nw-amount">€ 8.450,20</div>
               
-              <!-- SVG Curve -->
-              <svg class="sparkline-svg" viewBox="0 0 200 40">
-                <path d="M 0,32 Q 30,35 60,22 T 120,18 T 160,8 T 200,4" />
+              <!-- SVG Curve with Area Gradient -->
+              <svg class="sparkline-svg" viewBox="0 0 200 48">
+                <defs>
+                  <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#2BD48D" stop-opacity="0.35"/>
+                    <stop offset="100%" stop-color="#2BD48D" stop-opacity="0.0"/>
+                  </linearGradient>
+                </defs>
+                <path d="M 0,38 Q 35,42 70,26 T 130,22 T 170,12 T 200,6 L 200,48 L 0,48 Z" fill="url(#chartGradient)"/>
+                <path d="M 0,38 Q 35,42 70,26 T 130,22 T 170,12 T 200,6" fill="none" stroke="#2BD48D" stroke-width="2.5" stroke-linecap="round"/>
               </svg>
             </div>
 
@@ -1218,8 +1348,8 @@
             <!-- Vault Progress Widget -->
             <div class="vault-widget">
               <div class="vault-header">
-                <span data-i18n="mock_vault_name">🎯 Cofre: Férias & Emergência</span>
-                <span>78%</span>
+                <span data-i18n="mock_vault_name">🎯 Cofre: Férias de Verão</span>
+                <span style="color: var(--primary);">78%</span>
               </div>
               <div class="vault-bar-track">
                 <div class="vault-bar-fill"></div>
@@ -1249,8 +1379,16 @@
                     <div class="tx-cat" data-i18n="mock_tx2_cat">Transferência &bull; Trabalho</div>
                   </div>
                 </div>
-                <div class="tx-amount" style="color: #28C88B;">+ € 2.450,00</div>
+                <div class="tx-amount" style="color: #2BD48D;">+ € 2.450,00</div>
               </div>
+            </div>
+
+            <!-- Bottom Mini Bar -->
+            <div class="phone-bottom-nav">
+              <span class="nav-item-active" data-i18n="nav_inicio">● Início</span>
+              <span data-i18n="nav_mov">Movimentos</span>
+              <span data-i18n="nav_plan">Planeamento</span>
+              <span data-i18n="nav_contas">Contas</span>
             </div>
           </div>
         </div>
@@ -1261,7 +1399,7 @@
         <div class="section-header">
           <div class="section-eyebrow" data-i18n="bento_eyebrow">ENGENHARIA DE DETALHE</div>
           <h2 data-i18n="bento_title">Construída para quem leva o dinheiro a sério</h2>
-          <p data-i18n="bento_sub">Combinamos a profundidade analítica dos melhores sistemas contabilísticos com a velocidade de uma app nativa.</p>
+          <p data-i18n="bento_sub">Unimos a profundidade analítica dos melhores sistemas contabilísticos com a velocidade de uma app móvel nativa.</p>
         </div>
 
         <div class="bento-grid">
@@ -1272,9 +1410,12 @@
               <h3 data-i18n="bento_1_title">Arquitetura Local-First. Zero latência.</h3>
               <p data-i18n="bento_1_desc">A Vetra grava primeiro no teu dispositivo em SQLite e só depois sincroniza em segundo plano. Não ficas refém de redes lentas ou do modo avião. O teu telemóvel responde instantaneamente a 120 FPS.</p>
             </div>
-            <div class="bento-preview-sync">
-              <span class="dot"></span>
-              <span data-i18n="bento_1_sync">Leitura instantânea (0ms) &bull; Sincronização segura via Supabase</span>
+            <div class="bento-diagram">
+              <div class="step">📱 <span>SQLite Local</span></div>
+              <div class="arrow">&rarr; 0ms &rarr;</div>
+              <div class="step">⚡ <span>Ecrã a 120 FPS</span></div>
+              <div class="arrow">&rarr; Sync &rarr;</div>
+              <div class="step">☁️ <span>Supabase Cifrado</span></div>
             </div>
           </div>
 
@@ -1287,19 +1428,22 @@
             </div>
           </div>
 
-          <!-- Card 3: Multi-Currency 150+ -->
+          <!-- Card 3: Cartões de Crédito & Ciclos Reais (SUBSTITUIÇÃO DAS MOEDAS) -->
           <div class="bento-card">
             <div>
-              <div class="bento-icon-wrapper">🌍</div>
-              <h3 data-i18n="bento_3_title">Mais de 150 Moedas ISO</h3>
-              <p data-i18n="bento_3_desc">Transferências cambiais com cálculo exato de ganho/perda cambial e histórico reavaliado na tua moeda base em tempo real.</p>
+              <div class="bento-icon-wrapper">💳</div>
+              <h3 data-i18n="bento_3_title">Cartões de Crédito & Prestações</h3>
+              <p data-i18n="bento_3_desc">Ciclos de faturação com data de fecho e vencimento. Compras em prestações com dívida futura devidamente separada do saldo atual em EUR.</p>
             </div>
-            <div class="bento-currencies-row">
-              <span class="curr-tag">EUR €</span>
-              <span class="curr-tag">USD $</span>
-              <span class="curr-tag">GBP £</span>
-              <span class="curr-tag">BRL R$</span>
-              <span class="curr-tag">JPY ¥</span>
+            <div class="credit-cycle-box">
+              <div class="credit-cycle-header">
+                <span>Fatura em curso</span>
+                <span style="color: var(--accent-purple);">€ 420 / € 1.000</span>
+              </div>
+              <div class="credit-cycle-bar">
+                <div class="credit-cycle-bar-fill"></div>
+              </div>
+              <span style="font-size: 11px; color: var(--text-muted);" data-i18n="credit_cycle_hint">Fecha a 28 deste mês</span>
             </div>
           </div>
 
@@ -1310,9 +1454,12 @@
               <h3 data-i18n="bento_4_title">Privacidade Radical: Nem nós sabemos o que gastas</h3>
               <p data-i18n="bento_4_desc">Sem anúncios invasivos, sem venda de dados a empresas financeiras terceiras e sem recolha abusiva de telemetria. Os teus dados pertencem-te e podes exportar cópias integrais em CSV ou apagar tudo a qualquer momento.</p>
             </div>
-            <div class="bento-preview-sync" style="background: rgba(40, 200, 139, 0.08); border-color: rgba(40, 200, 139, 0.25);">
-              <span>🛡️</span>
-              <span data-i18n="bento_4_tag">Encriptação SQLite3MC no dispositivo &bull; RGPD / GDPR 100% Conforme</span>
+            <div class="bento-diagram" style="background: rgba(43, 212, 141, 0.07); border-color: rgba(43, 212, 141, 0.22);">
+              <span>🛡️ Cifra SQLCipher AES-256</span>
+              <span class="arrow">&bull;</span>
+              <span>100% Conforme com RGPD / GDPR</span>
+              <span class="arrow">&bull;</span>
+              <span>Zero SDKs Publicitários</span>
             </div>
           </div>
         </div>
@@ -1356,6 +1503,11 @@
                 <td class="vetra-col" data-i18n="cmp_4_vetra">Moderna, fluida a 120 FPS nativo</td>
                 <td data-i18n="cmp_4_others">Interfaces antigas ou webviews pesadas</td>
               </tr>
+              <tr>
+                <td data-i18n="cmp_5_lbl">Moeda de Referência</td>
+                <td class="vetra-col" data-i18n="cmp_5_vetra">Especializada em EUR com precisão decimal exata</td>
+                <td data-i18n="cmp_5_others">Arredondamentos e conversões inconsistentes</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -1371,7 +1523,7 @@
 
     <!-- Footer -->
     <footer>
-      <div class="brand" style="justify-content: center; margin-bottom: 12px;">
+      <div class="brand" style="justify-content: center; margin-bottom: 14px;">
         <img src="assets/icon-192.png" alt="Vetra Logo" style="width: 28px; height: 28px;">
         <span>Vetra</span>
       </div>
@@ -1395,7 +1547,7 @@
         nav_features: "Funcionalidades",
         nav_compare: "Diferenciais",
         nav_privacy: "Privacidade",
-        badge_title: "FINANÇAS PESSOAIS DE ALTA PRECISÃO • 100% PRIVADO",
+        badge_title: "FINANÇAS PESSOAIS EM EUR • 100% PRIVADO & LOCAL-FIRST",
         hero_title_1: "O teu dinheiro,",
         hero_title_2: "sob controlo absoluto.",
         hero_desc: "Contas, orçamentos e cofres numa experiência de nível cirúrgico. Rápida, local-first, desenhada com cuidado milimétrico e sem anúncios invasivos.",
@@ -1404,34 +1556,37 @@
         trust_1: "100% Local-First",
         trust_2: "Zero Anúncios",
         trust_3: "Base Cifrada SQLite",
-        trust_4: "Multi-moeda 150+",
+        trust_4: "Precisão Decimal em EUR",
         float_left_title: "Registo em 1.2s",
         float_left_sub: "Sem esperas nem ecrãs lentos",
         float_right_title: "Privacidade Blindada",
         float_right_sub: "Dados cifrados no telemóvel",
         mock_sync: "Sincronizado",
-        mock_nw_title: "Património Líquido Total",
+        mock_nw_title: "Património Líquido",
         mock_inc_title: "Receitas este mês",
         mock_exp_title: "Despesas este mês",
-        mock_vault_name: "🎯 Cofre: Férias & Emergência",
+        mock_vault_name: "🎯 Cofre: Férias de Verão",
         mock_recent_tx: "Movimentos Recentes",
         mock_tx1_name: "Supermercado Semanal",
         mock_tx1_cat: "Conta Corrente • Alimentação",
         mock_tx2_name: "Vencimento Mensal",
         mock_tx2_cat: "Transferência • Trabalho",
+        nav_inicio: "● Início",
+        nav_mov: "Movimentos",
+        nav_plan: "Planeamento",
+        nav_contas: "Contas",
         bento_eyebrow: "ENGENHARIA DE DETALHE",
         bento_title: "Construída para quem leva o dinheiro a sério",
-        bento_sub: "Combinamos a profundidade analítica dos melhores sistemas contabilísticos com a velocidade de uma app nativa.",
+        bento_sub: "Unimos a profundidade analítica dos melhores sistemas contabilísticos com a velocidade de uma app móvel nativa.",
         bento_1_title: "Arquitetura Local-First. Zero latência.",
         bento_1_desc: "A Vetra grava primeiro no teu dispositivo em SQLite e só depois sincroniza em segundo plano. Não ficas refém de redes lentas ou do modo avião. O teu telemóvel responde instantaneamente a 120 FPS.",
-        bento_1_sync: "Leitura instantânea (0ms) • Sincronização segura via Supabase",
         bento_2_title: "Orçamentos & Cofres",
         bento_2_desc: "Orçamento por envelopes com rollover real. Isola objetivos de poupança em cofres protegidos para nunca gastares o dinheiro das férias sem querer.",
-        bento_3_title: "Mais de 150 Moedas ISO",
-        bento_3_desc: "Transferências cambiais com cálculo exato de ganho/perda cambial e histórico reavaliado na tua moeda base em tempo real.",
+        bento_3_title: "Cartões de Crédito & Prestações",
+        bento_3_desc: "Ciclos de faturação com data de fecho e vencimento. Compras em prestações com dívida futura devidamente separada do saldo atual em EUR.",
+        credit_cycle_hint: "Fecha a 28 deste mês",
         bento_4_title: "Privacidade Radical: Nem nós sabemos o que gastas",
         bento_4_desc: "Sem anúncios invasivos, sem venda de dados a empresas financeiras terceiras e sem recolha abusiva de telemetria. Os teus dados pertencem-te e podes exportar cópias integrais em CSV ou apagar tudo a qualquer momento.",
-        bento_4_tag: "Encriptação SQLite3MC no dispositivo • RGPD / GDPR 100% Conforme",
         compare_eyebrow: "TRANSPARÊNCIA TOTAL",
         compare_title: "Porque a Vetra é diferente",
         compare_sub: "Compara a filosofia da Vetra com as apps financeiras convencionais do mercado.",
@@ -1449,6 +1604,9 @@
         cmp_4_lbl: "Velocidade & Interface",
         cmp_4_vetra: "Moderna, fluida a 120 FPS nativo",
         cmp_4_others: "Interfaces antigas ou webviews pesadas",
+        cmp_5_lbl: "Moeda de Referência",
+        cmp_5_vetra: "Especializada em EUR com precisão decimal exata",
+        cmp_5_others: "Arredondamentos e conversões inconsistentes",
         manifesto_title: "O teu dinheiro é assunto estritamente teu.",
         manifesto_desc: "Criámos a Vetra porque estávamos fartos de aplicações cheias de publicidade a cartões de crédito e termos de serviço que vendem a tua vida a corretores de publicidade. Na Vetra, a segurança não é um extra: é a base de tudo.",
         manifesto_btn: "Ler a Política de Privacidade Completa →",
@@ -1461,7 +1619,7 @@
         nav_features: "Features",
         nav_compare: "Why Vetra",
         nav_privacy: "Privacy",
-        badge_title: "HIGH-PRECISION PERSONAL FINANCE • 100% PRIVATE",
+        badge_title: "PERSONAL FINANCE IN EUR • 100% PRIVATE & LOCAL-FIRST",
         hero_title_1: "Your money,",
         hero_title_2: "under absolute control.",
         hero_desc: "Accounts, budgets, and vaults in a surgical, ultra-fast experience. Local-first, crafted with millimeter precision, and zero intrusive ads.",
@@ -1470,7 +1628,7 @@
         trust_1: "100% Local-First",
         trust_2: "Zero Ads",
         trust_3: "Encrypted SQLite",
-        trust_4: "150+ Currencies",
+        trust_4: "Exact EUR Precision",
         float_left_title: "Logged in 1.2s",
         float_left_sub: "No loading spinners or lags",
         float_right_title: "Ironclad Privacy",
@@ -1479,25 +1637,28 @@
         mock_nw_title: "Total Net Worth",
         mock_inc_title: "Income this month",
         mock_exp_title: "Expenses this month",
-        mock_vault_name: "🎯 Vault: Vacation & Emergency",
+        mock_vault_name: "🎯 Vault: Summer Vacation",
         mock_recent_tx: "Recent Transactions",
         mock_tx1_name: "Weekly Groceries",
         mock_tx1_cat: "Checking Account • Food",
         mock_tx2_name: "Monthly Salary",
         mock_tx2_cat: "Wire Transfer • Career",
+        nav_inicio: "● Home",
+        nav_mov: "Transactions",
+        nav_plan: "Planning",
+        nav_contas: "Accounts",
         bento_eyebrow: "PRECISION ENGINEERING",
         bento_title: "Crafted for people who take money seriously",
         bento_sub: "We unite the analytical depth of double-entry financial software with the blistering speed of native mobile code.",
         bento_1_title: "Local-First Architecture. Zero latency.",
         bento_1_desc: "Vetra writes directly to your local SQLite database and syncs peacefully in the background. Never get blocked by poor cell reception or airplane mode. Responds at a fluid 120 FPS.",
-        bento_1_sync: "Instant reads (0ms) • Secure background sync via Supabase",
         bento_2_title: "Envelopes & Goal Vaults",
         bento_2_desc: "Envelope budgeting with authentic rollover. Lock money inside dedicated Vaults so you never accidentally spend your savings.",
-        bento_3_title: "Over 150 ISO Currencies",
-        bento_3_desc: "Forex transfers with real-time gain/loss calculation and continuous historical revaluation against your base currency.",
+        bento_3_title: "Credit Cards & Installment Cycles",
+        bento_3_desc: "Full billing cycles with statement closing and due dates. Purchases in installments with future debt cleanly separated from current cash balance in EUR.",
+        credit_cycle_hint: "Closes on the 28th of this month",
         bento_4_title: "Radical Privacy: Even we can't see your transactions",
         bento_4_desc: "Zero intrusive ads, zero financial broker partnerships, and zero invasive tracking. Your data is strictly yours. Export complete CSV backups or wipe your account anytime.",
-        bento_4_tag: "SQLite3MC on-device encryption • 100% GDPR Compliant",
         compare_eyebrow: "TOTAL TRANSPARENCY",
         compare_title: "Why Vetra stands apart",
         compare_sub: "Compare Vetra's craftsmanship against conventional budget apps.",
@@ -1515,6 +1676,9 @@
         cmp_4_lbl: "Speed & Fluidity",
         cmp_4_vetra: "Modern, native 120 FPS UI",
         cmp_4_others: "Dated 2014 designs or laggy webviews",
+        cmp_5_lbl: "Currency Precision",
+        cmp_5_vetra: "Specialized in EUR with exact accounting decimals",
+        cmp_5_others: "Inconsistent rounding errors",
         manifesto_title: "Your money is strictly your own business.",
         manifesto_desc: "We built Vetra because we were tired of apps cluttered with loan ads and terms of service that monetize your personal life. With Vetra, security isn't a feature: it's the foundation.",
         manifesto_btn: "Read Complete Privacy Policy →",
@@ -1527,7 +1691,7 @@
         nav_features: "Funciones",
         nav_compare: "Diferenciales",
         nav_privacy: "Privacidad",
-        badge_title: "FINANZAS PERSONALES DE ALTA PRECISIÓN • 100% PRIVADA",
+        badge_title: "FINANZAS PERSONALES EN EUR • 100% PRIVADA & LOCAL-FIRST",
         hero_title_1: "Tu dinero,",
         hero_title_2: "bajo control absoluto.",
         hero_desc: "Cuentas, presupuestos y bóvedas en una experiencia de nivel quirúrgico. Rápida, local-first, diseñada con precisión milimétrica y sin anuncios molestos.",
@@ -1536,34 +1700,37 @@
         trust_1: "100% Local-First",
         trust_2: "Cero Publicidad",
         trust_3: "Base Cifrada SQLite",
-        trust_4: "150+ Divisas",
+        trust_4: "Precisión Decimal en EUR",
         float_left_title: "Registro en 1.2s",
         float_left_sub: "Sin pantallas de carga ni demoras",
         float_right_title: "Privacidad Blindada",
         float_right_sub: "Datos cifrados en tu dispositivo",
         mock_sync: "Sincronizado",
-        mock_nw_title: "Patrimonio Neto Total",
+        mock_nw_title: "Patrimonio Neto",
         mock_inc_title: "Ingresos este mes",
         mock_exp_title: "Gastos este mes",
-        mock_vault_name: "🎯 Bóveda: Vacaciones y Ahorro",
+        mock_vault_name: "🎯 Bóveda: Vacaciones de Verano",
         mock_recent_tx: "Movimientos Recientes",
         mock_tx1_name: "Supermercado Semanal",
         mock_tx1_cat: "Cuenta Corriente • Alimentación",
         mock_tx2_name: "Nómina Mensual",
         mock_tx2_cat: "Transferencia • Empleo",
+        nav_inicio: "● Inicio",
+        nav_mov: "Movimientos",
+        nav_plan: "Planificación",
+        nav_contas: "Cuentas",
         bento_eyebrow: "INGENIERÍA DE DETALLE",
         bento_title: "Diseñada para quienes se toman el dinero en serio",
         bento_sub: "Unimos la profundidad analítica del software contable con la velocidad deslumbrante de una aplicación nativa.",
         bento_1_title: "Arquitectura Local-First. Cero latencia.",
         bento_1_desc: "Vetra escribe primero en tu base SQLite local y sincroniza plácidamente en segundo plano. Nunca dependes de coberturas débiles ni de modo avión. Fluidez nativa a 120 FPS.",
-        bento_1_sync: "Lectura instantánea (0ms) • Sincronización segura vía Supabase",
         bento_2_title: "Presupuestos y Bóvedas",
         bento_2_desc: "Presupuesto por sobres con traspaso acumulativo real. Aísla tus metas de ahorro en Bóvedas seguras para no gastarlas por error.",
-        bento_3_title: "Más de 150 Divisas ISO",
-        bento_3_desc: "Transferencias multimoneda con cálculo en tiempo real de pérdidas/ganancias cambiarias y revalorización en tu divisa base.",
+        bento_3_title: "Tarjetas de Crédito y Cuotas",
+        bento_3_desc: "Ciclos de facturación con fechas de corte y vencimiento. Compras a plazos con deuda futura separada limpiamente del saldo actual en EUR.",
+        credit_cycle_hint: "Corta el 28 de este mes",
         bento_4_title: "Privacidad Radical: Ni nosotros vemos tus compras",
         bento_4_desc: "Sin anuncios intrusivos, sin venta de datos a entidades financieras y sin rastreo publicitario. Tus datos son tuyos. Exporta copias CSV o elimina tu cuenta en cualquier momento.",
-        bento_4_tag: "Cifrado SQLite3MC en dispositivo • 100% Conforme RGPD / GDPR",
         compare_eyebrow: "TRANSPARENCIA TOTAL",
         compare_title: "Por qué Vetra es diferente",
         compare_sub: "Compara los principios de Vetra frente a las aplicaciones de finanzas convencionales.",
@@ -1581,10 +1748,13 @@
         cmp_4_lbl: "Velocidad e Interfaz",
         cmp_4_vetra: "Moderna, fluida a 120 FPS nativos",
         cmp_4_others: "Interfaces de 2014 o webviews lentas",
+        cmp_5_lbl: "Precisión de Divisa",
+        cmp_5_vetra: "Especializada en EUR con contabilidad exacta",
+        cmp_5_others: "Errores de redondeo y conversión",
         manifesto_title: "Tu dinero es asunto estrictamente tuyo.",
         manifesto_desc: "Creamos Vetra porque estábamos cansados de aplicaciones llenas de publicidad bancaria y cláusulas que monetizan tu vida diaria. En Vetra, la seguridad no es un extra: es el cimiento.",
         manifesto_btn: "Leer la Política de Privacidad Completa →",
-        footer_rights: "Todos los derechos reservados.",
+        footer_rights: "Todos os direitos reservados.",
         footer_home: "Inicio",
         footer_features: "Funciones",
         footer_privacy: "Política de Privacidad"
