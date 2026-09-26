@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070C0B" id="metaThemeColor">
   <title>Política de Privacidade — Vetra</title>
   <link rel="icon" type="image/png" href="assets/icon-192.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,12 +56,20 @@
       padding: 0;
       transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
     }
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+      margin: 0;
+      padding: 0;
+    }
     body {
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.68;
       -webkit-font-smoothing: antialiased;
+      margin: 0;
+      padding: 0;
     }
     .container {
       max-width: 860px;
@@ -69,10 +78,10 @@
     }
     header {
       position: sticky;
-      top: 16px;
+      top: 0;
       z-index: 100;
-      margin-top: 16px;
-      margin-bottom: 32px;
+      margin: 0 auto 32px auto;
+      padding: 14px 0 0 0;
     }
     .navbar {
       display: flex;
@@ -200,6 +209,113 @@
     }
     [data-theme="light"] .icon-moon {
       display: none;
+    }
+
+    /* ── VIEW TRANSITIONS (Circular theme propagation ripple from Projetos_evo) ──── */
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation: none;
+      mix-blend-mode: normal;
+    }
+
+    ::view-transition-old(root) {
+      z-index: 1;
+    }
+
+    ::view-transition-new(root) {
+      z-index: 99999;
+      animation: 700ms cubic-bezier(0.4, 0, 0.2, 1) both theme-propagation;
+    }
+
+    @keyframes theme-propagation {
+      from {
+        clip-path: circle(0px at var(--theme-x, 50%) var(--theme-y, 50%));
+      }
+      to {
+        clip-path: circle(var(--theme-r, 100vh) at var(--theme-x, 50%) var(--theme-y, 50%));
+      }
+    }
+
+    /* ── COSMIC SPARK EXPLOSION & SHOCKWAVE ───────────────────── */
+    .theme-switch::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: transparent;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 10;
+    }
+
+    .theme-switch.btn-blast::before {
+      animation: spark-burst 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .theme-switch::after {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: 999px;
+      border: 2px solid transparent;
+      pointer-events: none;
+      opacity: 0;
+      transform: scale(0.8);
+      z-index: 5;
+    }
+
+    .theme-switch.btn-blast::after {
+      animation: shockwave-ring 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes spark-burst {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.6) rotate(0deg);
+        box-shadow: 
+          0 0 0 0px #ffb703,
+          0 0 0 0px #2BD48D,
+          0 0 0 0px #ffb703,
+          0 0 0 0px #2BD48D,
+          0 0 0 0px #ffb703,
+          0 0 0 0px #2BD48D,
+          0 0 0 0px #ffb703,
+          0 0 0 0px #2BD48D;
+      }
+      35% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.35) rotate(140deg);
+        box-shadow: 
+          14px -14px 0 1px #ffb703,
+          18px 4px 0 1px #2BD48D,
+          -12px -16px 0 1px #ffb703,
+          -16px 10px 0 1px #2BD48D,
+          5px 18px 0 1px #ffb703,
+          -7px -18px 0 1px #2BD48D,
+          -14px -9px 0 1px #ffb703,
+          16px -16px 0 1px #2BD48D;
+      }
+    }
+
+    @keyframes shockwave-ring {
+      0% {
+        opacity: 0.9;
+        transform: scale(0.75);
+        border-color: var(--primary);
+        box-shadow: 0 0 8px var(--primary);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.95);
+        border-color: transparent;
+        box-shadow: 0 0 0px transparent;
+      }
     }
 
     .card {
@@ -527,9 +643,14 @@
     const themeToggle = document.getElementById('themeToggle');
     const root = document.documentElement;
 
+    const metaThemeColor = document.getElementById('metaThemeColor');
+
     function setTheme(theme) {
       root.setAttribute('data-theme', theme);
       localStorage.setItem('vetra_theme', theme);
+      if (metaThemeColor) {
+        metaThemeColor.setAttribute('content', theme === 'light' ? '#F7FAF8' : '#070C0B');
+      }
     }
 
     const savedTheme = localStorage.getItem('vetra_theme') || 
@@ -537,8 +658,34 @@
     setTheme(savedTheme);
 
     themeToggle.addEventListener('click', () => {
-      const current = root.getAttribute('data-theme');
-      setTheme(current === 'dark' ? 'light' : 'dark');
+      const current = root.getAttribute('data-theme') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+
+      // Trigger the cosmic particle explosion and shockwave
+      themeToggle.classList.remove('btn-blast');
+      void themeToggle.offsetWidth; // Force layout reflow to restart CSS keyframe animation
+      themeToggle.classList.add('btn-blast');
+
+      if (document.startViewTransition && themeToggle) {
+        const rect = themeToggle.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+        const endRadius = Math.hypot(
+          Math.max(x, window.innerWidth - x),
+          Math.max(y, window.innerHeight - y)
+        );
+
+        root.style.setProperty('--theme-x', `${x}px`);
+        root.style.setProperty('--theme-y', `${y}px`);
+        root.style.setProperty('--theme-r', `${endRadius}px`);
+
+        document.startViewTransition(() => {
+          setTheme(next);
+          void root.offsetHeight;
+        });
+      } else {
+        setTheme(next);
+      }
     });
 
     // Language Logic
