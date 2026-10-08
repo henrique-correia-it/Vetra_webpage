@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070C0B" id="metaThemeColor">
+  <title>Política de Privacidade — Vetra</title>
+  <link rel="icon" type="image/png" href="assets/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root[data-theme="dark"] {
+      --bg: #070C0B;
+      --bg-surface: #101A17;
+      --bg-card: #14221E;
+      --text: #F1F5F9;
+      --text-muted: #8E9F99;
+      --primary: #28C88B;
+      --primary-light: #56E0AC;
+      --primary-dark: #087957;
+      --primary-glow: rgba(40, 200, 139, 0.18);
+      --border: #1E3029;
+      --nav-bg: rgba(16, 26, 23, 0.82);
+      --card-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+      --badge-bg: rgba(40, 200, 139, 0.12);
+      --badge-border: rgba(40, 200, 139, 0.28);
+      --toggle-bg: #1B2924;
+      --toggle-border: #2D423B;
+      --toggle-thumb: #28C88B;
+      --toggle-icon: #042A1D;
+    }
+    :root[data-theme="light"] {
+      --bg: #F7F9F8;
+      --bg-surface: #FFFFFF;
+      --bg-card: #FFFFFF;
+      --text: #0F172A;
+      --text-muted: #64748B;
+      --primary: #0D8A5B;
+      --primary-light: #28C88B;
+      --primary-dark: #07513C;
+      --primary-glow: rgba(13, 138, 91, 0.12);
+      --border: #E2E8F0;
+      --nav-bg: rgba(255, 255, 255, 0.88);
+      --card-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      --badge-bg: rgba(13, 138, 91, 0.08);
+      --badge-border: rgba(13, 138, 91, 0.22);
+      --toggle-bg: #E2E8F0;
+      --toggle-border: #CBD5E1;
+      --toggle-thumb: #F59E0B;
+      --toggle-icon: #FFFFFF;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    }
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.68;
+      -webkit-font-smoothing: antialiased;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      margin: 0 auto 32px auto;
+      padding: 14px 0 0 0;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 18px;
+      box-shadow: var(--card-shadow);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 20px;
+    }
+    .brand img {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+    }
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 999px;
+    }
+    .nav-link:hover {
+      color: var(--primary);
+    }
+    .select-lang-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .select-lang {
+      appearance: none;
+      -webkit-appearance: none;
+      background: var(--bg-surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 6px 26px 6px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+    }
+    .select-lang:hover {
+      border-color: var(--primary);
+    }
+    .select-arrow {
+      position: absolute;
+      right: 9px;
+      pointer-events: none;
+      width: 10px;
+      height: 10px;
+      fill: var(--text-muted);
+    }
+
+    /* Tactile Theme Switcher */
+    .theme-switch {
+      position: relative;
+      width: 58px;
+      height: 30px;
+      background: var(--toggle-bg);
+      border: 1px solid var(--toggle-border);
+      border-radius: 999px;
+      padding: 2px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      outline: none;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .theme-switch:hover {
+      border-color: var(--primary);
+    }
+    .theme-switch .switch-track-icon {
+      font-size: 11px;
+      width: 24px;
+      text-align: center;
+      user-select: none;
+      line-height: 1;
+    }
+    .theme-switch .switch-thumb {
+      position: absolute;
+      top: 2px;
+      left: 3px;
+      width: 24px;
+      height: 24px;
+      background: var(--toggle-thumb);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.28s ease;
+    }
+    .theme-switch .switch-thumb svg {
+      width: 13px;
+      height: 13px;
+      fill: var(--toggle-icon);
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    [data-theme="light"] .theme-switch .switch-thumb {
+      transform: translateX(27px);
+    }
+    [data-theme="dark"] .icon-sun {
+      display: none;
+    }
+    [data-theme="light"] .icon-moon {
+      display: none;
+    }
+
+    /* ── VIEW TRANSITIONS (Circular theme propagation ripple from Projetos_evo) ──── */
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation: none;
+      mix-blend-mode: normal;
+    }
+
+    ::view-transition-old(root) {
+      z-index: 1;
+    }
+
+    ::view-transition-new(root) {
+      z-index: 99999;
+      animation: 700ms cubic-bezier(0.4, 0, 0.2, 1) both theme-propagation;
+    }
+
+    @keyframes theme-propagation {
+      from {
+        clip-path: circle(0px at var(--theme-x, 50%) var(--theme-y, 50%));
+      }
+      to {
+        clip-path: circle(var(--theme-r, 100vh) at var(--theme-x, 50%) var(--theme-y, 50%));
+      }
+    }
+
+    /* ── COSMIC SPARK EXPLOSION & SHOCKWAVE ───────────────────── */
+    .theme-switch::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: transparent;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 10;
+    }
+
+    .theme-switch.btn-blast::before {
+      animation: spark-burst 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .theme-switch::after {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: 999px;
+      border: 2px solid transparent;
+      pointer-events: none;
+      opacity: 0;
+      transform: scale(0.8);
+      z-index: 5;
+    }
+
+    .theme-switch.btn-blast::after {
+      animation: shockwave-ring 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes spark-burst {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.6) rotate(0deg);
+        box-shadow: 
+          0 0 0 0px #ffb703,
+          0 0 0 0px #2BD48D,
+          0 0 0 0px #ffb703,
+          0 0 0 0px #2BD48D,
+          0 0 0 0px #ffb703,
+          0 0 0 0px #2BD48D,
+          0 0 0 0px #ffb703,
+          0 0 0 0px #2BD48D;
+      }
+      35% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.35) rotate(140deg);
+        box-shadow: 
+          14px -14px 0 1px #ffb703,
+          18px 4px 0 1px #2BD48D,
+          -12px -16px 0 1px #ffb703,
+          -16px 10px 0 1px #2BD48D,
+          5px 18px 0 1px #ffb703,
+          -7px -18px 0 1px #2BD48D,
+          -14px -9px 0 1px #ffb703,
+          16px -16px 0 1px #2BD48D;
+      }
+    }
+
+    @keyframes shockwave-ring {
+      0% {
+        opacity: 0.9;
+        transform: scale(0.75);
+        border-color: var(--primary);
+        box-shadow: 0 0 8px var(--primary);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.95);
+        border-color: transparent;
+        box-shadow: 0 0 0px transparent;
+      }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 44px 36px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 48px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--badge-bg);
+      color: var(--primary);
+      border: 1px solid var(--badge-border);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      margin-bottom: 8px;
+    }
+    .date {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-top: 36px;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+    p, li {
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+    strong {
+      color: var(--text);
+    }
+    ul {
+      padding-left: 22px;
+      margin: 12px 0 20px 0;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    .callout {
+      background: var(--badge-bg);
+      border: 1px solid var(--badge-border);
+      border-radius: 14px;
+      padding: 18px 22px;
+      margin: 24px 0;
+    }
+    .callout p {
+      color: var(--text);
+      font-size: 14px;
+      margin: 0;
+    }
+    .callout p + p {
+      margin-top: 10px;
+    }
+    .card a {
+      color: var(--primary);
+      font-weight: 700;
+      text-underline-offset: 3px;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0 60px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    footer a:hover {
+      color: var(--primary);
+    }
+    @media (max-width: 640px) {
+      .card { padding: 26px 20px; }
+      h1 { font-size: 26px; }
+      .navbar { padding: 8px 14px; }
+      .brand span { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <nav class="navbar">
+        <a href="index.html" class="brand">
+          <img src="assets/icon-192.png" alt="Vetra Logo">
+          <span>Vetra</span>
+        </a>
+        <div class="nav-controls">
+          <a href="index.html" class="nav-link" data-i18n="nav_home">&larr; Início</a>
+          
+          <div class="select-lang-wrap">
+            <select id="langSelect" class="select-lang" aria-label="Idioma">
+              <option value="pt">🇵🇹 PT</option>
+              <option value="en">🇬🇧 EN</option>
+              <option value="es">🇪🇸 ES</option>
+            </select>
+            <svg class="select-arrow" viewBox="0 0 10 6">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+
+          <!-- Tactile Theme Toggle Pill -->
+          <button id="themeToggle" class="theme-switch" aria-label="Alternar tema" title="Alternar tema">
+            <span class="switch-track-icon">🌙</span>
+            <span class="switch-track-icon">☀️</span>
+            <span class="switch-thumb">
+              <!-- Moon Icon -->
+              <svg class="icon-moon" viewBox="0 0 24 24">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+              <!-- Sun Icon -->
+              <svg class="icon-sun" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2"/>
+                <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2"/>
+                <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2"/>
+                <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="card" id="privacyContent">
+      <!-- Injected via JS based on selected language -->
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Vetra &bull; <span data-i18n="footer_rights">Todos os direitos reservados.</span></p>
+      <p style="margin-top: 8px;">
+        <a href="index.html" data-i18n="footer_home">Início</a> &bull;
+        <a href="privacy.html" data-i18n="footer_privacy">Política de Privacidade</a>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    const content = {
+      pt: {
+        nav_home: "← Início",
+        footer_rights: "Todos os direitos reservados.",
+        footer_home: "Início",
+        footer_privacy: "Política de Privacidade",
+        html: `
+          <div class="badge">🔒 CONFORMIDADE & PRIVACIDADE</div>
+          <h1>Política de Privacidade da Vetra</h1>
+          <div class="date">Última atualização: 2 de outubro de 2026</div>
+
+          <p>A <strong>Vetra</strong> é uma aplicação de gestão financeira pessoal concebida sob o princípio da soberania dos dados: <strong>as tuas finanças pertencem-te exclusivamente a ti</strong>. Esta Política de Privacidade explica de forma transparente como as tuas informações são tratadas e protegidas, em total conformidade com as diretrizes da Google Play e o Regulamento Geral sobre a Proteção de Dados (RGPD).</p>
+
+          <div class="callout">
+            <p><strong>Resumo essencial:</strong> A Vetra nunca vende dados, não apresenta anúncios, não partilha informações com corretores de dados e encripta todas as informações financeiras com cifra avançada (SQLCipher AES-256 no dispositivo e HTTPS/TLS em trânsito).</p>
+            <p>Sem acesso à app? <a href="mailto:vetra.app.support@gmail.com?subject=Vetra%20account%20deletion">Pedir eliminação da conta por email</a>.</p>
+          </div>
+
+          <h2>1. Dados Recolhidos e Finalidade</h2>
+          <p>Apenas recolhemos os dados estritamente necessários para o funcionamento das funcionalidades da aplicação:</p>
+          <ul>
+            <li><strong>Dados de Autenticação (Conta e Autenticação com Google):</strong> O endereço de e-mail e o identificador de conta são recolhidos com o único propósito de autenticação, recuperação de conta e segurança do início de sessão. Caso optes por utilizar a autenticação ou associação com a Google, os dados básicos de perfil autorizados (endereço de e-mail, nome, identificador de conta e, quando fornecido pelo Google, endereço da imagem de perfil) são processados pela infraestrutura de autenticação do Supabase. A Vetra <strong>não acede, não lê nem solicita permissões</strong> para o Gmail, Google Drive, contactos ou quaisquer outros serviços da tua conta Google.</li>
+            <li><strong>Informações Financeiras Inseridas Manualmente:</strong> Nomes de contas/carteiras, saldos, registos de transações (receitas, despesas, transferências), categorias, orçamentos e metas de poupança introduzidos na app. Estes dados servem exclusivamente para apresentar os teus próprios relatórios e resumos patrimoniais.</li>
+            <li><strong>Autenticação Biométrica (Impressão Digital / Face ID):</strong> Se ativares o bloqueio biométrico, a validação é processada a 100% pelo hardware seguro do sistema operativo do telemóvel (Android BiometricPrompt). A Vetra <strong>não tem acesso, não recolhe nem armazena</strong> quaisquer dados biométricos.</li>
+          </ul>
+
+          <h2>2. Encriptação e Segurança</h2>
+          <p>A segurança dos dados é garantida através de múltiplas camadas criptográficas:</p>
+          <ul>
+            <li><strong>Encriptação Local no Dispositivo:</strong> A base de dados local onde os teus registos são guardados está protegida pelo standard <strong>SQLCipher (AES-256)</strong> com chaves derivadas de forma segura no próprio dispositivo.</li>
+            <li><strong>Encriptação em Trânsito:</strong> Toda a sincronização com os servidores é realizada sob protocolos seguros <strong>HTTPS / TLS 1.3</strong>, impedindo qualquer interceção de dados na rede.</li>
+            <li><strong>Isolamento Rigoroso no Servidor:</strong> A infraestrutura em nuvem (suportada por Supabase/PostgreSQL) utiliza regras estritas de <strong>Row Level Security (RLS)</strong>. Isto significa que a nível do próprio motor da base de dados, cada utilizador apenas consegue aceder aos seus próprios registos.</li>
+          </ul>
+
+          <h2>3. Sem Partilha, Sem Anúncios e Sem Venda de Dados</h2>
+          <ul>
+            <li><strong>Zero Venda ou Aluguer de Dados:</strong> A Vetra não vende, não comercializa e não disponibiliza dados a terceiros sob nenhuma circunstância.</li>
+            <li><strong>Zero Redes de Publicidade:</strong> Não integramos redes de anúncios (AdMob, Meta Ads ou outras).</li>
+            <li><strong>Zero Ferramentas de Rastreio Comercial:</strong> Não incluímos SDKs invasivos de rastreio de terceiros para perfis de consumo.</li>
+          </ul>
+
+          <h2>4. Controlo e Eliminação de Dados (Direito ao Esquecimento)</h2>
+          <p>O utilizador detém controlo total sobre as suas informações:</p>
+          <ul>
+            <li><strong>Exportação:</strong> Podes exportar os teus dados diretamente a partir do ecrã de Definições da aplicação.</li>
+            <li><strong>Eliminação Imediata e Permanente:</strong> A aplicação disponibiliza a opção direta de <strong>"Eliminar Conta"</strong> nas Definições. Ao acionar esta funcionalidade, todos os teus dados pessoais, registos financeiros, orçamentos e credenciais são eliminados de forma imediata, definitiva e irreversível tanto do servidor como da base de dados local.</li>
+          </ul>
+          <p>Se não conseguires aceder à app, pede a eliminação da conta e dos dados associados através de <a href="mailto:vetra.app.support@gmail.com?subject=Vetra%20account%20deletion">vetra.app.support@gmail.com</a>. Indica o email associado à conta; poderemos confirmar a tua identidade antes de concluir o pedido.</p>
+
+          <h2>5. Contacto do Responsável</h2>
+          <p>Se tiveres dúvidas sobre esta Política de Privacidade ou quiseres exercer os teus direitos de proteção de dados, contacta <a href="mailto:vetra.app.support@gmail.com">vetra.app.support@gmail.com</a>.</p>
+        `
+      },
+      en: {
+        nav_home: "← Home",
+        footer_rights: "All rights reserved.",
+        footer_home: "Home",
+        footer_privacy: "Privacy Policy",
+        html: `
+          <div class="badge">🔒 COMPLIANCE & PRIVACY</div>
+          <h1>Privacy Policy for Vetra</h1>
+          <div class="date">Last updated: October 2, 2026</div>
+
+          <p><strong>Vetra</strong> is a personal financial management application built on the principle of complete data sovereignty: <strong>your finances belong exclusively to you</strong>. This Privacy Policy transparently outlines how your information is handled and protected in full accordance with Google Play Developer policies and the General Data Protection Regulation (GDPR).</p>
+
+          <div class="callout">
+            <p><strong>Essential Summary:</strong> Vetra never sells user data, serves no ads, shares no data with data brokers, and encrypts all financial information with bank-grade standards (SQLCipher AES-256 on device and HTTPS/TLS in transit).</p>
+            <p>Can't access the app? <a href="mailto:vetra.app.support@gmail.com?subject=Vetra%20account%20deletion">Request account deletion by email</a>.</p>
+          </div>
+
+          <h2>1. Collected Data & Purpose</h2>
+          <p>We only collect data strictly necessary to provide the application's core functionality:</p>
+          <ul>
+            <li><strong>Authentication Data (Account & Google Sign-In):</strong> Your email address and account identifier are collected solely for authentication, account recovery, and sign-in verification. If you choose to sign in or link your account with Google, basic authorized profile data (email address, display name, account identifier, and, when provided by Google, profile picture URL) is processed via Supabase Authentication. Vetra <strong>does not access, read, or request permissions</strong> for Gmail, Google Drive, contacts, or any other Google account services.</li>
+            <li><strong>User-Entered Financial Information:</strong> Account and wallet names, balances, transaction logs (income, expenses, transfers), categories, budgets, and savings goals you input. This data is exclusively processed to render your personal charts, reports, and net worth summaries.</li>
+            <li><strong>Biometric Authentication (Fingerprint / Face ID):</strong> If you enable biometric app lock, verification is handled 100% locally by the operating system's secure hardware (Android BiometricPrompt). Vetra <strong>never accesses, collects, or stores</strong> any biometric data.</li>
+          </ul>
+
+          <h2>2. Encryption & Security</h2>
+          <p>Your data security is enforced through multiple cryptographic safeguards:</p>
+          <ul>
+            <li><strong>On-Device Local Encryption:</strong> The local database where your records reside is secured with <strong>SQLCipher (AES-256)</strong> using keys safely derived on the device.</li>
+            <li><strong>Encryption in Transit:</strong> All cloud synchronization is transmitted over secure <strong>HTTPS / TLS 1.3</strong> protocols, preventing network interception.</li>
+            <li><strong>Server-Level Isolation:</strong> Cloud infrastructure (powered by Supabase/PostgreSQL) enforces strict <strong>Row Level Security (RLS)</strong>. At the database engine level, each user can only read and write their own rows.</li>
+          </ul>
+
+          <h2>3. No Data Selling, No Ads & No Tracking</h2>
+          <ul>
+            <li><strong>Zero Data Selling:</strong> Vetra does not sell, rent, or monetize your personal or financial data under any circumstance.</li>
+            <li><strong>Zero Ad Networks:</strong> We do not integrate advertising SDKs (AdMob, Meta Ads, or others).</li>
+            <li><strong>Zero Commercial Trackers:</strong> We do not embed invasive third-party tracking libraries to build consumer profiles.</li>
+          </ul>
+
+          <h2>4. Data Control & Deletion (Right to Erasure)</h2>
+          <p>Users maintain absolute sovereignty over their data:</p>
+          <ul>
+            <li><strong>Export:</strong> You can export your data at any time directly through the app's Settings screen.</li>
+            <li><strong>Immediate Permanent Deletion:</strong> Vetra includes an explicit <strong>"Delete Account"</strong> action in Settings. Triggering this permanently and irreversibly erases all personal details, financial movements, budgets, and credentials from both cloud servers and local storage.</li>
+          </ul>
+          <p>If you can't access the app, request deletion of your account and associated data at <a href="mailto:vetra.app.support@gmail.com?subject=Vetra%20account%20deletion">vetra.app.support@gmail.com</a>. Include the email address linked to your account; we may verify your identity before completing the request.</p>
+
+          <h2>5. Contact & Support</h2>
+          <p>For questions about this Privacy Policy or to exercise your data protection rights, contact <a href="mailto:vetra.app.support@gmail.com">vetra.app.support@gmail.com</a>.</p>
+        `
+      },
+      es: {
+        nav_home: "← Inicio",
+        footer_rights: "Todos los derechos reservados.",
+        footer_home: "Inicio",
+        footer_privacy: "Política de Privacidad",
+        html: `
+          <div class="badge">🔒 CONFORMIDAD Y PRIVACIDAD</div>
+          <h1>Política de Privacidad de Vetra</h1>
+          <div class="date">Última actualización: 2 de octubre de 2026</div>
+
+          <p><strong>Vetra</strong> es una aplicación de gestión financiera personal diseñada bajo el principio de soberanía de los datos: <strong>tus finanzas te pertenecen exclusivamente a ti</strong>. Esta Política de Privacidad explica de forma transparente cómo se tratan y protegen tus datos, en total conformidad con las directrices de Google Play y el RGPD.</p>
+
+          <div class="callout">
+            <p><strong>Resumen esencial:</strong> Vetra nunca vende datos, no muestra anuncios, no comparte información con intermediarios y cifra todos los datos financieros con estándares de máxima seguridad (SQLCipher AES-256 en el dispositivo y HTTPS/TLS en tránsito).</p>
+            <p>¿No puedes acceder a la app? <a href="mailto:vetra.app.support@gmail.com?subject=Vetra%20account%20deletion">Solicitar la eliminación de la cuenta por correo</a>.</p>
+          </div>
+
+          <h2>1. Datos Recopilados y Finalidad</h2>
+          <p>Solo recopilamos los datos estrictamente necesarios para el funcionamiento de la aplicación:</p>
+          <ul>
+            <li><strong>Datos de Autenticación (Cuenta e Inicio de Sesión con Google):</strong> Tu dirección de correo electrónico y el identificador de cuenta se recopilan con el único propósito de autenticación, recuperación de cuenta y seguridad en el inicio de sesión. Si eliges iniciar sesión o vincular tu cuenta con Google, los datos básicos de perfil autorizados (correo electrónico, nombre, identificador de cuenta y, cuando Google lo proporciona, dirección de la imagen de perfil) son procesados por la infraestructura de autenticación de Supabase. Vetra <strong>no tiene acceso, no lee ni solicita permisos</strong> para Gmail, Google Drive, contactos ni ningún otro servicio de tu cuenta de Google.</li>
+            <li><strong>Información Financiera Introducida Manualmente:</strong> Nombres de cuentas/carteras, saldos, registros de transacciones (ingresos, gastos, transferencias), categorías, presupuestos y metas de ahorro introducidos en la app. Estos datos se utilizan exclusivamente para mostrar tus propios informes y cálculos patrimoniales.</li>
+            <li><strong>Autenticación Biométrica (Huella / Face ID):</strong> Si activas el bloqueo biométrico, la validación se procesa al 100% en el hardware seguro del sistema operativo (Android BiometricPrompt). Vetra <strong>no tiene acceso, no recopila ni almacena</strong> ningún dato biométrico.</li>
+          </ul>
+
+          <h2>2. Cifrado y Seguridad</h2>
+          <p>La seguridad de los datos está garantizada mediante múltiples capas criptográficas:</p>
+          <ul>
+            <li><strong>Cifrado Local en el Dispositivo:</strong> La base de datos local donde residen tus registros está protegida por el estándar <strong>SQLCipher (AES-256)</strong> con claves derivadas de forma segura en el propio dispositivo.</li>
+            <li><strong>Cifrado en Tránsito:</strong> Toda la sincronización con los servidores se efectúa bajo protocolos seguros <strong>HTTPS / TLS 1.3</strong>.</li>
+            <li><strong>Aislamiento Estricto en el Servidor:</strong> La infraestructura en la nube (respaldada por Supabase/PostgreSQL) aplica reglas estrictas de <strong>Row Level Security (RLS)</strong>. Cada usuario solo puede acceder a sus propios registros.</li>
+          </ul>
+
+          <h2>3. Sin Venta de Datos, Sin Anuncios y Sin Rastreadores</h2>
+          <ul>
+            <li><strong>Cero Venta o Alquiler de Datos:</strong> Vetra no vende, comercializa ni cede datos a terceros bajo ninguna circunstancia.</li>
+            <li><strong>Cero Redes Publicitarias:</strong> No integramos redes de anuncios (AdMob, Meta Ads u otras).</li>
+            <li><strong>Cero Rastreo Comercial:</strong> No incluimos herramientas invasivas de rastreo de terceros.</li>
+          </ul>
+
+          <h2>4. Control y Eliminación de Datos (Derecho al Olvido)</h2>
+          <p>El usuario mantiene control absoluto sobre sus datos:</p>
+          <ul>
+            <li><strong>Exportación:</strong> Puedes exportar tus datos en cualquier momento desde la pantalla de Ajustes.</li>
+            <li><strong>Eliminación Inmediata y Permanente:</strong> La aplicación incluye la opción directa de <strong>"Eliminar Cuenta"</strong>. Al activarla, todos tus datos personales, movimientos financieros y credenciales se eliminan de forma inmediata e irreversible tanto de la nube como de la base de datos local.</li>
+          </ul>
+          <p>Si no puedes acceder a la app, solicita la eliminación de tu cuenta y los datos asociados escribiendo a <a href="mailto:vetra.app.support@gmail.com?subject=Vetra%20account%20deletion">vetra.app.support@gmail.com</a>. Indica el correo asociado a la cuenta; podremos verificar tu identidad antes de completar la solicitud.</p>
+
+          <h2>5. Contacto</h2>
+          <p>Para consultas sobre esta Política de Privacidad o para ejercer tus derechos de protección de datos, escribe a <a href="mailto:vetra.app.support@gmail.com">vetra.app.support@gmail.com</a>.</p>
+        `
+      }
+    };
+
+    // Theme Switch Logic
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+
+    const metaThemeColor = document.getElementById('metaThemeColor');
+
+    function setTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      localStorage.setItem('vetra_theme', theme);
+      if (metaThemeColor) {
+        metaThemeColor.setAttribute('content', theme === 'light' ? '#F7FAF8' : '#070C0B');
+      }
+    }
+
+    const savedTheme = localStorage.getItem('vetra_theme') || 
+      (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    setTheme(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+
+      // Trigger the cosmic particle explosion and shockwave
+      themeToggle.classList.remove('btn-blast');
+      void themeToggle.offsetWidth; // Force layout reflow to restart CSS keyframe animation
+      themeToggle.classList.add('btn-blast');
+
+      if (document.startViewTransition && themeToggle) {
+        const rect = themeToggle.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+        const endRadius = Math.hypot(
+          Math.max(x, window.innerWidth - x),
+          Math.max(y, window.innerHeight - y)
+        );
+
+        root.style.setProperty('--theme-x', `${x}px`);
+        root.style.setProperty('--theme-y', `${y}px`);
+        root.style.setProperty('--theme-r', `${endRadius}px`);
+
+        document.startViewTransition(() => {
+          setTheme(next);
+          void root.offsetHeight;
+        });
+      } else {
+        setTheme(next);
+      }
+    });
+
+    // Language Logic
+    const langSelect = document.getElementById('langSelect');
+    const privacyContent = document.getElementById('privacyContent');
+
+    function setLanguage(lang) {
+      if (!content[lang]) return;
+      privacyContent.innerHTML = content[lang].html;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (content[lang][key]) {
+          el.textContent = content[lang][key];
+        }
+      });
+      langSelect.value = lang;
+      localStorage.setItem('vetra_lang', lang);
+      document.documentElement.lang = lang;
+    }
+
+    const savedLang = localStorage.getItem('vetra_lang') || 'pt';
+    setLanguage(savedLang);
+
+    langSelect.addEventListener('change', (e) => {
+      setLanguage(e.target.value);
+    });
+  </script>
+</body>
+</html>

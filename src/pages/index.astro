@@ -1,0 +1,6 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { getCopy } from '../content/copy';
+const copy = getCopy('en');
+---
+<SiteLayout locale="en"><main><h1>{copy.hero.title}</h1><p>{copy.hero.text}</p></main></SiteLayout>
