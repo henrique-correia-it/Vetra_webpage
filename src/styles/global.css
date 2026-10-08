@@ -7,7 +7,9 @@ html {
   scroll-padding-top: 100px;
 }
 body {
+  --site-header-height: 85px;
   margin: 0;
+  padding-top: var(--site-header-height);
   background: var(--paper);
   color: var(--ink);
   font-family: Lato, 'Segoe UI', 'Microsoft YaHei', sans-serif;
@@ -237,18 +239,23 @@ select:focus-visible {
   transform: none;
 }
 .site-header {
-  position: sticky;
+  /* Fixed positioning also stays stable in Chrome's mobile transition snapshots
+     when its address bar expands after scrolling. The body reserves its space. */
+  position: fixed;
   top: 0;
+  inset-inline: 0;
+  height: var(--site-header-height);
   background: var(--paper);
   z-index: 20;
   border-bottom: 1px solid var(--line);
-  view-transition-name: site-header;
+  /* Include the header in the page's single circular theme reveal. */
+  view-transition-name: none;
 }
 .header-inner {
   display: flex;
   align-items: center;
   gap: 32px;
-  min-height: 84px;
+  min-height: calc(var(--site-header-height) - 1px);
 }
 .brand {
   display: flex;
@@ -349,30 +356,6 @@ select:focus-visible {
 }
 .theme-wave::after {
   animation: shockwave-ring 950ms cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-::view-transition-group(site-header) {
-  animation: none;
-  top: 0;
-  left: 0;
-  transform: none;
-  z-index: 100;
-}
-::view-transition-image-pair(site-header) {
-  isolation: isolate;
-}
-/* Keep the old header underneath the new snapshot so mobile repaints never
-   expose a gap. Neither header participates in the page's circular mask. */
-::view-transition-old(site-header),
-::view-transition-new(site-header) {
-  animation: none;
-  opacity: 1;
-  mix-blend-mode: normal;
-}
-::view-transition-old(site-header) {
-  z-index: 1;
-}
-::view-transition-new(site-header) {
-  z-index: 2;
 }
 ::view-transition-group(root) {
   animation: none;
@@ -948,11 +931,13 @@ select:focus-visible {
   }
 }
 @media (max-width: 760px) {
+  body {
+    --site-header-height: 65px;
+  }
   .wrap {
     width: calc(100% - 40px);
   }
   .header-inner {
-    min-height: 64px;
     justify-content: space-between;
     gap: 14px;
     padding-block: 10px;
