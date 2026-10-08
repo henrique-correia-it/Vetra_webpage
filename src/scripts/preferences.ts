@@ -144,7 +144,7 @@ export function initPreferences(): void {
     if (reducedMotion.matches || !('startViewTransition' in document)) {
       button.classList.add('theme-wave');
       apply();
-      setTimeout(() => button.classList.remove('theme-wave'), 750);
+      setTimeout(() => button.classList.remove('theme-wave'), 950);
       return;
     }
     const box = button.getBoundingClientRect();
@@ -167,7 +167,7 @@ export function initPreferences(): void {
         ::view-transition-new(root) {
           -webkit-mask: ${svgMaskCss} 0 0 / 0 no-repeat;
           mask: ${svgMaskCss} 0 0 / 0 no-repeat;
-          animation: theme-shockwave-reveal 750ms cubic-bezier(0.25, 1, 0.4, 1) both;
+          animation: theme-shockwave-reveal 950ms cubic-bezier(0.25, 1, 0.4, 1) both;
         }
         @keyframes theme-shockwave-reveal {
           from {
