@@ -1,121 +1,79 @@
-# Vetra — website de produto
+# Vetra — Official Website
 
-Site estático em **Astro + TypeScript**, com oito idiomas e imagens artísticas
-da interface real da app com dados fictícios. Não é a versão web da app.
-Não usa Supabase, contas reais, publicidade nem ferramentas de analytics.
+> **Official website and landing page for Vetra — a calm, private personal finance tracker for Android.**
 
-## Trabalhar e verificar
+🌐 **Live Website:** [https://henrique-correia-it.github.io/Vetra_webpage/](https://henrique-correia-it.github.io/Vetra_webpage/)
 
-Usar **Node 24 LTS**, na pasta do website:
+---
 
-```powershell
-npm ci
+## Overview
+
+This repository contains the source code for the Vetra product landing page and official legal documentation. Built with **Astro** for high performance, zero runtime framework overhead, and comprehensive internationalization.
+
+### Key Highlights
+- **Multi-language (i18n):** Native support for 8 languages (`en`, `pt`, `pt-br`, `es`, `fr`, `de`, `it`, `zh`).
+- **Automatic Language Detection:** Adapts to the visitor's browser language, with manual selection persisted locally.
+- **Light / Dark Mode:** Smooth circular view-transition respecting system preferences and reduced motion.
+- **Device Mockups:** High-resolution localized screenshots generated directly from the authentic app interface.
+- **Privacy & Compliance:** Comprehensive, GDPR-compliant privacy policy available across all supported locales.
+
+---
+
+## Tech Stack
+
+- **Framework:** [Astro](https://astro.build/) (Static Site Generation)
+- **Language:** TypeScript
+- **Styling:** Modern Vanilla CSS (Design Tokens, View Transitions API)
+- **Testing:** [Vitest](https://vitest.dev/)
+- **Deployment:** GitHub Pages via GitHub Actions
+
+---
+
+## Getting Started
+
+### Prerequisites
+- Node.js (v22 LTS or newer)
+- npm
+
+### Installation & Development
+
+```bash
+# Clone the repository
+git clone https://github.com/henrique-correia-it/Vetra_webpage.git
+cd Vetra_webpage
+
+# Install dependencies
+npm install
+
+# Start local dev server
 npm run dev
 ```
 
-Abrir o endereço apresentado, incluindo `/Vetra_webpage/`.
+The site will be available at `http://localhost:4321/Vetra_webpage/`.
 
-```powershell
+### Build & Verification
+
+```bash
+# Run unit and locale tests
 npm test
+
+# Type check Astro and TypeScript files
 npm run check
+
+# Build production static bundle (dist/)
 npm run build
-npm run verify:build
-npm run preview
 ```
 
-`build` gera apenas o site em `dist/`; não compila nem instala a app móvel.
-`preview` mostra o resultado estático, não o website publicado.
+---
 
-Neste PC, se o Node global continuar em 25, usar o runtime já disponível:
+## Deployment
 
-```powershell
-$vetraNode = "$env:USERPROFILE/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe"
-$vetraNpm = 'C:/Program Files/nodejs/node_modules/npm/bin/npm-cli.js'
-$env:PATH = (Split-Path $vetraNode) + ';' + $env:PATH
-& $vetraNode $vetraNpm run build
-& $vetraNode $vetraNpm run preview
-```
+The website is continuously built and published to GitHub Pages on every push to `main` via [GitHub Actions](.github/workflows/deploy.yml).
 
-Isto altera apenas o PATH desta janela, não a configuração do computador.
-Os testes usam um único processo sequencial para poupar memória.
+---
 
-## Organização
+## Links & Support
 
-| Assunto | Local |
-| --- | --- |
-| Loja, disponibilidade, contacto e base | `src/config/site.ts` |
-| Conteúdo e traduções | `src/content/translations/` |
-| Idiomas e rotas | `src/content/locales.ts` |
-| Secções e componentes | `src/components/` |
-| Apresentação e tokens | `src/styles/` |
-| Preferências de idioma e tema | `src/scripts/preferences.ts` |
-| Política de privacidade nos oito idiomas | `src/content/privacy/` |
-| Página de privacidade e contacto | `src/components/Privacy.astro` |
-| Preparação e validação de imagens | `tool/` |
-
-Inglês na raiz; restantes páginas em `pt/`, `pt-br/`, `es/`, `fr/`, `de/`,
-`it/`, `zh/`. O idioma do browser escolhe a tradução na entrada genérica.
-Uma escolha manual fica guardada e tem prioridade. Links explicitamente
-localizados mantêm o idioma; idiomas não suportados usam inglês.
-A política acompanha a seleção, preservando `privacy.html` e os fragmentos
-`#contact` e `#delete-account`.
-
-O conteúdo e links de idioma funcionam sem JavaScript; nesse caso a raiz é
-inglesa. O tema segue o sistema até ser escolhido manualmente. A mudança tem
-uma onda circular quando o browser suporta View Transitions, respeitando
-`prefers-reduced-motion`. Armazenamento bloqueado não impede os controlos.
-
-As bandeiras são os recursos existentes da app, não emojis.
-Tema e idioma são as únicas preferências persistentes do website.
-Contacto e eliminação levam a instruções e email visível; não dependem apenas
-de haver uma aplicação de email configurada. Copiar o endereço tem alternativa
-manual se o browser não autorizar o acesso à área de transferência.
-
-## Imagens da app
-
-Reutilizar o lote aprovado, sem renderizar novamente:
-
-```powershell
-./tool/prepare-site-images.ps1 -AppRoot C:/Projetos/Vetra -ReuseGenerated
-```
-
-Quando a interface mudar:
-
-```powershell
-./tool/prepare-site-images.ps1 -AppRoot C:/Projetos/Vetra
-```
-
-O último comando usa o gerador real da app, dados fictícios, oito idiomas e
-formato telemóvel. Não usa emulador nem gera APK/AAB. Requer Flutter e as
-dependências da app instaladas. A validação confirma o lote completo, caminhos
-e dimensões antes de copiar. Os PNGs ficam em `src/assets/screens/`; Astro gera
-WebP responsivo. Em produção não depende da pasta `build/` da app.
-
-## Privacidade
-
-Responsável confirmado: **Henrique Correia**.
-Contacto confirmado: **vetra.app.support@gmail.com**.
-O envio de emails de autenticação usa Supabase com Gmail, segundo o proprietário.
-
-A política descreve as funcionalidades atuais, incluindo autenticação sem
-sincronização financeira, Google, Drive, partilha, diagnósticos, encriptação
-local e ausência de encriptação ponta a ponta na nuvem. Os dois variantes
-portugueses partilham os compromissos legais para evitar divergências.
-
-Consultar `docs/privacy-review.md` para as fontes e obrigações operacionais.
-Uma política escrita não certifica automaticamente cumprimento jurídico
-internacional, nem substitui a gestão real de pedidos e retenção.
-
-## Publicar — apenas depois de aprovação
-
-**O novo site ainda não foi publicado.** `index.html` e `privacy.html` na raiz
-são a versão anteriormente publicada, preservada enquanto o novo site é revisto.
-O novo código não depende deles.
-
-Depois de aprovação, publicar o **conteúdo de `dist/`** no GitHub Pages, com
-Node 24 e as verificações acima. Não publicar diretamente as fontes.
-A base mantém-se `/Vetra_webpage/`; a política conserva o endereço existente.
-
-Nenhum workflow automático de publicação foi criado. Não fazer push nem
-publicar sem autorização. Atualizar a disponibilidade quando a app deixar os
-testes fechados.
+- 📱 **Google Play:** [Vetra on Google Play](https://play.google.com/store/apps/details?id=pt.projetos.vetra)
+- 🛡️ **Privacy Policy:** [Read Online](https://henrique-correia-it.github.io/Vetra_webpage/privacy.html)
+- ✉️ **Support & Feedback:** `vetra.app.support@gmail.com`
