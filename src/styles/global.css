@@ -927,10 +927,10 @@ select:focus-visible {
     width: calc(100% - 40px);
   }
   .header-inner {
-    min-height: 72px;
-    flex-wrap: wrap;
-    gap: 4px 14px;
-    padding-block: 12px;
+    min-height: 64px;
+    justify-content: space-between;
+    gap: 14px;
+    padding-block: 10px;
   }
   .brand {
     font-size: 1.5rem;
@@ -940,17 +940,10 @@ select:focus-visible {
     height: 32px;
   }
   .primary-nav {
-    order: 3;
-    width: 100%;
-    justify-content: center;
-    gap: 28px;
-    margin: 0;
-    font-size: 0.83rem;
-  }
-  .primary-nav a {
-    min-height: 44px;
+    display: none;
   }
   .header-actions {
+    margin-left: auto;
     gap: 10px;
   }
   .hero {
