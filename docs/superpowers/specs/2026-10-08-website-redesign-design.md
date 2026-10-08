@@ -1,6 +1,6 @@
 # Vetra — reformulação do site e demonstração interativa
 
-Estado: proposta escrita para revisão do proprietário, antes da implementação.
+Estado: desenho aprovado pelo proprietário em 8 de outubro de 2026.
 
 ## Objetivo e limites
 
