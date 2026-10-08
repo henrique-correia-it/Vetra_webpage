@@ -12,7 +12,7 @@ interface Props {
 const {
   locale,
   page = 'home',
-  title = `Vetra — ${getCopy(Astro.props.locale).hero.title}`,
+  title = `Vetra - ${getCopy(Astro.props.locale).hero.title}`,
   description,
 } = Astro.props;
 const copy = getCopy(locale);

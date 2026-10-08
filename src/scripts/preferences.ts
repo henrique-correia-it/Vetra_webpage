@@ -124,10 +124,10 @@ export function initPreferences(): void {
     }
     const box = button.getBoundingClientRect();
     const ripple = rippleGeometry(
-      box.x + box.width / 2,
-      box.y + box.height / 2,
-      innerWidth,
-      innerHeight,
+      Math.round(box.left + box.width / 2),
+      Math.round(box.top + box.height / 2),
+      window.innerWidth,
+      window.innerHeight,
     );
     root.style.setProperty('--theme-x', `${ripple.x}px`);
     root.style.setProperty('--theme-y', `${ripple.y}px`);
@@ -136,6 +136,27 @@ export function initPreferences(): void {
     button.classList.add('theme-wave');
     try {
       const transition = document.startViewTransition(apply);
+      if ('ready' in transition && typeof document.documentElement.animate === 'function') {
+        void transition.ready.then(() => {
+          try {
+            document.documentElement.animate(
+              {
+                clipPath: [
+                  `circle(0px at ${ripple.x}px ${ripple.y}px)`,
+                  `circle(${ripple.radius}px at ${ripple.x}px ${ripple.y}px)`,
+                ],
+              },
+              {
+                duration: 650,
+                easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+                pseudoElement: '::view-transition-new(root)',
+              },
+            );
+          } catch {
+            /* Fallback to CSS keyframes */
+          }
+        });
+      }
       void transition.finished
         .catch(() => {
           apply();

@@ -242,6 +242,14 @@ select:focus-visible {
   background: var(--paper);
   z-index: 20;
   border-bottom: 1px solid var(--line);
+  view-transition-name: site-header;
+}
+::view-transition-group(site-header) {
+  animation: none;
+}
+::view-transition-old(site-header),
+::view-transition-new(site-header) {
+  animation: none;
 }
 .header-inner {
   display: flex;
@@ -349,6 +357,9 @@ select:focus-visible {
 .theme-wave::after {
   animation: shockwave-ring 650ms ease-out;
 }
+::view-transition-group(root) {
+  animation: none;
+}
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
@@ -359,14 +370,14 @@ select:focus-visible {
 }
 ::view-transition-new(root) {
   z-index: 2;
-  animation: theme-propagation 700ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation: theme-propagation 650ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 @keyframes theme-propagation {
   from {
-    clip-path: circle(0 at var(--theme-x, 50%) var(--theme-y, 50%));
+    clip-path: circle(0 at var(--theme-x, 85%) var(--theme-y, 30px));
   }
   to {
-    clip-path: circle(var(--theme-r, 150vmax) at var(--theme-x, 50%) var(--theme-y, 50%));
+    clip-path: circle(var(--theme-r, 150vmax) at var(--theme-x, 85%) var(--theme-y, 30px));
   }
 }
 @keyframes shockwave-ring {
