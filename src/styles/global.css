@@ -352,13 +352,27 @@ select:focus-visible {
 }
 ::view-transition-group(site-header) {
   animation: none;
+  top: 0;
+  left: 0;
+  transform: none;
   z-index: 100;
 }
-::view-transition-old(site-header) {
-  display: none;
+::view-transition-image-pair(site-header) {
+  isolation: isolate;
 }
+/* Keep the old header underneath the new snapshot so mobile repaints never
+   expose a gap. Neither header participates in the page's circular mask. */
+::view-transition-old(site-header),
 ::view-transition-new(site-header) {
   animation: none;
+  opacity: 1;
+  mix-blend-mode: normal;
+}
+::view-transition-old(site-header) {
+  z-index: 1;
+}
+::view-transition-new(site-header) {
+  z-index: 2;
 }
 ::view-transition-group(root) {
   animation: none;
