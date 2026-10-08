@@ -1,0 +1,52 @@
+@font-face {
+  font-family: Lato;
+  src: url('../assets/fonts/Lato-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: Lato;
+  src: url('../assets/fonts/Lato-Bold.ttf') format('truetype');
+  font-weight: 700 900;
+  font-display: swap;
+}
+:root {
+  color-scheme: light;
+  --paper: #f6f7f2;
+  --surface: #fff;
+  --ink: #152b25;
+  --muted: #56685e;
+  --line: #d8ded6;
+  --accent: #275b45;
+  --accent-ink: #fff;
+  --soft: #e9eee4;
+  --night: #102e25;
+  --night-ink: #f2f6ed;
+  --night-muted: #b7c9be;
+  --radius: 24px;
+  --wrap: 1240px;
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --paper: #12251f;
+  --surface: #1b3028;
+  --ink: #eef5e9;
+  --muted: #b2c5b6;
+  --line: #34493c;
+  --accent: #b8e3b9;
+  --accent-ink: #123524;
+  --soft: #21392b;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --paper: #12251f;
+    --surface: #1b3028;
+    --ink: #eef5e9;
+    --muted: #b2c5b6;
+    --line: #34493c;
+    --accent: #b8e3b9;
+    --accent-ink: #123524;
+    --soft: #21392b;
+  }
+}

@@ -1,0 +1,54 @@
+---
+import type { LocaleId, SiteCopy } from '../../content/types';
+import AppImage from '../AppImage.astro';
+import Icon from '../Icon.astro';
+import GooglePlayButton from '../GooglePlayButton.astro';
+interface Props {
+  locale: LocaleId;
+  copy: SiteCopy;
+}
+const { locale, copy } = Astro.props;
+---
+
+<section class="hero wrap" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <p class="eyebrow">
+      <span class="tiny-mark"></span>
+      {copy.hero.eyebrow}
+    </p>
+    <h1 id="hero-title">{copy.hero.title}</h1>
+    <p class="lede">{copy.hero.text}</p>
+    <div class="hero-actions">
+      <GooglePlayButton locale={locale} />
+      <a class="text-link" href="#features">
+        {copy.nav.features}
+        <Icon />
+      </a>
+    </div>
+    <p class="availability">{copy.hero.note}</p>
+    <ul class="hero-chips">
+      {copy.hero.chips.map((chip) => (
+        <li>
+          <Icon name="check" size={15} />
+          {chip}
+        </li>
+      ))}
+    </ul>
+  </div>
+  <div class="hero-art" aria-label={copy.footer.images}>
+    <div class="hero-orbit" aria-hidden="true"></div>
+    <div class="hero-picture hero-picture-main">
+      <AppImage locale={locale} scene="overview" alt={copy.clarity.items[0]} eager />
+    </div>
+    <div class="hero-picture hero-picture-secondary">
+      <AppImage locale={locale} scene="vaults" alt={copy.details.items[0].title} eager />
+    </div>
+    <div class="hero-floating-card" aria-hidden="true">
+      <span class="hero-floating-dot"></span>
+      <span>{copy.hero.chips[0]} · {copy.hero.chips[2]}</span>
+    </div>
+    <span class="art-index" aria-hidden="true">
+      01 — VETRA
+    </span>
+  </div>
+</section>

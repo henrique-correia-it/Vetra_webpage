@@ -1,0 +1,85 @@
+---
+import { site } from '../config/site';
+import { locales, localePath, privacyPath, flagFiles } from '../content/locales';
+import type { LocaleId, SiteCopy } from '../content/types';
+import Icon from './Icon.astro';
+interface Props {
+  locale: LocaleId;
+  copy: SiteCopy;
+  page?: 'home' | 'privacy';
+}
+const { locale, copy, page = 'home' } = Astro.props;
+const languagePath = page === 'privacy' ? privacyPath : localePath;
+const home = page === 'privacy' ? localePath(locale) : '';
+---
+
+<a class="skip-link" href="#main">
+  {copy.nav.skip}
+</a>
+<header class="site-header">
+  <div class="header-inner wrap">
+    <a class="brand" href={localePath(locale)} aria-label="Vetra">
+      <img src={`${site.base}assets/icon-192.png`} width="38" height="38" alt="" />
+      <span>
+        Vetra
+      </span>
+    </a>
+    <nav class="primary-nav" aria-label={copy.nav.features}>
+      <a href={`${home}#features`}>{copy.nav.features}</a>
+      <a href={`${home}#faq`}>{copy.nav.faq}</a>
+    </nav>
+    <div class="header-actions">
+      <details class="language-menu">
+        <summary aria-label={copy.nav.language}>
+          <img
+            class="language-flag"
+            src={`${site.base}assets/flags/${flagFiles[locale]}.png`}
+            width="22"
+            height="22"
+            alt=""
+          />
+          <span>{locale === 'pt-br' ? 'BR' : locale.toUpperCase()}</span>
+          <Icon name="down" size={14} />
+        </summary>
+        <div class="language-options">
+          {locales.map((item) => (
+            <a
+              href={languagePath(item.id)}
+              data-language={item.id}
+              lang={item.lang}
+              hreflang={item.lang}
+              aria-current={item.id === locale ? 'page' : undefined}
+            >
+              <img
+                class="language-flag"
+                src={`${site.base}assets/flags/${flagFiles[item.id]}.png`}
+                width="22"
+                height="22"
+                alt=""
+              />
+              <span>{item.label}</span>
+              {item.id === locale && <Icon name="check" size={16} />}
+            </a>
+          ))}
+        </div>
+      </details>
+      <button
+        class="icon-button theme-toggle"
+        data-theme-toggle
+        aria-label={copy.nav.theme}
+        title={copy.nav.theme}
+      >
+        <span data-theme-icon="light">
+          <Icon name="sun" size={20} />
+        </span>
+        <span data-theme-icon="dark" hidden>
+          <Icon name="moon" size={20} />
+        </span>
+      </button>
+      <a class="button button-small header-store" href={site.playUrl}>
+        {copy.nav.download}
+        <Icon size={18} />
+      </a>
+    </div>
+  </div>
+</header>

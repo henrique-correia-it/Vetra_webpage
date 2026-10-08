@@ -1,0 +1,34 @@
+---
+import type { LocaleId, SiteCopy } from '../../content/types';
+import AppImage from '../AppImage.astro';
+interface Props {
+  locale: LocaleId;
+  copy: SiteCopy;
+}
+const { locale, copy } = Astro.props;
+---
+
+<section class="chapter details-chapter">
+  <div class="wrap">
+    <div class="section-heading">
+      <p class="eyebrow">{copy.details.eyebrow}</p>
+      <h2>{copy.details.title}</h2>
+      <p class="lede">{copy.details.text}</p>
+    </div>
+    <div class="details-gallery">
+      {copy.details.items.map((item, index) => (
+        <article>
+          <div class="detail-art">
+            <AppImage
+              locale={locale}
+              scene={(['saving', 'accounts', 'receivables'] as const)[index]}
+              alt={item.title}
+            />
+          </div>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,32 +1,61 @@
 ---
 import { site } from '../config/site';
-import { locales, localePath, type LocaleId } from '../content/locales';
+import { locales, localePath, privacyPath, type LocaleId } from '../content/locales';
 import { getCopy } from '../content/copy';
-interface Props { locale: LocaleId }
-const { locale } = Astro.props;
+import '../styles/global.css';
+interface Props {
+  locale: LocaleId;
+  page?: 'home' | 'privacy';
+  title?: string;
+  description?: string;
+}
+const {
+  locale,
+  page = 'home',
+  title = `Vetra — ${getCopy(Astro.props.locale).hero.title}`,
+  description,
+} = Astro.props;
 const copy = getCopy(locale);
-const language = locales.find(item => item.id === locale)!;
-const canonical = new URL(localePath(locale), site.origin).href;
+const language = locales.find((item) => item.id === locale)!;
+const pagePath = page === 'privacy' ? privacyPath : localePath;
+const canonical = new URL(pagePath(locale), site.origin).href;
 ---
+
 <!doctype html>
 <html lang={language.lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Vetra — {copy.hero.title}</title>
-    <meta name="description" content={copy.meta.description} />
+    <title>{title}</title>
+    <meta name="description" content={description ?? copy.meta.description} />
     <meta name="theme-color" content="#f6f7f2" />
     <link rel="icon" type="image/png" href={`${site.base}assets/icon-192.png`} />
     <link rel="canonical" href={canonical} />
-    {locales.map(item => <link rel="alternate" hreflang={item.lang} href={new URL(localePath(item.id), site.origin).href} />)}
-    <link rel="alternate" hreflang="x-default" href={new URL(site.base, site.origin).href} />
+    {locales.map((item) => (
+      <link
+        rel="alternate"
+        hreflang={item.lang}
+        href={new URL(pagePath(item.id), site.origin).href}
+      />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={new URL(pagePath('en'), site.origin).href} />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={`Vetra — ${copy.hero.title}`} />
-    <meta property="og:description" content={copy.meta.description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description ?? copy.meta.description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={`${site.origin}${site.base}assets/icon-512.png`} />
+    <script is:inline>
+      try {
+        const t = localStorage.getItem('vetra.site.theme') ?? localStorage.getItem('vetra_theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
   </head>
   <body>
     <slot />
+    <script>
+      import { initPreferences } from '../scripts/preferences';
+      initPreferences();
+    </script>
   </body>
 </html>

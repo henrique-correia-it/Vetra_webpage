@@ -1,0 +1,28 @@
+---
+import type { LocaleId } from '../content/types';
+import { getCopy } from '../content/copy';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import Hero from './sections/Hero.astro';
+import Planning from './sections/Planning.astro';
+import Clarity from './sections/Clarity.astro';
+import Details from './sections/Details.astro';
+import Trust from './sections/Trust.astro';
+import Faq from './sections/Faq.astro';
+interface Props {
+  locale: LocaleId;
+}
+const { locale } = Astro.props;
+const copy = getCopy(locale);
+---
+
+<Header locale={locale} copy={copy} />
+<main id="main">
+  <Hero locale={locale} copy={copy} />
+  <Planning locale={locale} copy={copy} />
+  <Clarity locale={locale} copy={copy} />
+  <Details locale={locale} copy={copy} />
+  <Trust copy={copy} />
+  <Faq copy={copy} />
+</main>
+<Footer locale={locale} copy={copy} />

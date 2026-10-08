@@ -1,0 +1,10 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Privacy from '../components/Privacy.astro';
+import { getPrivacy } from '../content/privacy';
+const policy = getPrivacy('en');
+---
+
+<SiteLayout locale="en" page="privacy" title={`Vetra — ${policy.title}`} description={policy.intro}>
+  <Privacy locale="en" />
+</SiteLayout>

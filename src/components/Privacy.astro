@@ -1,0 +1,116 @@
+---
+import { site } from '../config/site';
+import { getCopy } from '../content/copy';
+import { getPrivacy, controller, providerLinks } from '../content/privacy';
+import type { LocaleId } from '../content/types';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import Icon from './Icon.astro';
+interface Props {
+  locale: LocaleId;
+}
+const { locale } = Astro.props;
+const copy = getCopy(locale);
+const policy = getPrivacy(locale);
+---
+
+<Header locale={locale} copy={copy} page="privacy" />
+<main id="main" class="privacy-page wrap">
+  <header class="privacy-intro">
+    <p class="eyebrow">VETRA · {policy.updated}</p>
+    <h1>{policy.title}</h1>
+    <p class="lede">{policy.intro}</p>
+  </header>
+  <div class="privacy-grid">
+    <nav class="privacy-contents" aria-label={policy.contents}>
+      <p class="eyebrow">{policy.contents}</p>
+      <a href="#contact">{policy.contact}</a>
+      <a href="#delete-account">{policy.deletion}</a>
+      {policy.sections.map((section) => (
+        <a href={`#${section.id}`}>{section.title}</a>
+      ))}
+    </nav>
+    <article class="privacy-body">
+      <section id="contact" class="privacy-contact">
+        <h2>{policy.contact}</h2>
+        <p>{policy.contactText}</p>
+        <p class="contact-email" data-contact-email>
+          {site.supportEmail}
+        </p>
+        <div class="contact-actions">
+          <a class="button" href={`mailto:${site.supportEmail}`}>
+            {policy.email}
+            <Icon />
+          </a>
+          <button
+            class="button button-outline"
+            data-copy-email
+            data-email={site.supportEmail}
+            data-copied={policy.copied}
+            data-copy-failed={policy.copyFailed}
+            hidden
+          >
+            {policy.copy}
+          </button>
+        </div>
+        <p class="contact-status" data-copy-status role="status"></p>
+        <span class="sr-only">{controller.name}</span>
+      </section>
+      <section id="delete-account" class="privacy-deletion">
+        <h2>{policy.deletion}</h2>
+        <ol>
+          {policy.deletionSteps.map((step) => (
+            <li>{step}</li>
+          ))}
+        </ol>
+        <p>{policy.deletionNote}</p>
+      </section>
+      {policy.sections.map((section) => (
+        <section id={section.id}>
+          <h2>{section.title}</h2>
+          {section.paragraphs.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </section>
+      ))}
+      <section class="privacy-providers">
+        <h2>{policy.providers}</h2>
+        <ul>
+          {providerLinks.map((link) => (
+            <li>
+              <a href={link.url}>
+                {link.label}
+                <Icon size={16} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </article>
+  </div>
+</main>
+<Footer locale={locale} copy={copy} />
+<script>
+  const button = document.querySelector<HTMLButtonElement>('[data-copy-email]');
+  if (button) {
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      const status = document.querySelector<HTMLElement>('[data-copy-status]');
+      try {
+        if (!navigator.clipboard) throw new Error('Clipboard unavailable');
+        await navigator.clipboard.writeText(button.dataset.email!);
+        if (status) status.textContent = button.dataset.copied ?? '';
+      } catch {
+        const email = document.querySelector('[data-contact-email]');
+        if (email) {
+          const range = document.createRange();
+          range.selectNodeContents(email);
+          const selection = window.getSelection();
+          selection?.removeAllRanges();
+          selection?.addRange(range);
+        }
+        if (status) status.textContent = button.dataset.copyFailed ?? '';
+      }
+    });
+  }
+</script>

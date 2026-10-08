@@ -1,0 +1,29 @@
+---
+import type { SiteCopy } from '../../content/types';
+import Icon from '../Icon.astro';
+interface Props {
+  copy: SiteCopy;
+}
+const { copy } = Astro.props;
+---
+
+<section class="chapter trust-chapter">
+  <div class="wrap">
+    <div class="section-heading">
+      <p class="eyebrow">{copy.trust.eyebrow}</p>
+      <h2>{copy.trust.title}</h2>
+      <p class="lede">{copy.trust.text}</p>
+    </div>
+    <div class="trust-grid">
+      {copy.trust.items.map((item, index) => (
+        <article>
+          <div class="trust-icon">
+            <Icon name={['shield', 'cloud', 'backup'][index]} size={28} />
+          </div>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

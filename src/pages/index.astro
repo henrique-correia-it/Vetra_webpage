@@ -1,6 +1,8 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
-import { getCopy } from '../content/copy';
-const copy = getCopy('en');
+import Landing from '../components/Landing.astro';
 ---
-<SiteLayout locale="en"><main><h1>{copy.hero.title}</h1><p>{copy.hero.text}</p></main></SiteLayout>
+
+<SiteLayout locale="en">
+  <Landing locale="en" />
+</SiteLayout>

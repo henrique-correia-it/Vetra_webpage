@@ -1,0 +1,22 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import Privacy from '../../components/Privacy.astro';
+import { getPrivacy } from '../../content/privacy';
+import { locales, type LocaleId } from '../../content/locales';
+export function getStaticPaths() {
+  return locales
+    .filter((item) => item.id !== 'en')
+    .map((item) => ({ params: { locale: item.id } }));
+}
+const locale = Astro.params.locale as LocaleId;
+const policy = getPrivacy(locale);
+---
+
+<SiteLayout
+  locale={locale}
+  page="privacy"
+  title={`Vetra — ${policy.title}`}
+  description={policy.intro}
+>
+  <Privacy locale={locale} />
+</SiteLayout>

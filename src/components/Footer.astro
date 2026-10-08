@@ -1,0 +1,31 @@
+---
+import { privacyPath } from '../content/locales';
+import type { LocaleId, SiteCopy } from '../content/types';
+import GooglePlayButton from './GooglePlayButton.astro';
+interface Props {
+  copy: SiteCopy;
+  locale: LocaleId;
+}
+const { copy, locale } = Astro.props;
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-top">
+    <div>
+      <p class="eyebrow">VETRA</p>
+      <h2>{copy.footer.title}</h2>
+      <p>{copy.footer.text}</p>
+    </div>
+    <GooglePlayButton locale={locale} />
+  </div>
+  <div class="wrap footer-bottom">
+    <span>
+      © {new Date().getUTCFullYear()} Vetra. {copy.footer.rights}
+    </span>
+    <nav aria-label={copy.footer.contact}>
+      <a href={privacyPath(locale)}>{copy.footer.privacy}</a>
+      <a href={privacyPath(locale, 'contact')}>{copy.footer.contact}</a>
+      <a href={privacyPath(locale, 'delete-account')}>{copy.footer.deletion}</a>
+    </nav>
+  </div>
+</footer>

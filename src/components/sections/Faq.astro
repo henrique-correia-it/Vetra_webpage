@@ -1,0 +1,23 @@
+---
+import type { SiteCopy } from '../../content/types';
+import Icon from '../Icon.astro';
+interface Props {
+  copy: SiteCopy;
+}
+const { copy } = Astro.props;
+---
+
+<section id="faq" class="chapter faq-chapter wrap">
+  <h2>{copy.faq.title}</h2>
+  <div class="faq-list">
+    {copy.faq.items.map((item) => (
+      <details>
+        <summary>
+          <span>{item.title}</span>
+          <Icon name="plus" />
+        </summary>
+        <p>{item.text}</p>
+      </details>
+    ))}
+  </div>
+</section>

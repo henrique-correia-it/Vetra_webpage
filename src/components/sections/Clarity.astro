@@ -1,0 +1,35 @@
+---
+import type { LocaleId, SiteCopy } from '../../content/types';
+import AppImage from '../AppImage.astro';
+interface Props {
+  locale: LocaleId;
+  copy: SiteCopy;
+}
+const { locale, copy } = Astro.props;
+---
+
+<section class="chapter clarity-chapter">
+  <div class="wrap">
+    <div class="section-heading">
+      <p class="eyebrow">{copy.clarity.eyebrow}</p>
+      <h2>{copy.clarity.title}</h2>
+      <p class="lede">{copy.clarity.text}</p>
+    </div>
+    <div class="clarity-gallery">
+      <figure>
+        <AppImage locale={locale} scene="transactions" alt={copy.clarity.items[1]} />
+        <figcaption>
+          <span>02</span>
+          {copy.clarity.items[1]}
+        </figcaption>
+      </figure>
+      <figure>
+        <AppImage locale={locale} scene="insights" alt={copy.clarity.items[2]} />
+        <figcaption>
+          <span>03</span>
+          {copy.clarity.items[2]}
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>

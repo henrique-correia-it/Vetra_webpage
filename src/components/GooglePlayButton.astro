@@ -1,0 +1,43 @@
+---
+import { site } from '../config/site';
+import type { LocaleId } from '../content/types';
+
+interface Props {
+  locale: LocaleId;
+  class?: string;
+}
+
+const { locale, class: className = '' } = Astro.props;
+
+const labels: Record<LocaleId, { sub: string; main: string }> = {
+  pt: { sub: 'DISPONÍVEL NO', main: 'Google Play' },
+  'pt-br': { sub: 'DISPONÍVEL NO', main: 'Google Play' },
+  en: { sub: 'GET IT ON', main: 'Google Play' },
+  es: { sub: 'DISPONIBLE EN', main: 'Google Play' },
+  fr: { sub: 'DISPONIBLE SUR', main: 'Google Play' },
+  de: { sub: 'JETZT BEI', main: 'Google Play' },
+  it: { sub: 'DISPONIBILE SU', main: 'Google Play' },
+  zh: { sub: '前往下载', main: 'Google Play' },
+};
+
+const label = labels[locale] ?? labels.en;
+---
+
+<a
+  href={site.playUrl}
+  class={`google-play-btn ${className}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={`${label.sub} ${label.main}`}
+>
+  <svg class="play-logo" viewBox="0 0 512 512" width="28" height="28" aria-hidden="true">
+    <path fill="#4285F4" d="M48.7 20.3C45.3 24 43.4 29.8 43.4 37.6v436.8c0 7.8 1.9 13.6 5.3 17.3l2.2 2.1 244.6-244.6v-5.6L50.9 18.2l-2.2 2.1z"/>
+    <path fill="#FBBC04" d="M377.2 320.9l-81.7-81.7v-5.6l81.7-81.7 1.8 1 97.1 55.2c27.7 15.8 27.7 41.5 0 57.3l-97.1 55.2-1.8 .3z"/>
+    <path fill="#0F9D58" d="M295.5 239.2L50.9 483.8c9.1 9.6 24 10.8 41.5 .8l286.6-162.8-83.5-82.6z"/>
+    <path fill="#EA4335" d="M295.5 272.8l83.5-82.6L92.4 27.4c-17.5-10-32.4-8.8-41.5 .8l244.6 244.6z"/>
+  </svg>
+  <span class="play-copy">
+    <span class="play-sub">{label.sub}</span>
+    <span class="play-main">{label.main}</span>
+  </span>
+</a>

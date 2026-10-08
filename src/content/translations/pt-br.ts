@@ -1,13 +1,106 @@
 import type { SiteCopy } from '../types';
 export default {
-  meta: { description: 'Organize despesas, planeje seu mês e abra espaço para economizar. Conheça a Vetra: finanças pessoais sem anúncios e com sincronização opcional.' },
-  nav: { features: 'Conhecer', demo: 'Experimentar', faq: 'Dúvidas', download: 'Ver no Google Play', language: 'Idioma', theme: 'Alterar tema de cor', skip: 'Ir para o conteúdo' },
-  hero: { eyebrow: 'MAIS CLAREZA. MAIS TRANQUILIDADE.', title: 'Abra espaço para o que importa.', text: 'Suas despesas, seus planos, o que vem pela frente. Reúna seu dinheiro em um lugar que simplifica tudo.', note: 'Disponível atualmente em testes fechados no Google Play.', chips: ['Sem anúncios', 'No seu ritmo', 'Do seu jeito'] },
-  planning: { eyebrow: 'UM PLANO QUE COMBINA COM SUA VIDA', title: 'Seu mês. Não apenas um calendário.', text: 'De um salário ao próximo, dê um lugar às contas, ao dia a dia e às economias. Saiba o que está reservado e o que continua disponível.', items: ['Contas a pagar', 'Dia a dia', 'Economias'] },
-  clarity: { eyebrow: 'UMA VISÃO COMPLETA, SEM COMPLICAÇÃO', title: 'Tudo junto. Tudo faz sentido.', text: 'Veja suas contas juntas, encontre uma movimentação em segundos e entenda para onde vai seu dinheiro. O detalhe certo, quando você precisa.', items: ['Contas reunidas', 'Movimentações claras', 'Análises úteis'] },
-  demo: { eyebrow: 'MENOS LEITURA. MAIS DESCOBERTA.', title: 'Um gostinho da Vetra.', text: 'Registre uma despesa. Reserve um pouco de dinheiro. Veja os valores fazerem sentido. Este exemplo interativo usa dados fictícios, não suas contas reais.', tabs: ['Início', 'Movimentações', 'Plano'], fields: ['Valor', 'Descrição', 'Categoria', 'Conta', 'Reservar', 'Salvar', 'Recomeçar', 'Fechar'], labels: ['Saldo total', 'Gasto', 'Reservado', 'Disponível'], accounts: ['Conta do dia a dia', 'Economias', 'Carteira'], categories: ['Supermercado', 'Transporte'], actions: ['Registrar despesa', 'Reservar para economizar', 'Experimentar a demo'], goal: 'Reserva de emergência', warning: 'Demonstração · dados fictícios · EUR', loading: 'Abrindo a demonstração…', error: 'Confira os campos e tente novamente.', success: 'Salvo nesta demonstração.' },
-  details: { eyebrow: 'PEQUENOS DETALHES. GRANDES DIFERENÇAS.', title: 'Para a vida como ela é.', text: 'Seu dinheiro não é só um total no fim do mês. Os outros detalhes também merecem espaço.', items: [{ title: 'Um lugar para cada objetivo', text: 'Separe dinheiro em cofres e acompanhe seus objetivos de economia.' }, { title: 'Uma conta em conjunto', text: 'Compartilhe as movimentações e o saldo de uma conta com outra pessoa.' }, { title: 'Nada fica esquecido', text: 'Acompanhe o que devem a você e registre os pagamentos conforme chegam.' }] },
-  trust: { eyebrow: 'SEU DINHEIRO. SUAS DECISÕES.', title: 'Um lugar mais tranquilo para suas finanças.', text: 'Sem anúncios no caminho. Sem conexão com o banco. Você decide se quer sincronizar com a nuvem.', items: [{ title: 'Funciona offline', text: 'Organize suas finanças sem Internet após a configuração inicial. Login e serviços na nuvem precisam de conexão.' }, { title: 'Sincronize se quiser', text: 'Ative a sincronização para acessar os dados da sua conta em vários dispositivos.' }, { title: 'Guarde uma cópia', text: 'Crie um backup Vetra para restaurar os dados ou exporte um PDF para consulta.' }] },
-  faq: { title: 'Talvez você esteja pensando…', items: [{ title: 'A Vetra conecta ao meu banco?', text: 'Não. Você registra suas contas e movimentações. A Vetra organiza suas finanças; não é um serviço bancário.' }, { title: 'Quais moedas posso escolher?', text: 'EUR, USD, GBP, CNY, CHF, AUD, CAD ou BRL na configuração inicial. A moeda principal vale para suas finanças. Ainda não é possível trocá-la depois.' }, { title: 'Preciso sincronizar?', text: 'Não. A sincronização é opcional. No uso exclusivamente local, mantenha um backup Vetra atualizado em um lugar seguro.' }, { title: 'Posso usar sem Internet?', text: 'Sim, após a configuração inicial. Autenticação, sincronização e outros serviços online precisam de Internet.' }, { title: 'Como experimentar o app?', text: 'O app está em testes fechados. Abra a página no Google Play para conferir a disponibilidade para sua conta.' }] },
-  footer: { title: 'Mais clareza, todos os dias.', text: 'Deixe seu próximo mês um pouco mais leve.', privacy: 'Privacidade', contact: 'Fale com a gente', deletion: 'Solicitar exclusão da conta', rights: 'Feita com cuidado. Sem anúncios.', images: 'Conheça a interface real' },
+  meta: {
+    description:
+      'Organize despesas, planeje seu mês e abra espaço para economizar. Conheça a Vetra: finanças pessoais sem anúncios e com sincronização opcional.',
+  },
+  nav: {
+    features: 'Conhecer',
+    faq: 'Dúvidas',
+    download: 'Ver no Google Play',
+    language: 'Idioma',
+    theme: 'Alterar tema de cor',
+    skip: 'Ir para o conteúdo',
+  },
+  hero: {
+    eyebrow: 'MAIS CLAREZA. MAIS TRANQUILIDADE.',
+    title: 'Abra espaço para o que importa.',
+    text: 'Suas despesas, seus planos, o que vem pela frente. Reúna seu dinheiro em um lugar que simplifica tudo.',
+    note: 'Disponível atualmente em testes fechados no Google Play.',
+    chips: ['Sem anúncios', 'No seu ritmo', 'Do seu jeito'],
+  },
+  planning: {
+    eyebrow: 'UM PLANO QUE COMBINA COM SUA VIDA',
+    title: 'Seu mês. Não apenas um calendário.',
+    text: 'De um salário ao próximo, dê um lugar às contas, ao dia a dia e às economias. Saiba o que está reservado e o que continua disponível.',
+    items: ['Contas a pagar', 'Dia a dia', 'Economias'],
+  },
+  clarity: {
+    eyebrow: 'UMA VISÃO COMPLETA, SEM COMPLICAÇÃO',
+    title: 'Tudo junto. Tudo faz sentido.',
+    text: 'Veja suas contas juntas, encontre uma movimentação em segundos e entenda para onde vai seu dinheiro. O detalhe certo, quando você precisa.',
+    items: ['Contas reunidas', 'Movimentações claras', 'Análises úteis'],
+  },
+  details: {
+    eyebrow: 'PEQUENOS DETALHES. GRANDES DIFERENÇAS.',
+    title: 'Para a vida como ela é.',
+    text: 'Seu dinheiro não é só um total no fim do mês. Os outros detalhes também merecem espaço.',
+    items: [
+      {
+        title: 'Um lugar para cada objetivo',
+        text: 'Separe dinheiro em cofres e acompanhe seus objetivos de economia.',
+      },
+      {
+        title: 'Todas as suas contas em um só lugar',
+        text: 'Gerencie contas bancárias, dinheiro em espécie e reservas com total clareza. Cada conta com seu saldo e histórico organizado.',
+      },
+      {
+        title: 'Nada fica esquecido',
+        text: 'Acompanhe o que devem a você e registre os pagamentos conforme chegam.',
+      },
+    ],
+  },
+  trust: {
+    eyebrow: 'SEU DINHEIRO. SUAS DECISÕES.',
+    title: 'Um lugar mais tranquilo para suas finanças.',
+    text: 'Sem anúncios no caminho. Sem conexão com o banco. Você decide se quer sincronizar com a nuvem.',
+    items: [
+      {
+        title: 'Funciona offline',
+        text: 'Organize suas finanças sem Internet após a configuração inicial. Login e serviços na nuvem precisam de conexão.',
+      },
+      {
+        title: 'Sincronize se quiser',
+        text: 'Ative a sincronização para acessar os dados da sua conta em vários dispositivos.',
+      },
+      {
+        title: 'Guarde uma cópia',
+        text: 'Crie um backup Vetra para restaurar os dados ou exporte um PDF para consulta.',
+      },
+    ],
+  },
+  faq: {
+    title: 'Talvez você esteja pensando…',
+    items: [
+      {
+        title: 'A Vetra conecta ao meu banco?',
+        text: 'Não. Você registra suas contas e movimentações. A Vetra organiza suas finanças; não é um serviço bancário.',
+      },
+      {
+        title: 'Quais moedas posso escolher?',
+        text: 'EUR, USD, GBP, CNY, CHF, AUD, CAD ou BRL na configuração inicial. A moeda principal vale para suas finanças. Ainda não é possível trocá-la depois.',
+      },
+      {
+        title: 'Preciso sincronizar?',
+        text: 'Não. A sincronização é opcional. No uso exclusivamente local, mantenha um backup Vetra atualizado em um lugar seguro.',
+      },
+      {
+        title: 'Posso usar sem Internet?',
+        text: 'Sim, após a configuração inicial. Autenticação, sincronização e outros serviços online precisam de Internet.',
+      },
+      {
+        title: 'Como experimentar o app?',
+        text: 'O app está em testes fechados. Abra a página no Google Play para conferir a disponibilidade para sua conta.',
+      },
+    ],
+  },
+  footer: {
+    title: 'Mais clareza, todos os dias.',
+    text: 'Deixe seu próximo mês um pouco mais leve.',
+    privacy: 'Privacidade',
+    contact: 'Fale com a gente',
+    deletion: 'Solicitar exclusão da conta',
+    rights: 'Feita com cuidado. Sem anúncios.',
+    images: 'Conheça a interface real',
+  },
 } satisfies SiteCopy;

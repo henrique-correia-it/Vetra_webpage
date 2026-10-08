@@ -16,3 +16,17 @@ export const locales: { id: LocaleId; label: string; lang: string; capture: stri
 export function localePath(locale: LocaleId, anchor?: string): string {
   return `${site.base}${locale === 'en' ? '' : `${locale}/`}${anchor ? `#${encodeURIComponent(anchor)}` : ''}`;
 }
+
+export function privacyPath(locale: LocaleId, anchor?: string): string {
+  return `${localePath(locale)}privacy.html${anchor ? `#${encodeURIComponent(anchor)}` : ''}`;
+}
+export const flagFiles: Record<LocaleId, string> = {
+  en: 'en',
+  pt: 'pt',
+  'pt-br': 'pt_br',
+  es: 'es',
+  fr: 'fr',
+  de: 'de',
+  it: 'it',
+  zh: 'zh',
+};

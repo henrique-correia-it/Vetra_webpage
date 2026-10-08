@@ -1,0 +1,37 @@
+---
+import type { LocaleId, SiteCopy } from '../../content/types';
+import AppImage from '../AppImage.astro';
+import Icon from '../Icon.astro';
+interface Props {
+  locale: LocaleId;
+  copy: SiteCopy;
+}
+const { locale, copy } = Astro.props;
+---
+
+<section id="features" class="chapter planning-chapter">
+  <div class="wrap split-section">
+    <div class="chapter-art planning-art">
+      <AppImage locale={locale} scene="planning" alt={copy.planning.title} />
+      <span class="chapter-number" aria-hidden="true">
+        01
+      </span>
+    </div>
+    <div class="chapter-copy">
+      <p class="eyebrow">{copy.planning.eyebrow}</p>
+      <h2>{copy.planning.title}</h2>
+      <p class="lede">{copy.planning.text}</p>
+      <ol class="feature-lines">
+        {copy.planning.items.map((item, index) => (
+          <li>
+            <span class="line-icon">
+              <Icon name={['plan', 'wallet', 'heart'][index]} />
+            </span>
+            <span>{item}</span>
+            <span class="line-number">0{index + 1}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>

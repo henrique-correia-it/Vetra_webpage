@@ -1,9 +1,15 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import { locales, type LocaleId } from '../../content/locales';
-import { getCopy } from '../../content/copy';
-export function getStaticPaths() { return locales.filter(item => item.id !== 'en').map(item => ({ params: { locale: item.id } })); }
+import Landing from '../../components/Landing.astro';
+export function getStaticPaths() {
+  return locales
+    .filter((item) => item.id !== 'en')
+    .map((item) => ({ params: { locale: item.id } }));
+}
 const locale = Astro.params.locale as LocaleId;
-const copy = getCopy(locale);
 ---
-<SiteLayout locale={locale}><main><h1>{copy.hero.title}</h1><p>{copy.hero.text}</p></main></SiteLayout>
+
+<SiteLayout locale={locale}>
+  <Landing locale={locale} />
+</SiteLayout>
