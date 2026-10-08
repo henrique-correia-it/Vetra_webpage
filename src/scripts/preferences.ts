@@ -70,6 +70,16 @@ export function rippleGeometry(x: number, y: number, width: number, height: numb
   return { x, y, radius: Math.ceil(Math.hypot(Math.max(x, width - x), Math.max(y, height - y))) };
 }
 
+const svgCircleDataUri =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-50 -50 100 100'%3E%3Ccircle cx='0' cy='0' r='50' fill='white'/%3E%3C/svg%3E";
+const svgMaskCss = `url("${svgCircleDataUri}")`;
+
+// Pre-warm SVG mask in browser image cache to prevent cold-start lag on first theme toggle
+if (typeof window !== 'undefined') {
+  const warmImg = new Image();
+  warmImg.src = svgCircleDataUri;
+}
+
 export function initPreferences(): void {
   let storage: Storage | null = null;
   try {
@@ -94,6 +104,7 @@ export function initPreferences(): void {
   const saved = readTheme(storage);
   if (saved) root.dataset.theme = saved;
   const button = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+  const icons = document.querySelectorAll<HTMLElement>('[data-theme-icon]');
   const currentTheme = (): Theme =>
     root.dataset.theme === 'dark'
       ? 'dark'
@@ -103,12 +114,22 @@ export function initPreferences(): void {
           ? 'dark'
           : 'light';
   const updateIcon = () => {
-    document.querySelectorAll<HTMLElement>('[data-theme-icon]').forEach((icon) => {
-      icon.hidden = icon.dataset.themeIcon !== currentTheme();
+    const active = currentTheme();
+    icons.forEach((icon) => {
+      icon.hidden = icon.dataset.themeIcon !== active;
     });
   };
   updateIcon();
   system.addEventListener('change', updateIcon);
+
+  // Pre-mount stylesheet in <head> so the first toggle avoids DOM creation overhead
+  let transitionStyle = document.getElementById('vetra-theme-transition') as HTMLStyleElement | null;
+  if (!transitionStyle && typeof document !== 'undefined') {
+    transitionStyle = document.createElement('style');
+    transitionStyle.id = 'vetra-theme-transition';
+    document.head.appendChild(transitionStyle);
+  }
+
   let changing = false;
   button?.addEventListener('click', () => {
     if (changing) return;
@@ -121,7 +142,7 @@ export function initPreferences(): void {
     if (reducedMotion.matches || !('startViewTransition' in document)) {
       button.classList.add('theme-wave');
       apply();
-      setTimeout(() => button.classList.remove('theme-wave'), 650);
+      setTimeout(() => button.classList.remove('theme-wave'), 750);
       return;
     }
     const box = button.getBoundingClientRect();
@@ -135,37 +156,33 @@ export function initPreferences(): void {
     root.style.setProperty('--theme-y', `${ripple.y}px`);
     root.style.setProperty('--theme-r', `${ripple.radius}px`);
 
-    const maskSize = Math.ceil(ripple.radius * 2.1);
-    const svgMask =
-      "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-50 -50 100 100'%3E%3Ccircle cx='0' cy='0' r='50' fill='white'/%3E%3C/svg%3E\")";
+    // Overshoot radius (2.6x) so the furthest corner (e.g. bottom-left on mobile)
+    // is crossed smoothly with momentum before the deceleration phase
+    const maskSize = Math.ceil(ripple.radius * 2.6);
 
-    let style = document.getElementById('vetra-theme-transition') as HTMLStyleElement | null;
-    if (!style) {
-      style = document.createElement('style');
-      style.id = 'vetra-theme-transition';
-      document.head.appendChild(style);
+    if (transitionStyle) {
+      transitionStyle.textContent = `
+        ::view-transition-new(root) {
+          -webkit-mask: ${svgMaskCss} 0 0 / 0 no-repeat;
+          mask: ${svgMaskCss} 0 0 / 0 no-repeat;
+          animation: theme-shockwave-reveal 750ms cubic-bezier(0.25, 1, 0.4, 1) both;
+        }
+        @keyframes theme-shockwave-reveal {
+          from {
+            -webkit-mask-size: 0px;
+            -webkit-mask-position: ${ripple.x}px ${ripple.y}px;
+            mask-size: 0px;
+            mask-position: ${ripple.x}px ${ripple.y}px;
+          }
+          to {
+            -webkit-mask-size: ${maskSize}px;
+            -webkit-mask-position: ${Math.round(ripple.x - maskSize / 2)}px ${Math.round(ripple.y - maskSize / 2)}px;
+            mask-size: ${maskSize}px;
+            mask-position: ${Math.round(ripple.x - maskSize / 2)}px ${Math.round(ripple.y - maskSize / 2)}px;
+          }
+        }
+      `;
     }
-    style.textContent = `
-      ::view-transition-new(root) {
-        -webkit-mask: ${svgMask} 0 0 / 0 no-repeat;
-        mask: ${svgMask} 0 0 / 0 no-repeat;
-        animation: theme-shockwave-reveal 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
-      }
-      @keyframes theme-shockwave-reveal {
-        from {
-          -webkit-mask-size: 0px;
-          -webkit-mask-position: ${ripple.x}px ${ripple.y}px;
-          mask-size: 0px;
-          mask-position: ${ripple.x}px ${ripple.y}px;
-        }
-        to {
-          -webkit-mask-size: ${maskSize}px;
-          -webkit-mask-position: ${Math.round(ripple.x - maskSize / 2)}px ${Math.round(ripple.y - maskSize / 2)}px;
-          mask-size: ${maskSize}px;
-          mask-position: ${Math.round(ripple.x - maskSize / 2)}px ${Math.round(ripple.y - maskSize / 2)}px;
-        }
-      }
-    `;
 
     changing = true;
     button.classList.add('theme-wave');
@@ -182,13 +199,13 @@ export function initPreferences(): void {
         .finally(() => {
           changing = false;
           button.classList.remove('theme-wave');
-          style?.remove();
+          if (transitionStyle) transitionStyle.textContent = '';
         });
     } catch {
       apply();
       changing = false;
       button.classList.remove('theme-wave');
-      style?.remove();
+      if (transitionStyle) transitionStyle.textContent = '';
     }
   });
   initScrollReveal();

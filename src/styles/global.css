@@ -347,21 +347,23 @@ select:focus-visible {
   pointer-events: none;
 }
 .theme-wave::after {
-  animation: shockwave-ring 650ms ease-out;
+  animation: shockwave-ring 750ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-::view-transition-group(root) {
-  animation: none;
-}
+::view-transition-group(root),
+::view-transition-image-pair(root),
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 ::view-transition-old(root) {
   z-index: 1;
 }
 ::view-transition-new(root) {
   z-index: 2;
+  will-change: mask-size, mask-position, -webkit-mask-size, -webkit-mask-position;
 }
 @keyframes shockwave-ring {
   from {
@@ -370,7 +372,7 @@ select:focus-visible {
   }
   to {
     opacity: 0;
-    transform: scale(2);
+    transform: scale(2.2);
   }
 }
 .language-options a:hover,
