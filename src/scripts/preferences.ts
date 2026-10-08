@@ -131,7 +131,9 @@ export function initPreferences(): void {
   }
 
   let changing = false;
-  button?.addEventListener('click', () => {
+  button?.addEventListener('click', (event: MouseEvent) => {
+    event.preventDefault();
+    button.blur();
     if (changing) return;
     const next = currentTheme() === 'dark' ? 'light' : 'dark';
     const apply = () => {
