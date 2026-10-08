@@ -934,6 +934,13 @@ select:focus-visible {
   }
 }
 @media (max-width: 760px) {
+  .site-header {
+    view-transition-name: none;
+  }
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
   .wrap {
     width: calc(100% - 40px);
   }

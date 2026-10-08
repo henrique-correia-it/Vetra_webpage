@@ -118,8 +118,13 @@ export function initPreferences(): void {
       writeTheme(storage, next);
       updateIcon();
     };
-    if (reducedMotion.matches || !document.startViewTransition) {
+    const isMobile =
+      window.matchMedia('(max-width: 768px)').matches ||
+      window.matchMedia('(pointer: coarse)').matches;
+    if (reducedMotion.matches || !document.startViewTransition || isMobile) {
+      button.classList.add('theme-wave');
       apply();
+      setTimeout(() => button.classList.remove('theme-wave'), 650);
       return;
     }
     const box = button.getBoundingClientRect();
@@ -136,27 +141,6 @@ export function initPreferences(): void {
     button.classList.add('theme-wave');
     try {
       const transition = document.startViewTransition(apply);
-      if ('ready' in transition && typeof document.documentElement.animate === 'function') {
-        void transition.ready.then(() => {
-          try {
-            document.documentElement.animate(
-              {
-                clipPath: [
-                  `circle(0px at ${ripple.x}px ${ripple.y}px)`,
-                  `circle(${ripple.radius}px at ${ripple.x}px ${ripple.y}px)`,
-                ],
-              },
-              {
-                duration: 650,
-                easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
-                pseudoElement: '::view-transition-new(root)',
-              },
-            );
-          } catch {
-            /* Fallback to CSS keyframes */
-          }
-        });
-      }
       void transition.finished
         .catch(() => {
           apply();
