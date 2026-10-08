@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { validateManifest } from '../tool/validate-images.mjs';
-const languages = ['en', 'pt', 'pt-BR', 'es', 'fr', 'de', 'it', 'zh-Hans'];
+const languages = ['en', 'en-GB', 'pt', 'pt-BR', 'es', 'fr', 'de', 'it', 'zh-Hans'];
+const currencyByLocale: Record<string, string> = { en: 'USD', 'en-GB': 'GBP', pt: 'EUR', 'pt-BR': 'BRL', es: 'EUR', fr: 'EUR', de: 'EUR', it: 'EUR', 'zh-Hans': 'CNY' };
 const scenes = [
   'overview',
   'transactions',
@@ -13,11 +14,14 @@ const scenes = [
 ];
 const fixture = () => ({
   status: 'complete',
+  generator: 'vetra-store-artwork-v3',
+  currencyByLocale,
   fictionalDataOnly: true,
   locales: languages,
   assets: languages.flatMap((locale) =>
     scenes.map((scene) => ({
       locale,
+      currency: currencyByLocale[locale],
       scene,
       device: 'phone',
       kind: 'artwork',
@@ -29,7 +33,14 @@ const fixture = () => ({
 });
 describe('source artwork validation', () => {
   it('accepts a complete fictional phone set', () => {
-    expect(validateManifest(fixture()).assets).toHaveLength(64);
+    expect(validateManifest(fixture()).assets).toHaveLength(72);
+  });
+  it('rejects old EUR batches and wrongly labelled regional images', () => {
+    expect(() => validateManifest({ ...fixture(), generator: 'vetra-store-artwork-v2' })).toThrow();
+    const wrong = fixture();
+    wrong.assets[0].currency = 'EUR';
+    expect(() => validateManifest(wrong)).toThrow();
+    expect(() => validateManifest({ ...fixture(), currencyByLocale: { ...currencyByLocale, en: 'EUR' } })).toThrow();
   });
   it('rejects incomplete or non-fictional sets', () => {
     expect(() => validateManifest({ ...fixture(), status: 'partial' })).toThrow();

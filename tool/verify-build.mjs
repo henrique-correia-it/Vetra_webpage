@@ -4,7 +4,8 @@ import { fileURLToPath } from 'node:url';
 const base = '/Vetra_webpage/';
 const origin = 'https://henrique-correia-it.github.io';
 const languages = [
-  ['', 'en'],
+  ['', 'en-US'],
+  ['en-gb', 'en-GB'],
   ['pt', 'pt-PT'],
   ['pt-br', 'pt-BR'],
   ['es', 'es'],
@@ -93,7 +94,7 @@ export function verifyBuild(distPath) {
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const result = verifyBuild(process.argv[2] ?? 'dist');
-  if (result.ok) console.log('Verified eight localized pages, privacy and referenced assets.');
+  if (result.ok) console.log(`Verified ${languages.length} localized pages, privacy and referenced assets.`);
   else {
     console.error(result.errors.join('\n'));
     process.exitCode = 1;

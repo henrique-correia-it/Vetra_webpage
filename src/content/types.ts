@@ -1,4 +1,4 @@
-export type LocaleId = 'en' | 'pt' | 'pt-br' | 'es' | 'fr' | 'de' | 'it' | 'zh';
+export type LocaleId = 'en' | 'en-gb' | 'pt' | 'pt-br' | 'es' | 'fr' | 'de' | 'it' | 'zh';
 export type Section = { eyebrow: string; title: string; text: string };
 export type Item = { title: string; text: string };
 export type SiteCopy = {

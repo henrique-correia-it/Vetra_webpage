@@ -5,7 +5,8 @@ describe('browser language', () => {
   it.each([
     [['pt-BR', 'en'], 'pt-br'],
     [['pt-PT'], 'pt'],
-    [['en-GB'], 'en'],
+    [['en-GB'], 'en-gb'],
+    [['en-US'], 'en'],
     [['es-MX'], 'es'],
     [['fr-CA'], 'fr'],
     [['de-CH'], 'de'],
@@ -19,6 +20,11 @@ describe('browser language', () => {
   });
   it('keeps manual English when the browser prefers Portuguese', () => {
     expect(preferences.languageRedirect('/Vetra_webpage/', ['pt'], 'en')).toBeNull();
+  });
+  it('keeps manual American English on a British browser', () => {
+    expect(preferences.languageRedirect('/Vetra_webpage/', ['en-GB'], 'en')).toBeNull();
+    expect(preferences.languageRedirect('/Vetra_webpage/', ['en-GB'], null)).toBe('/Vetra_webpage/en-gb/');
+    expect(preferences.languageRedirect('/Vetra_webpage/en-gb/', ['en-US'], 'en')).toBeNull();
   });
   it('redirects the default page but respects an explicitly localized link', () => {
     expect(preferences.languageRedirect('/Vetra_webpage/', ['pt'], null)).toBe(

@@ -48,6 +48,7 @@ export function browserLocale(languages: readonly string[]): LocaleId {
     )
       continue;
     if (language === 'pt' && parts.includes('br')) return 'pt-br';
+    if (language === 'en' && parts.includes('gb')) return 'en-gb';
     const found = locales.find((item) => item.id === language);
     if (found) return found.id;
   }

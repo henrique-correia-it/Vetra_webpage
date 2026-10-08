@@ -2,14 +2,14 @@ import type { SiteCopy } from '../types';
 export default {
   meta: {
     description:
-      'Organise expenses, plan your month and make room for savings. Discover Vetra, your personal finance app without ads, with optional cloud sync.',
+      'Organize expenses, plan your month and make room for savings. Discover Vetra, your personal finance app without ads, with optional cloud sync.',
   },
   nav: {
     features: 'Discover',
     faq: 'Questions',
     download: 'View on Google Play',
     language: 'Language',
-    theme: 'Change colour theme',
+    theme: 'Change color theme',
     skip: 'Skip to content',
   },
   hero: {
@@ -53,7 +53,7 @@ export default {
   trust: {
     eyebrow: 'YOUR MONEY. YOUR DECISIONS.',
     title: 'A calmer place for your finances.',
-    text: 'No advertising in the way. No bank connection required. You decide whether to use cloud synchronisation.',
+    text: 'No advertising in the way. No bank connection required. You decide whether to use cloud synchronization.',
     items: [
       {
         title: 'Works offline',
@@ -74,19 +74,19 @@ export default {
     items: [
       {
         title: 'Does Vetra connect to my bank?',
-        text: 'No. You register your accounts and transactions yourself. Vetra is an organiser, not a banking service.',
+        text: 'No. You register your accounts and transactions yourself. Vetra is an organizer, not a banking service.',
       },
       {
         title: 'Which currencies can I use?',
         text: 'Choose EUR, USD, GBP, CNY, CHF, AUD, CAD or BRL during onboarding. Your chosen main currency applies to your finances; changing it later is not currently available.',
       },
       {
-        title: 'Do I have to synchronise?',
+        title: 'Do I have to synchronize?',
         text: 'No. Cloud sync is optional. For local use, keep an up-to-date Vetra backup somewhere safe.',
       },
       {
         title: 'Can I use it without Internet?',
-        text: 'Yes, after initial setup. Authentication, synchronisation and other online services require Internet.',
+        text: 'Yes, after initial setup. Authentication, synchronization and other online services require Internet.',
       },
       {
         title: 'How can I try the app?',

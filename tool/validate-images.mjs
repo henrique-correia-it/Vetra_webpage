@@ -1,7 +1,8 @@
-import { readFileSync, realpathSync, mkdirSync, copyFileSync } from 'node:fs';
+import { readFileSync, realpathSync, mkdirSync, copyFileSync, lstatSync } from 'node:fs';
 import { resolve, relative, isAbsolute, dirname, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-export const captureLocales = ['en', 'pt', 'pt-BR', 'es', 'fr', 'de', 'it', 'zh-Hans'];
+export const captureLocales = ['en', 'en-GB', 'pt', 'pt-BR', 'es', 'fr', 'de', 'it', 'zh-Hans'];
+const currencies = { en: 'USD', 'en-GB': 'GBP', pt: 'EUR', 'pt-BR': 'BRL', es: 'EUR', fr: 'EUR', de: 'EUR', it: 'EUR', 'zh-Hans': 'CNY' };
 export const scenes = [
   'overview',
   'transactions',
@@ -16,6 +17,7 @@ export function validateManifest(manifest) {
   if (
     !manifest ||
     manifest.status !== 'complete' ||
+    manifest.generator !== 'vetra-store-artwork-v3' ||
     manifest.fictionalDataOnly !== true ||
     !Array.isArray(manifest.assets) ||
     !Array.isArray(manifest.locales)
@@ -23,6 +25,8 @@ export function validateManifest(manifest) {
     throw new Error('A complete fictional artwork manifest is required.');
   if (captureLocales.some((locale) => !manifest.locales.includes(locale)))
     throw new Error('Missing languages.');
+  if (captureLocales.some((locale) => manifest.currencyByLocale?.[locale] !== currencies[locale]))
+    throw new Error('Wrong or missing regional currencies.');
   const assets = manifest.assets.filter(
     (asset) => asset.device === 'phone' && asset.kind === 'artwork',
   );
@@ -46,6 +50,7 @@ export function validateManifest(manifest) {
       throw new Error('Invalid dimensions.');
     if (!captureLocales.includes(asset.locale) || !scenes.includes(asset.scene))
       throw new Error('Unknown locale or scene.');
+    if (asset.currency !== currencies[asset.locale]) throw new Error('Artwork currency does not match its locale.');
     const key = `${asset.locale}/${asset.scene}`;
     if (seen.has(key)) throw new Error('Duplicate artwork.');
     seen.add(key);
@@ -82,7 +87,7 @@ export function prepareImages(sourceDirectory) {
   mkdirSync(target, { recursive: true });
   if (!within(repo, realpathSync(target)))
     throw new Error('Target resolves outside the repository.');
-  for (const { asset, source } of verified) {
+  const destinations = verified.map(({ asset, source }) => {
     const folder = resolve(target, asset.locale);
     mkdirSync(folder, { recursive: true });
     if (!within(target, realpathSync(folder)))
@@ -90,12 +95,15 @@ export function prepareImages(sourceDirectory) {
     const output = resolve(folder, `${asset.scene}.png`);
     // Existing destination symlinks are not followed.
     try {
+      if (lstatSync(output).isSymbolicLink()) throw new Error('Unsafe existing target symlink.');
       if (!within(folder, realpathSync(output))) throw new Error('Unsafe existing target.');
     } catch (error) {
       if (error.code !== 'ENOENT') throw error;
     }
-    copyFileSync(source, output);
-  }
+    return { source, output };
+  });
+  // No selected image is overwritten until ALL destination checks succeed.
+  for (const { source, output } of destinations) copyFileSync(source, output);
   return verified.length;
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

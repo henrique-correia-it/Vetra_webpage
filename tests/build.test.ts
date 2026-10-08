@@ -8,7 +8,8 @@ function output() {
   const root = mkdtempSync(join(tmpdir(), 'vetra-site-test-'));
   roots.push(root);
   for (const [path, lang] of [
-    ['', 'en'],
+    ['', 'en-US'],
+    ['en-gb', 'en-GB'],
     ['pt', 'pt-PT'],
     ['pt-br', 'pt-BR'],
     ['es', 'es'],

@@ -1,4 +1,5 @@
 import en from './en';
+import enGB from './en-gb';
 import pt from './pt';
 import ptBR from './pt-br';
 import es from './es';
@@ -9,7 +10,7 @@ import zh from './zh';
 import type { LocaleId } from '../types';
 import type { PrivacyCopy } from './types';
 
-const policies: Record<LocaleId, PrivacyCopy> = { en, pt, 'pt-br': ptBR, es, fr, de, it, zh };
+const policies: Record<LocaleId, PrivacyCopy> = { en, 'en-gb': enGB, pt, 'pt-br': ptBR, es, fr, de, it, zh };
 export const getPrivacy = (locale: LocaleId): PrivacyCopy => policies[locale];
 export const controller = { name: 'Henrique Correia', updated: '2026-10-08' } as const;
 export const providerLinks = [

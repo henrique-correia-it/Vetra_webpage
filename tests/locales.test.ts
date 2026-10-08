@@ -11,6 +11,7 @@ describe('localized navigation', () => {
     expect(Object.keys(allCopy).sort()).toEqual([
       'de',
       'en',
+      'en-gb',
       'es',
       'fr',
       'it',
