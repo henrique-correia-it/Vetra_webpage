@@ -4,8 +4,8 @@ import { allCopy, getCopy } from '../src/content/copy';
 
 describe('localized navigation', () => {
   it('keeps English at the project root and anchors under localized pages', () => {
-    expect(localePath('en')).toBe('/Vetra_webpage/');
-    expect(localePath('pt-br', 'features')).toBe('/Vetra_webpage/pt-br/#features');
+    expect(localePath('en')).toBe('/');
+    expect(localePath('pt-br', 'features')).toBe('/pt-br/#features');
   });
   it('gives every page translated content', () => {
     expect(Object.keys(allCopy).sort()).toEqual([
