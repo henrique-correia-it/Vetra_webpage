@@ -1,8 +1,8 @@
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { resolve, relative, isAbsolute } from 'node:path';
 import { fileURLToPath } from 'node:url';
-const base = '/Vetra_webpage/';
-const origin = 'https://henrique-correia-it.github.io';
+const base = '/';
+const origin = 'https://vetra-app.com';
 const languages = [
   ['', 'en-US'],
   ['en-gb', 'en-GB'],

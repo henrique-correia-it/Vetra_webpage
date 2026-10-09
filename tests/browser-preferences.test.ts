@@ -19,20 +19,18 @@ describe('browser language', () => {
     expect(preferences.browserLocale(languages)).toBe(expected);
   });
   it('keeps manual English when the browser prefers Portuguese', () => {
-    expect(preferences.languageRedirect('/Vetra_webpage/', ['pt'], 'en')).toBeNull();
+    expect(preferences.languageRedirect('/', ['pt'], 'en')).toBeNull();
   });
   it('keeps manual American English on a British browser', () => {
-    expect(preferences.languageRedirect('/Vetra_webpage/', ['en-GB'], 'en')).toBeNull();
-    expect(preferences.languageRedirect('/Vetra_webpage/', ['en-GB'], null)).toBe('/Vetra_webpage/en-gb/');
-    expect(preferences.languageRedirect('/Vetra_webpage/en-gb/', ['en-US'], 'en')).toBeNull();
+    expect(preferences.languageRedirect('/', ['en-GB'], 'en')).toBeNull();
+    expect(preferences.languageRedirect('/', ['en-GB'], null)).toBe('/en-gb/');
+    expect(preferences.languageRedirect('/en-gb/', ['en-US'], 'en')).toBeNull();
   });
   it('redirects the default page but respects an explicitly localized link', () => {
-    expect(preferences.languageRedirect('/Vetra_webpage/', ['pt'], null)).toBe(
-      '/Vetra_webpage/pt/',
-    );
-    expect(preferences.languageRedirect('/Vetra_webpage/fr/', ['pt'], null)).toBeNull();
-    expect(preferences.languageRedirect('/Vetra_webpage/privacy.html', ['pt-BR'], null)).toBe(
-      '/Vetra_webpage/pt-br/privacy.html',
+    expect(preferences.languageRedirect('/', ['pt'], null)).toBe('/pt/');
+    expect(preferences.languageRedirect('/fr/', ['pt'], null)).toBeNull();
+    expect(preferences.languageRedirect('/privacy.html', ['pt-BR'], null)).toBe(
+      '/pt-br/privacy.html',
     );
   });
   it('ignores blocked storage and rejects an invalid stored language', () => {

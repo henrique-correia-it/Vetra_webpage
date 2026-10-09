@@ -1,7 +1,7 @@
 export const site = {
-  origin: 'https://henrique-correia-it.github.io',
-  base: '/Vetra_webpage/',
+  origin: 'https://vetra-app.com',
+  base: '/',
   playUrl: 'https://play.google.com/store/apps/details?id=pt.projetos.vetra',
-  supportEmail: 'vetra.app.support@gmail.com',
+  supportEmail: 'suporte@vetra-app.com',
   releaseChannel: 'production' as const,
 };

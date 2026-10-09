@@ -22,7 +22,7 @@ function output() {
     mkdirSync(folder, { recursive: true });
     writeFileSync(
       join(folder, 'index.html'),
-      `<html lang="${lang}"><head><title>Vetra</title></head><body><a href="/Vetra_webpage/privacy.html">Privacy</a></body></html>`,
+      `<html lang="${lang}"><head><title>Vetra</title></head><body><a href="/privacy.html">Privacy</a></body></html>`,
     );
   }
   writeFileSync(join(root, 'privacy.html'), '<html>Privacy</html>');
@@ -35,13 +35,13 @@ describe('static deployment validation', () => {
   it('accepts all localized pages and the preserved privacy route', () => {
     expect(verifyBuild(output()).ok).toBe(true);
   });
-  it('rejects a local URL that forgets the project base', () => {
+  it('rejects an unsafe URL protocol', () => {
     const root = output();
     writeFileSync(
       join(root, 'index.html'),
-      '<html lang="en"><img src="/assets/missing.png" /></html>',
+      '<html lang="en"><img src="javascript:alert(1)" /></html>',
     );
-    expect(verifyBuild(root).errors.some((error: string) => error.includes('project base'))).toBe(
+    expect(verifyBuild(root).errors.some((error: string) => error.includes('Unsafe URL'))).toBe(
       true,
     );
   });
@@ -50,7 +50,7 @@ describe('static deployment validation', () => {
     rmSync(join(root, 'privacy.html'));
     writeFileSync(
       join(root, 'pt', 'index.html'),
-      '<html lang="pt-PT"><img src="/Vetra_webpage/missing.webp" /></html>',
+      '<html lang="pt-PT"><img src="/missing.webp" /></html>',
     );
     const result = verifyBuild(root);
     expect(result.ok).toBe(false);
@@ -61,7 +61,7 @@ describe('static deployment validation', () => {
     const root = output();
     writeFileSync(
       join(root, 'index.html'),
-      '<html lang="en"><a href="/Vetra_webpage/privacy.html#delete-account">Delete account</a></html>',
+      '<html lang="en"><a href="/privacy.html#delete-account">Delete account</a></html>',
     );
     expect(
       verifyBuild(root).errors.some((error: string) => error.includes('Missing section')),
