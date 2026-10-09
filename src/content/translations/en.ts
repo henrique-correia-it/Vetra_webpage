@@ -16,8 +16,9 @@ export default {
     eyebrow: 'A LITTLE CLARITY. A LOT MORE CALM.',
     title: 'Make room for what matters.',
     text: 'Your expenses, your plans, your next chapter. Bring your money together in a place that feels simple.',
-    note: 'Currently available through closed testing on Google Play.',
+    note: 'Available for Android on Google Play.',
     chips: ['No ads', 'Your pace', 'Your choice'],
+    views: ['Overview', 'Vaults & Goals', 'Transactions'],
   },
   planning: {
     eyebrow: 'A PLAN THAT FITS YOUR LIFE',
@@ -49,6 +50,30 @@ export default {
         text: 'Track what people owe you and record payments as they arrive.',
       },
     ],
+    currencies: {
+      badge: 'NATIVE CURRENCIES',
+      title: 'Your primary currency, with native consistency',
+      text: 'Manage your finances in EUR, USD, GBP, BRL, CNY, CHF, AUD, or CAD. This initial base currency choice stays fixed for your financial book, keeping your balances and reports reliable.',
+    },
+  },
+  comparison: {
+    eyebrow: 'THE VETRA APPROACH',
+    title: 'Built for calm and intentional finances.',
+    text: 'Instead of complicated automated feeds and constant noise, Vetra brings an intentional, private, and clear way to manage your money.',
+    othersTitle: 'Common Approach',
+    others: [
+      'Complex bank syncs that often need manual corrections',
+      'Frequent notifications and unnecessary visual noise',
+      'Continuous dependency on an active internet connection',
+      'Crowded interfaces with scattered financial features',
+    ],
+    vetraTitle: 'With Vetra',
+    vetra: [
+      'Intentional tracking at your own natural pace',
+      'Clean space free from advertisements and distractions',
+      'Offline-first usage with your data on your device',
+      'Optional cloud sync and secure encrypted backups',
+    ],
   },
   trust: {
     eyebrow: 'YOUR MONEY. YOUR DECISIONS.',
@@ -70,27 +95,41 @@ export default {
     ],
   },
   faq: {
-    title: 'A few things you might wonder.',
+    eyebrow: 'CLEAR ANSWERS',
+    title: 'Questions you might have…',
+    text: 'Everything you need to know about how Vetra protects and simplifies your finances, with zero fine print.',
     items: [
       {
-        title: 'Does Vetra connect to my bank?',
-        text: 'No. You register your accounts and transactions yourself. Vetra is an organizer, not a banking service.',
+        title: 'Does Vetra connect to my bank account?',
+        text: 'No. You record accounts and transactions at your own pace. Vetra never asks for your online banking credentials or accesses your bank; it is a private sanctuary to manage your money with clarity.',
       },
       {
-        title: 'Which currencies can I use?',
-        text: 'Choose EUR, USD, GBP, CNY, CHF, AUD, CAD or BRL during onboarding. Your chosen main currency applies to your finances; changing it later is not currently available.',
+        title: 'Is my financial data sold or used for advertising?',
+        text: 'Never. Vetra is built with a strong focus on privacy. We do not sell data to third parties, show advertisements, or partner with lenders to push loans and credit cards.',
       },
       {
-        title: 'Do I have to synchronize?',
-        text: 'No. Cloud sync is optional. For local use, keep an up-to-date Vetra backup somewhere safe.',
+        title: 'Can I use Vetra without an internet connection?',
+        text: 'Yes. Vetra works offline once your workspace is set up. You can record transactions, check balances, and manage vaults anywhere. An internet connection is only needed for sign-in and optional cloud sync.',
       },
       {
-        title: 'Can I use it without Internet?',
-        text: 'Yes, after initial setup. Authentication, synchronization and other online services require Internet.',
+        title: 'Is cloud synchronization mandatory?',
+        text: 'No, it is completely optional. You can keep all your financial data stored strictly on your local device, or enable secure cloud sync to keep your finances updated across multiple devices.',
       },
       {
-        title: 'How can I try the app?',
-        text: 'The app is currently in closed testing. Open its Google Play page to check availability for your account.',
+        title: 'Which currencies can I choose?',
+        text: 'You can choose EUR, USD, GBP, BRL, CNY, CHF, AUD, or CAD as your base currency during setup. Please note that your initial currency selection is permanent for that financial book, preserving historical balance accuracy.',
+      },
+      {
+        title: 'What happens if I change phones or want to back up my data?',
+        text: 'You own your data entirely. At any time, you can export an encrypted .vetra backup file to restore on another device, or generate comprehensive financial summary reports in PDF.',
+      },
+      {
+        title: 'Which platforms does Vetra support?',
+        text: 'Vetra is available for Android smartphones and tablets on Google Play. Our team is currently dedicated to delivering the best possible experience on Android.',
+      },
+      {
+        title: 'How do I get started with Vetra or reach support?',
+        text: 'Download Vetra directly from Google Play using the buttons on this page. Simply sign in with your account to set up your book and start organizing your finances in minutes. If you have questions or feedback, reach out to us anytime.',
       },
     ],
   },

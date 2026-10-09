@@ -6,6 +6,17 @@ interface Props {
   copy: SiteCopy;
 }
 const { locale, copy } = Astro.props;
+
+const currencies = [
+  { code: 'EUR', symbol: '€' },
+  { code: 'USD', symbol: '$' },
+  { code: 'GBP', symbol: '£' },
+  { code: 'BRL', symbol: 'R$' },
+  { code: 'CNY', symbol: '¥' },
+  { code: 'CHF', symbol: 'CHF' },
+  { code: 'AUD', symbol: 'A$' },
+  { code: 'CAD', symbol: 'C$' },
+];
 ---
 
 <section class="chapter details-chapter">
@@ -15,20 +26,45 @@ const { locale, copy } = Astro.props;
       <h2>{copy.details.title}</h2>
       <p class="lede">{copy.details.text}</p>
     </div>
+
+    <!-- 3 Identical, Harmonious Feature Cards -->
     <div class="details-gallery">
       {copy.details.items.map((item, index) => (
-        <article>
+        <article class="detail-card">
           <div class="detail-art">
-            <AppImage
-              locale={locale}
-              scene={(['saving', 'accounts', 'receivables'] as const)[index]}
-              alt={item.title}
-            />
+            <div class="phone-frame">
+              <AppImage
+                locale={locale}
+                scene={(['saving', 'accounts', 'receivables'] as const)[index]}
+                alt={item.title}
+              />
+            </div>
           </div>
-          <h3>{item.title}</h3>
-          <p>{item.text}</p>
+          <div class="detail-content">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
         </article>
       ))}
+    </div>
+
+    <!-- Native Currencies Precision Dock -->
+    <div class="currencies-dock">
+      <div class="currencies-info">
+        <span class="currencies-badge">
+          {copy.details.currencies.badge}
+        </span>
+        <h3 class="currencies-title">{copy.details.currencies.title}</h3>
+        <p class="currencies-desc">{copy.details.currencies.text}</p>
+      </div>
+      <div class="currencies-list" role="list">
+        {currencies.map((curr) => (
+          <div class="currency-pill" role="listitem">
+            <span class="currency-symbol">{curr.symbol}</span>
+            <span class="currency-code">{curr.code}</span>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </section>

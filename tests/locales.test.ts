@@ -22,7 +22,7 @@ describe('localized navigation', () => {
     for (const locale of locales) {
       const copy = getCopy(locale.id);
       expect(copy.hero.title.trim().length).toBeGreaterThan(4);
-      expect(copy.faq.items).toHaveLength(5);
+      expect(copy.faq.items).toHaveLength(8);
       expect(copy.meta.description.length).toBeGreaterThan(30);
     }
   });

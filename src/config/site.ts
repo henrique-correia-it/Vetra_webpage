@@ -3,5 +3,5 @@ export const site = {
   base: '/Vetra_webpage/',
   playUrl: 'https://play.google.com/store/apps/details?id=pt.projetos.vetra',
   supportEmail: 'vetra.app.support@gmail.com',
-  releaseChannel: 'closed-test' as const,
+  releaseChannel: 'production' as const,
 };

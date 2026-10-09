@@ -12,10 +12,9 @@ const { locale, copy } = Astro.props;
 
 <section class="hero wrap" aria-labelledby="hero-title">
   <div class="hero-copy">
-    <p class="eyebrow">
-      <span class="tiny-mark"></span>
-      {copy.hero.eyebrow}
-    </p>
+    <div class="hero-pill">
+      <span>{copy.hero.eyebrow}</span>
+    </div>
     <h1 id="hero-title">{copy.hero.title}</h1>
     <p class="lede">{copy.hero.text}</p>
     <div class="hero-actions">
@@ -30,25 +29,123 @@ const { locale, copy } = Astro.props;
       {copy.hero.chips.map((chip) => (
         <li>
           <Icon name="check" size={15} />
-          {chip}
+          <span>{chip}</span>
         </li>
       ))}
     </ul>
   </div>
-  <div class="hero-art" aria-label={copy.footer.images}>
-    <div class="hero-orbit" aria-hidden="true"></div>
-    <div class="hero-picture hero-picture-main">
-      <AppImage locale={locale} scene="overview" alt={copy.clarity.items[0]} eager />
+
+  <div class="hero-stage-container">
+    <div class="hero-view-switcher" role="tablist" aria-label={copy.footer.images}>
+      {copy.hero.views.map((view, i) => (
+        <button
+          type="button"
+          role="tab"
+          id={`hero-tab-${i}`}
+          aria-controls={`hero-panel-${i}`}
+          class={`hero-view-tab ${i === 0 ? 'is-active' : ''}`}
+          data-hero-view={i}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          tabindex={i === 0 ? 0 : -1}
+        >
+          <span class="view-tab-label">{view}</span>
+        </button>
+      ))}
     </div>
-    <div class="hero-picture hero-picture-secondary">
-      <AppImage locale={locale} scene="vaults" alt={copy.details.items[0].title} eager />
+
+    <div class="hero-art" aria-label={copy.footer.images}>
+      <div class="hero-orbit" aria-hidden="true"></div>
+      
+      <!-- Primary Device Screen with dynamic tab views -->
+      <div class="hero-picture hero-picture-main">
+        <div class="phone-frame">
+          <div
+            class="screen-view is-active"
+            data-view-screen="0"
+            role="tabpanel"
+            id="hero-panel-0"
+            aria-labelledby="hero-tab-0"
+            tabindex="0"
+          >
+            <AppImage locale={locale} scene="overview" alt={copy.hero.views[0]} eager />
+          </div>
+          <div
+            class="screen-view"
+            data-view-screen="1"
+            role="tabpanel"
+            id="hero-panel-1"
+            aria-labelledby="hero-tab-1"
+            tabindex="0"
+            hidden
+          >
+            <AppImage locale={locale} scene="vaults" alt={copy.hero.views[1]} />
+          </div>
+          <div
+            class="screen-view"
+            data-view-screen="2"
+            role="tabpanel"
+            id="hero-panel-2"
+            aria-labelledby="hero-tab-2"
+            tabindex="0"
+            hidden
+          >
+            <AppImage locale={locale} scene="transactions" alt={copy.hero.views[2]} />
+          </div>
+        </div>
+      </div>
+
+      <!-- Secondary Device for depth layering -->
+      <div class="hero-picture hero-picture-secondary">
+        <div class="phone-frame">
+          <AppImage locale={locale} scene="planning" alt={copy.planning.title} eager />
+        </div>
+      </div>
     </div>
-    <div class="hero-floating-card" aria-hidden="true">
-      <span class="hero-floating-dot"></span>
-      <span>{copy.hero.chips[0]} · {copy.hero.chips[2]}</span>
-    </div>
-    <span class="art-index" aria-hidden="true">
-      01 — VETRA
-    </span>
   </div>
 </section>
+
+<script>
+  const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-hero-view]'));
+  const screens = Array.from(document.querySelectorAll<HTMLElement>('[data-view-screen]'));
+
+  const activateTab = (tab: HTMLButtonElement) => {
+    const target = tab.dataset.heroView;
+    tabs.forEach((t) => {
+      const active = t === tab;
+      t.classList.toggle('is-active', active);
+      t.setAttribute('aria-selected', active ? 'true' : 'false');
+      t.tabIndex = active ? 0 : -1;
+    });
+    screens.forEach((s) => {
+      const active = s.dataset.viewScreen === target;
+      s.classList.toggle('is-active', active);
+      if (active) {
+        s.removeAttribute('hidden');
+      } else {
+        s.setAttribute('hidden', '');
+      }
+    });
+  };
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => activateTab(tab));
+
+    tab.addEventListener('keydown', (e) => {
+      let nextIndex = index;
+      if (e.key === 'ArrowRight') {
+        nextIndex = (index + 1) % tabs.length;
+      } else if (e.key === 'ArrowLeft') {
+        nextIndex = (index - 1 + tabs.length) % tabs.length;
+      } else if (e.key === 'Home') {
+        nextIndex = 0;
+      } else if (e.key === 'End') {
+        nextIndex = tabs.length - 1;
+      } else {
+        return;
+      }
+      e.preventDefault();
+      tabs[nextIndex].focus();
+      activateTab(tabs[nextIndex]);
+    });
+  });
+</script>

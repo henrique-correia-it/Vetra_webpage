@@ -15,21 +15,19 @@ const { locale, copy } = Astro.props;
       <h2>{copy.clarity.title}</h2>
       <p class="lede">{copy.clarity.text}</p>
     </div>
-    <div class="clarity-gallery">
-      <figure>
-        <AppImage locale={locale} scene="transactions" alt={copy.clarity.items[1]} />
-        <figcaption>
-          <span>02</span>
-          {copy.clarity.items[1]}
-        </figcaption>
-      </figure>
-      <figure>
-        <AppImage locale={locale} scene="insights" alt={copy.clarity.items[2]} />
-        <figcaption>
-          <span>03</span>
-          {copy.clarity.items[2]}
-        </figcaption>
-      </figure>
+    <div class="clarity-showcase">
+      <div class="clarity-phone-column">
+        <div class="phone-frame">
+          <AppImage locale={locale} scene="transactions" alt={copy.clarity.items[1]} />
+        </div>
+        <p class="clarity-caption">{copy.clarity.items[1]}</p>
+      </div>
+      <div class="clarity-phone-column clarity-offset">
+        <div class="phone-frame">
+          <AppImage locale={locale} scene="insights" alt={copy.clarity.items[2]} />
+        </div>
+        <p class="clarity-caption">{copy.clarity.items[2]}</p>
+      </div>
     </div>
   </div>
 </section>

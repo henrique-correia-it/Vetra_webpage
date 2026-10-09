@@ -7,6 +7,7 @@ import Hero from './sections/Hero.astro';
 import Planning from './sections/Planning.astro';
 import Clarity from './sections/Clarity.astro';
 import Details from './sections/Details.astro';
+import Comparison from './sections/Comparison.astro';
 import Trust from './sections/Trust.astro';
 import Faq from './sections/Faq.astro';
 interface Props {
@@ -22,7 +23,8 @@ const copy = getCopy(locale);
   <Planning locale={locale} copy={copy} />
   <Clarity locale={locale} copy={copy} />
   <Details locale={locale} copy={copy} />
+  <Comparison copy={copy} />
   <Trust copy={copy} />
-  <Faq copy={copy} />
+  <Faq locale={locale} copy={copy} />
 </main>
 <Footer locale={locale} copy={copy} />

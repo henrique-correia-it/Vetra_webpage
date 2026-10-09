@@ -16,8 +16,9 @@ export default {
     eyebrow: 'MAIS CLAREZA. MAIS TRANQUILIDADE.',
     title: 'Dá espaço ao que importa.',
     text: 'As tuas despesas, os teus planos, o que vem a seguir. Junta o teu dinheiro num lugar que torna tudo mais simples.',
-    note: 'Disponível atualmente em testes fechados na Google Play.',
+    note: 'Disponível para Android na Google Play.',
     chips: ['Sem anúncios', 'Ao teu ritmo', 'À tua maneira'],
+    views: ['Visão Geral', 'Cofres & Metas', 'Movimentos'],
   },
   planning: {
     eyebrow: 'UM PLANO À MEDIDA DA TUA VIDA',
@@ -49,6 +50,30 @@ export default {
         text: 'Acompanha o que te devem e regista os pagamentos à medida que chegam.',
       },
     ],
+    currencies: {
+      badge: 'MOEDAS NATIVAS',
+      title: 'A tua moeda principal, com consistência nativa',
+      text: 'Define a moeda base do teu livro entre EUR, USD, GBP, BRL, CNY, CHF, AUD ou CAD. Esta escolha inicial é fixa para o teu livro financeiro, mantendo os teus saldos e relatórios precisos.',
+    },
+  },
+  comparison: {
+    eyebrow: 'A ABORDAGEM VETRA',
+    title: 'Criada para a tua tranquilidade.',
+    text: 'Em vez de fluxos automáticos complexos e ruído constante, a Vetra aposta numa gestão consciente, privada e clara do teu dinheiro.',
+    othersTitle: 'Abordagem Comum',
+    others: [
+      'Sincronizações bancárias complexas que requerem correções frequentes',
+      'Notificações constantes e excesso de ruído visual',
+      'Dependência contínua de ligação à Internet',
+      'Ecrãs sobrecarregados com opções dispersas',
+    ],
+    vetraTitle: 'Com a Vetra',
+    vetra: [
+      'Registo consciente ao teu próprio ritmo',
+      'Ambiente limpo, sem anúncios nem distrações',
+      'Utilização offline com dados no teu dispositivo',
+      'Sincronização opcional e cópias de segurança encriptadas',
+    ],
   },
   trust: {
     eyebrow: 'O TEU DINHEIRO. AS TUAS DECISÕES.',
@@ -70,27 +95,41 @@ export default {
     ],
   },
   faq: {
+    eyebrow: 'RESPOSTAS DIRETAS',
     title: 'Talvez estejas a pensar…',
+    text: 'Tudo o que precisas de saber sobre como a Vetra protege e simplifica as tuas finanças, sem letras pequenas.',
     items: [
       {
-        title: 'A Vetra liga-se ao meu banco?',
-        text: 'Não. Tu registas as contas e os movimentos. A Vetra ajuda-te a organizar as finanças; não é um serviço bancário.',
+        title: 'A Vetra liga-se à minha conta bancária?',
+        text: 'Não. Tu registas as tuas contas e os teus movimentos ao teu ritmo. A Vetra não pede credenciais bancárias nem acede às tuas contas; é um espaço privado para gerires o teu dinheiro com clareza.',
+      },
+      {
+        title: 'Os meus dados financeiros são vendidos ou usados para anúncios?',
+        text: 'Não. A Vetra foi construída com foco em privacidade. Não vendemos dados a terceiros, não temos anúncios nem intermediamos ofertas de crédito ou cartões.',
+      },
+      {
+        title: 'Posso usar a Vetra sem ligação à Internet?',
+        text: 'Sim. A Vetra funciona offline após a configuração inicial. Podes registar despesas, consultar saldos e organizar cofres em qualquer lugar. A ligação à Internet só é necessária para entrar na conta e para a sincronização opcional na nuvem.',
+      },
+      {
+        title: 'A sincronização na nuvem é obrigatória?',
+        text: 'Não, é totalmente opcional. Podes manter os teus dados guardados apenas na memória do teu telemóvel, ou ativar a sincronização segura para teres as tuas finanças atualizadas em múltiplos dispositivos.',
       },
       {
         title: 'Que moedas posso escolher?',
-        text: 'EUR, USD, GBP, CNY, CHF, AUD, CAD ou BRL na configuração inicial. A moeda principal aplica-se às tuas finanças. Ainda não é possível alterá-la mais tarde.',
+        text: 'Podes definir como moeda principal EUR, USD, GBP, BRL, CNY, CHF, AUD ou CAD durante a configuração. Tem em conta que a moeda escolhida no início é fixa para o teu livro financeiro atual, garantindo a integridade dos saldos e do histórico.',
       },
       {
-        title: 'Tenho de sincronizar?',
-        text: 'Não. A sincronização é opcional. Se usares apenas o modo local, guarda uma cópia Vetra atualizada num lugar seguro.',
+        title: 'O que acontece se eu quiser mudar de telemóvel ou guardar os meus dados?',
+        text: 'Tu és o único dono dos teus dados. Podes exportar a qualquer momento um ficheiro de cópia de segurança .vetra encriptado para restaurar noutro dispositivo, ou gerar relatórios detalhados em PDF.',
       },
       {
-        title: 'Posso usar sem Internet?',
-        text: 'Sim, depois da configuração inicial. A autenticação, sincronização e outros serviços online precisam de Internet.',
+        title: 'Em que plataformas está a Vetra disponível?',
+        text: 'A Vetra está disponível para telemóveis e tablets Android através da Google Play. O foco atual da equipa está em aperfeiçoar a experiência e o desempenho no ecossistema Android.',
       },
       {
-        title: 'Como posso experimentar a app?',
-        text: 'A app está em testes fechados. Abre a ficha na Google Play para verificar a disponibilidade para a tua conta.',
+        title: 'Como posso começar a usar a Vetra e tirar dúvidas?',
+        text: 'Podes descarregar a Vetra diretamente a partir da Google Play através dos botões nesta página. Basta iniciar sessão com a tua conta para configurar o teu livro e começar a organizar as tuas finanças. Se tiveres dúvidas ou precisares de apoio, podes falar connosco a qualquer momento.',
       },
     ],
   },

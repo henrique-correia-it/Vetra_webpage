@@ -1,0 +1,221 @@
+/* --------------------------------------------------
+   Bespoke Cursor System (Fine Pointers Only)
+-------------------------------------------------- */
+@media (hover: hover) and (pointer: fine) {
+  html.custom-cursor-enabled,
+  html.custom-cursor-enabled * {
+    cursor: none !important;
+  }
+
+  .custom-cursor-dot,
+  .custom-cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    z-index: 99999;
+    border-radius: 50%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(-100px, -100px, 0);
+    will-change: transform, opacity, width, height;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+  }
+
+  .custom-cursor-dot.is-active,
+  .custom-cursor-ring.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Precision Gem Core */
+  .custom-cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border: 1.5px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 0 10px var(--glow);
+    transition: opacity 0.2s ease, width 0.2s ease, height 0.2s ease;
+  }
+
+  :root[data-theme='dark'] .custom-cursor-dot {
+    border-color: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45), 0 0 12px var(--glow);
+  }
+
+  .custom-cursor-dot.is-hovering {
+    opacity: 0.5;
+    width: 5px;
+    height: 5px;
+  }
+
+  /* Magnetic Luminous Lens */
+  .custom-cursor-ring {
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid var(--accent);
+    box-shadow: 0 0 14px -2px var(--glow), inset 0 0 8px -2px var(--glow);
+    background: rgba(22, 96, 68, 0.03);
+    transition:
+      width 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+      height 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease,
+      opacity 0.25s ease;
+  }
+
+  .custom-cursor-ring.is-hovering {
+    width: 54px;
+    height: 54px;
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    border-width: 1px;
+    box-shadow: 0 0 24px -2px var(--glow), 0 6px 20px -4px rgba(0, 0, 0, 0.08);
+  }
+
+  :root[data-theme='dark'] .custom-cursor-ring {
+    background: rgba(110, 231, 173, 0.04);
+  }
+
+  :root[data-theme='dark'] .custom-cursor-ring.is-hovering {
+    background: rgba(110, 231, 173, 0.14);
+    box-shadow: 0 0 28px -2px var(--glow);
+  }
+
+  .custom-cursor-ring.is-pressed {
+    width: 26px;
+    height: 26px;
+    border-width: 2px;
+    background: var(--accent-border);
+  }
+
+  .custom-cursor-ring.is-autoscrolling {
+    width: 44px;
+    height: 44px;
+    border-color: var(--accent);
+    border-width: 2px;
+    background: var(--accent-soft);
+    box-shadow: 0 0 22px -2px var(--glow);
+  }
+
+  /* --------------------------------------------------
+     Bespoke Autoscroll HUD (Accompanies the Mouse)
+  -------------------------------------------------- */
+  .autoscroll-anchor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    pointer-events: none !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1.5px solid var(--accent);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12), 0 0 16px var(--glow);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(-100px, -100px, 0) translate(-50%, -50%) scale(0.6);
+    transition:
+      opacity 0.15s ease,
+      visibility 0.15s;
+  }
+
+  :root[data-theme='dark'] .autoscroll-anchor {
+    background: rgba(14, 20, 16, 0.94);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5), 0 0 20px var(--glow);
+  }
+
+  .autoscroll-anchor.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Origin Beacon (Marks the click zero-speed point) */
+  .autoscroll-origin {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    pointer-events: none !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    z-index: 99997;
+    border: 1.5px dashed var(--accent);
+    background: var(--accent-soft);
+    box-shadow: 0 0 10px var(--glow);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -50%) scale(0.5);
+    transition:
+      opacity 0.15s ease,
+      transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 0.15s;
+  }
+
+  .autoscroll-origin.is-active {
+    opacity: 0.85;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  /* When autoscrolling, hide standard dot & ring so the HUD is the cursor */
+  .custom-cursor-dot.is-autoscrolling,
+  .custom-cursor-ring.is-autoscrolling {
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
+  .autoscroll-center-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--glow);
+  }
+
+  .autoscroll-arrow {
+    width: 13px;
+    height: 13px;
+    color: var(--muted);
+    opacity: 0.35;
+    transition: opacity 0.15s ease, transform 0.15s ease, color 0.15s ease;
+  }
+
+  .autoscroll-arrow.is-pointing {
+    opacity: 1;
+    color: var(--accent);
+    filter: drop-shadow(0 0 4px var(--glow));
+  }
+
+  .autoscroll-arrow-up.is-pointing {
+    transform: translateY(-2px) scale(1.2);
+  }
+
+  .autoscroll-arrow-down.is-pointing {
+    transform: translateY(2px) scale(1.2);
+  }
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .custom-cursor-dot,
+  .custom-cursor-ring,
+  .autoscroll-origin,
+  .autoscroll-anchor {
+    display: none !important;
+  }
+}

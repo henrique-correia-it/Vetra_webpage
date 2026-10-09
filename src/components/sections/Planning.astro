@@ -12,10 +12,9 @@ const { locale, copy } = Astro.props;
 <section id="features" class="chapter planning-chapter">
   <div class="wrap split-section">
     <div class="chapter-art planning-art">
-      <AppImage locale={locale} scene="planning" alt={copy.planning.title} />
-      <span class="chapter-number" aria-hidden="true">
-        01
-      </span>
+      <div class="phone-frame">
+        <AppImage locale={locale} scene="planning" alt={copy.planning.title} />
+      </div>
     </div>
     <div class="chapter-copy">
       <p class="eyebrow">{copy.planning.eyebrow}</p>
@@ -28,7 +27,6 @@ const { locale, copy } = Astro.props;
               <Icon name={['plan', 'wallet', 'heart'][index]} />
             </span>
             <span>{item}</span>
-            <span class="line-number">0{index + 1}</span>
           </li>
         ))}
       </ol>

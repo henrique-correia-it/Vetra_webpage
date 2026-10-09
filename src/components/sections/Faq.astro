@@ -1,20 +1,32 @@
 ---
-import type { SiteCopy } from '../../content/types';
+import { privacyPath } from '../../content/locales';
+import type { LocaleId, SiteCopy } from '../../content/types';
 import Icon from '../Icon.astro';
 interface Props {
   copy: SiteCopy;
+  locale: LocaleId;
 }
-const { copy } = Astro.props;
+const { copy, locale } = Astro.props;
 ---
 
 <section id="faq" class="chapter faq-chapter wrap">
-  <h2>{copy.faq.title}</h2>
+  <div class="faq-header">
+    <p class="eyebrow">{copy.faq.eyebrow}</p>
+    <h2>{copy.faq.title}</h2>
+    <p class="lede">{copy.faq.text}</p>
+    <a href={privacyPath(locale, 'contact')} class="faq-contact-nudge">
+      <span>{copy.footer.contact}</span>
+      <Icon name="arrow" size={15} />
+    </a>
+  </div>
   <div class="faq-list">
     {copy.faq.items.map((item) => (
-      <details>
+      <details class="faq-item">
         <summary>
           <span>{item.title}</span>
-          <Icon name="plus" />
+          <span class="faq-icon-wrapper" aria-hidden="true">
+            <Icon name="plus" size={15} />
+          </span>
         </summary>
         <p>{item.text}</p>
       </details>
