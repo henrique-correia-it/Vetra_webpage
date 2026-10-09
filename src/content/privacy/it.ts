@@ -1,9 +1,10 @@
+import { site } from '../../config/site';
 import type { PrivacyCopy } from './types';
 export default {
   title: 'Informativa sulla privacy',
   intro:
     'Come Vetra tratta le informazioni, cosa resta sul dispositivo e cosa succede con le funzioni online. Questa informativa riguarda l’app Vetra e questo sito.',
-  updated: 'Aggiornata l’8 ottobre 2026',
+  updated: 'Aggiornata il 9 ottobre 2026',
   contents: 'In questa pagina',
   contact: 'Contatto per la privacy',
   contactText:
@@ -15,7 +16,7 @@ export default {
   deletion: 'Elimina il tuo account Vetra e i dati',
   deletionSteps: [
     'Nell’app: apri Impostazioni e scegli Elimina account e dati. Conferma con una connessione Internet.',
-    'Senza l’app: scrivi a vetra.app.support@gmail.com con oggetto «Eliminazione account Vetra», indicando l’email dell’account. Non devi reinstallare l’app.',
+    `Senza l’app: scrivi a ${site.supportEmail} con oggetto «Eliminazione account Vetra», indicando l’email dell’account. Non devi reinstallare l’app.`,
     'Verifichiamo che controlli l’account prima di eliminarlo, eventualmente tramite conferma dalla sua email registrata. Non chiediamo mai la password. Rispondiamo alle richieste di privacy entro un mese; eventuali proroghe previste dalla legge vengono spiegate.',
   ],
   deletionNote:
@@ -61,7 +62,8 @@ export default {
       id: 'recipients',
       title: '6. Fornitori e trattamento internazionale',
       paragraphs: [
-        'Supabase fornisce autenticazione, database e allegati cloud. Google fornisce accesso facoltativo, Drive, invio email di servizio con Gmail e hosting del supporto email. GitHub Pages ospita il sito. Trattano identità, contenuti e dati tecnici necessari al servizio; possono essere necessarie comunicazioni per legge o tutela di diritti. Le operazioni possono coinvolgere paesi fuori dallo SEE. I termini di Supabase descrivono garanzie, sub-responsabili e clausole contrattuali standard applicabili. Google e GitHub spiegano i trasferimenti nelle proprie informative. Puoi chiedere informazioni sulle garanzie applicabili.',
+        'Supabase fornisce autenticazione, database e allegati cloud. Google fornisce accesso facoltativo, Drive, invio email di servizio con Gmail e hosting del supporto email. GitHub Pages ospita il sito. Trattano identità, contenuti e dati tecnici necessari al servizio; possono essere necessarie comunicazioni per legge o tutela di diritti. Le operazioni possono coinvolgere paesi fuori dallo SEE. I termini di Supabase descrivono garanzie, sub-responsabili e clausole contrattuali standard applicabili. Google, Cloudflare e GitHub spiegano i trasferimenti nelle proprie informative. Puoi chiedere informazioni sulle garanzie applicabili.',
+        `Cloudflare protegge e distribuisce questo sito e inoltra i messaggi inviati a ${site.supportEmail} alla nostra casella di assistenza Gmail. L’inoltro tratta gli indirizzi di mittente e destinatario, il contenuto, gli allegati e i dati tecnici di consegna. Cloudflare non fornisce la sincronizzazione finanziaria di Vetra.`,
       ],
     },
     {
@@ -75,7 +77,7 @@ export default {
       id: 'website',
       title: '8. Sito e diagnostica',
       paragraphs: [
-        'Il sito non ha tracciatori pubblicitari o analitici Vetra. Conserva localmente solo lingua e tema scelti manualmente; legge localmente la lingua del browser per scegliere una traduzione supportata. Bloccare lo storage non impedisce l’accesso. GitHub può trattare IP e log tecnici di hosting; i link esterni hanno proprie informative. L’app conserva una diagnostica locale limitata progettata per escludere importi, nomi ed email. Nessun invio automatico: puoi cancellarla o condividerla con l’assistenza. Controlla gli allegati. I fornitori mantengono log operativi e di sicurezza.',
+        'Il sito non ha tracciatori pubblicitari o analitici Vetra. Conserva localmente solo lingua e tema scelti manualmente; legge localmente la lingua del browser per scegliere una traduzione supportata. Bloccare lo storage non impedisce l’accesso. GitHub e Cloudflare possono trattare indirizzi IP e log tecnici per ospitare, distribuire e proteggere il sito; i link esterni hanno proprie informative. L’app conserva una diagnostica locale limitata progettata per escludere importi, nomi ed email. Nessun invio automatico: puoi cancellarla o condividerla con l’assistenza. Controlla gli allegati. I fornitori mantengono log operativi e di sicurezza.',
       ],
     },
     {

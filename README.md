@@ -2,7 +2,7 @@
 
 > **Official website and landing page for Vetra — a calm, private personal finance tracker for Android.**
 
-🌐 **Live Website:** [https://henrique-correia-it.github.io/Vetra_webpage/](https://henrique-correia-it.github.io/Vetra_webpage/)
+🌐 **Live Website:** [https://vetra-app.com/](https://vetra-app.com/)
 
 ---
 
@@ -11,11 +11,11 @@
 This repository contains the source code for the Vetra product landing page and official legal documentation. Built with **Astro** for high performance, zero runtime framework overhead, and comprehensive internationalization.
 
 ### Key Highlights
-- **Multi-language (i18n):** Native support for 8 languages (`en`, `pt`, `pt-br`, `es`, `fr`, `de`, `it`, `zh`).
+- **Multi-language (i18n):** Native support for 9 locales (`en`, `en-gb`, `pt`, `pt-br`, `es`, `fr`, `de`, `it`, `zh`).
 - **Automatic Language Detection:** Adapts to the visitor's browser language, with manual selection persisted locally.
 - **Light / Dark Mode:** Smooth circular view-transition respecting system preferences and reduced motion.
 - **Device Mockups:** High-resolution localized screenshots generated directly from the authentic app interface.
-- **Privacy & Compliance:** Comprehensive, GDPR-compliant privacy policy available across all supported locales.
+- **Privacy:** Local, synced and shared data handling explained across all supported locales.
 
 ---
 
@@ -49,7 +49,7 @@ npm install
 npm run dev
 ```
 
-The site will be available at `http://localhost:4321/Vetra_webpage/`.
+The site will be available at `http://localhost:4321/`.
 
 ### Build & Verification
 
@@ -75,5 +75,10 @@ The website is continuously built and published to GitHub Pages on every push to
 ## Links & Support
 
 - 📱 **Google Play:** [Vetra on Google Play](https://play.google.com/store/apps/details?id=pt.projetos.vetra)
-- 🛡️ **Privacy Policy:** [Read Online](https://henrique-correia-it.github.io/Vetra_webpage/privacy.html)
-- ✉️ **Support & Feedback:** `vetra.app.support@gmail.com`
+- 🛡️ **Privacy Policy:** [Read Online](https://vetra-app.com/privacy.html)
+- ✉️ **Support & Feedback:** [support@vetra-app.com](mailto:support@vetra-app.com)
+
+Cloudflare Email Routing forwards support messages to the existing Gmail inbox.
+Authentication emails still use Supabase with Gmail SMTP; changing the public
+support contact does not change the sending configuration. Existing GitHub Pages
+links are preserved for compatibility.

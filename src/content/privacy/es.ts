@@ -1,9 +1,10 @@
+import { site } from '../../config/site';
 import type { PrivacyCopy } from './types';
 export default {
   title: 'Política de privacidad',
   intro:
     'Cómo trata Vetra tu información, qué queda en el dispositivo y qué ocurre al usar funciones online. Esta política cubre la app Vetra y este sitio web.',
-  updated: 'Actualizada el 8 de octubre de 2026',
+  updated: 'Actualizada el 9 de octubre de 2026',
   contents: 'En esta página',
   contact: 'Contacto de privacidad',
   contactText:
@@ -15,7 +16,7 @@ export default {
   deletion: 'Eliminar tu cuenta Vetra y tus datos',
   deletionSteps: [
     'En la app: abre Ajustes y selecciona Eliminar cuenta y datos. Confirma con conexión a Internet.',
-    'Sin la app: escribe a vetra.app.support@gmail.com con el asunto «Eliminar cuenta Vetra» e indica el correo de tu cuenta. No necesitas reinstalar la app.',
+    `Sin la app: escribe a ${site.supportEmail} con el asunto «Eliminar cuenta Vetra» e indica el correo de tu cuenta. No necesitas reinstalar la app.`,
     'Verificamos que controlas la cuenta antes de eliminarla. Podemos pedir confirmación desde su correo registrado, nunca tu contraseña. Respondemos a las solicitudes de privacidad en un mes; las posibles ampliaciones legales se explican.',
   ],
   deletionNote:
@@ -61,7 +62,8 @@ export default {
       id: 'recipients',
       title: '6. Proveedores y tratamiento internacional',
       paragraphs: [
-        'Supabase proporciona autenticación, base de datos y adjuntos en la nube. Google proporciona acceso opcional, Drive, envío de emails de servicio mediante Gmail y alojamiento del correo de soporte. GitHub Pages aloja el sitio. Tratan identidad, contenido y datos técnicos necesarios para su servicio; también puede haber divulgación por obligación legal o defensa de derechos. Sus operaciones pueden implicar países fuera del EEE. Los términos de Supabase describen garantías, subencargados y cláusulas contractuales tipo aplicables. Google y GitHub explican transferencias en sus políticas. Puedes pedir información sobre las garantías aplicables.',
+        'Supabase proporciona autenticación, base de datos y adjuntos en la nube. Google proporciona acceso opcional, Drive, envío de emails de servicio mediante Gmail y alojamiento del correo de soporte. GitHub Pages aloja el sitio. Tratan identidad, contenido y datos técnicos necesarios para su servicio; también puede haber divulgación por obligación legal o defensa de derechos. Sus operaciones pueden implicar países fuera del EEE. Los términos de Supabase describen garantías, subencargados y cláusulas contractuales tipo aplicables. Google, Cloudflare y GitHub explican transferencias en sus políticas. Puedes pedir información sobre las garantías aplicables.',
+        `Cloudflare protege y distribuye este sitio y reenvía los mensajes enviados a ${site.supportEmail} a nuestro buzón de soporte en Gmail. El reenvío trata las direcciones del remitente y destinatario, el contenido, los adjuntos y los datos técnicos de entrega. Cloudflare no proporciona la sincronización financiera de Vetra.`,
       ],
     },
     {
@@ -75,7 +77,7 @@ export default {
       id: 'website',
       title: '8. Sitio web y diagnóstico',
       paragraphs: [
-        'El sitio no tiene rastreadores publicitarios ni analíticos de Vetra. Solo guarda idioma y tema elegidos manualmente en el almacenamiento local del navegador; lee localmente el idioma del navegador para seleccionar una traducción compatible. Funciona con almacenamiento bloqueado. GitHub puede tratar IP y registros técnicos de alojamiento; los enlaces externos tienen políticas propias. La app mantiene un diagnóstico local limitado diseñado para excluir importes, nombres y emails. No se envía automáticamente: puedes borrarlo o compartirlo para soporte. Revisa los adjuntos. Los proveedores mantienen sus registros operativos y de seguridad.',
+        'El sitio no tiene rastreadores publicitarios ni analíticos de Vetra. Solo guarda idioma y tema elegidos manualmente en el almacenamiento local del navegador; lee localmente el idioma del navegador para seleccionar una traducción compatible. Funciona con almacenamiento bloqueado. GitHub y Cloudflare pueden tratar IP y registros técnicos para alojar, distribuir y proteger el sitio; los enlaces externos tienen políticas propias. La app mantiene un diagnóstico local limitado diseñado para excluir importes, nombres y emails. No se envía automáticamente: puedes borrarlo o compartirlo para soporte. Revisa los adjuntos. Los proveedores mantienen sus registros operativos y de seguridad.',
       ],
     },
     {

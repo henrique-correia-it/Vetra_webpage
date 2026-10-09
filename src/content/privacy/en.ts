@@ -1,9 +1,10 @@
+import { site } from '../../config/site';
 import type { PrivacyCopy } from './types';
 export default {
   title: 'Privacy policy',
   intro:
     'How Vetra handles your information, what stays on your device and what happens when you use online features. This policy covers the Vetra app and this website.',
-  updated: 'Updated 8 October 2026',
+  updated: 'Updated 9 October 2026',
   contents: 'On this page',
   contact: 'Your privacy contact',
   contactText:
@@ -15,7 +16,7 @@ export default {
   deletion: 'Delete your Vetra account and data',
   deletionSteps: [
     'In the app: open Settings and choose Delete account and data. Confirm the operation while connected to the Internet.',
-    'Without the app: email vetra.app.support@gmail.com with the subject “Vetra account deletion”, identifying the email address of your Vetra account. You do not need to reinstall the app.',
+    `Without the app: email ${site.supportEmail} with the subject “Vetra account deletion”, identifying the email address of your Vetra account. You do not need to reinstall the app.`,
     'We verify that you control the account before deleting it. We may ask you to confirm the request from its registered email address, never to disclose your password. We respond to privacy requests within one month; lawful extensions are explained when applicable.',
   ],
   deletionNote:
@@ -67,7 +68,8 @@ export default {
       title: '6. Providers and international processing',
       paragraphs: [
         'Supabase provides authentication, database and cloud attachment storage. Google provides optional sign-in, Drive backups, Gmail delivery of service emails and support-email hosting. GitHub Pages hosts this website. These providers process relevant identity, content and technical connection data for their respective services. Disclosure may also be necessary to comply with law or protect legal rights.',
-        'Provider operations may involve countries outside your own, including outside the EEA. Supabase’s data-processing terms describe safeguards, subprocessors and applicable standard contractual clauses for restricted transfers. Google and GitHub describe their international processing in their privacy policies. Contact us for information about safeguards applicable to your data.',
+        `Cloudflare protects and distributes this website and forwards messages sent to ${site.supportEmail} to our Gmail support mailbox. Email forwarding processes sender and recipient addresses, message content, attachments and technical delivery data. Cloudflare does not provide Vetra’s financial synchronisation.`,
+        'Provider operations may involve countries outside your own, including outside the EEA. Supabase’s data-processing terms describe safeguards, subprocessors and applicable standard contractual clauses for restricted transfers. Google, Cloudflare and GitHub describe their international processing in their privacy policies. Contact us for information about safeguards applicable to your data.',
       ],
     },
     {
@@ -82,7 +84,7 @@ export default {
       id: 'website',
       title: '8. Website and diagnostics',
       paragraphs: [
-        'This website has no Vetra advertising or analytics trackers. It stores only your manually chosen language and colour theme in browser local storage. Browser language is read locally to select a supported translation. Blocking storage does not prevent access. GitHub may process IP addresses and technical request logs when hosting the site. External Google Play and provider links have their own policies.',
+        'This website has no Vetra advertising or analytics trackers. It stores only your manually chosen language and colour theme in browser local storage. Browser language is read locally to select a supported translation. Blocking storage does not prevent access. GitHub and Cloudflare may process IP addresses and technical request logs to host, distribute and protect the site. External Google Play and provider links have their own policies.',
         'The app keeps a limited local technical diagnostic log, designed to omit monetary values, names and emails. It is not automatically sent to us. You can clear it or choose to share it for support; review any attachments before sending. Hosting and authentication providers also maintain their own operational and security logs.',
       ],
     },

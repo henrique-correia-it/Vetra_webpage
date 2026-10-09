@@ -1,7 +1,9 @@
-# Revisão da política de privacidade — 8 de outubro de 2026
+# Revisão da política de privacidade — 9 de outubro de 2026
 
-Responsável e email confirmados pelo proprietário: Henrique Correia,
-vetra.app.support@gmail.com. Emails de autenticação: Supabase com Gmail.
+Responsável e contacto público confirmados pelo proprietário: Henrique Correia,
+support@vetra-app.com. A Cloudflare encaminha as mensagens para a caixa existente
+vetra.app.support@gmail.com. Emails de autenticação: Supabase com Gmail, sem
+alteração da configuração SMTP.
 
 ## Evidência utilizada
 
@@ -14,6 +16,9 @@ vetra.app.support@gmail.com. Emails de autenticação: Supabase com Gmail.
 - `Vetra/lib/core/security/device_authenticator.dart`: autenticação pelo sistema operativo.
 - `Vetra/supabase/migrations/20260827000000_add_shared_accounts.sql`: preservação/transferência de contas partilhadas após eliminação do proprietário.
 - Website: sem analytics, recursos locais, preferências de tema e idioma em localStorage.
+- Cloudflare: proteção/distribuição do website e encaminhamento de email; regra
+  support@vetra-app.com ativa, destino Gmail verificado e receção confirmada pelo
+  proprietário. Não fornece a sincronização financeira.
 
 ## Fontes oficiais
 
@@ -22,6 +27,8 @@ vetra.app.support@gmail.com. Emails de autenticação: Supabase com Gmail.
 - [Google Play: eliminação de conta](https://support.google.com/googleplay/android-developer/answer/13327111)
 - [Supabase DPA](https://supabase.com/legal/customer-resources/data-processing-addendum)
 - [Google](https://policies.google.com/privacy) e [GitHub](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement)
+- [Cloudflare: privacidade](https://www.cloudflare.com/privacypolicy/) e
+  [encaminhamento de email](https://developers.cloudflare.com/email-service/get-started/route-emails/)
 - [CNPD: participações](https://www.cnpd.pt/cidadaos/participacoes/)
 
 ## Obrigações que continuam a exigir operação real

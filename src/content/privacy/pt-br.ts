@@ -1,3 +1,4 @@
+import { site } from '../../config/site';
 import pt from './pt';
 import type { PrivacyCopy } from './types';
 // Both Portuguese variants share the same legal commitments, with regional terminology.
@@ -20,7 +21,7 @@ export default {
   copy: 'Copiar endereço de email',
   deletionSteps: [
     'No app: abra Configurações e escolha Excluir conta e dados. Confirme a operação com conexão à Internet.',
-    'Sem o app: envie um email para vetra.app.support@gmail.com com o assunto “Excluir conta Vetra”, indicando o email da sua conta Vetra. Não é necessário reinstalar o app.',
+    `Sem o app: envie um email para ${site.supportEmail} com o assunto “Excluir conta Vetra”, indicando o email da sua conta Vetra. Não é necessário reinstalar o app.`,
     'Confirmamos que você controla a conta antes de excluí-la. Podemos pedir confirmação pelo email cadastrado, nunca a sua senha. Respondemos aos pedidos de privacidade em até um mês; possíveis extensões previstas em lei são explicadas.',
   ],
   deletion: 'Excluir sua conta Vetra e os dados',

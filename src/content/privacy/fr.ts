@@ -1,9 +1,10 @@
+import { site } from '../../config/site';
 import type { PrivacyCopy } from './types';
 export default {
   title: 'Politique de confidentialité',
   intro:
     'Comment Vetra traite vos informations, ce qui reste sur votre appareil et ce qui se passe lorsque vous utilisez les fonctions en ligne. Cette politique couvre l’application Vetra et ce site.',
-  updated: 'Mise à jour le 8 octobre 2026',
+  updated: 'Mise à jour le 9 octobre 2026',
   contents: 'Sur cette page',
   contact: 'Votre contact confidentialité',
   contactText:
@@ -15,7 +16,7 @@ export default {
   deletion: 'Supprimer votre compte Vetra et vos données',
   deletionSteps: [
     'Dans l’application : ouvrez les paramètres et choisissez Supprimer le compte et les données. Confirmez avec une connexion Internet.',
-    'Sans l’application : écrivez à vetra.app.support@gmail.com avec l’objet « Suppression du compte Vetra », en indiquant l’email du compte. Aucune réinstallation n’est nécessaire.',
+    `Sans l’application : écrivez à ${site.supportEmail} avec l’objet « Suppression du compte Vetra », en indiquant l’email du compte. Aucune réinstallation n’est nécessaire.`,
     'Nous vérifions que vous contrôlez le compte avant suppression, éventuellement par confirmation depuis son email. Nous ne demandons jamais votre mot de passe. Les demandes de confidentialité reçoivent une réponse sous un mois ; toute prolongation légale est expliquée.',
   ],
   deletionNote:
@@ -61,7 +62,8 @@ export default {
       id: 'recipients',
       title: '6. Prestataires et traitement international',
       paragraphs: [
-        'Supabase fournit authentification, base de données et pièces jointes cloud. Google fournit connexion facultative, Drive, emails de service via Gmail et hébergement du support email. GitHub Pages héberge ce site. Ils traitent identité, contenu et données techniques nécessaires ; des divulgations légales ou pour protéger des droits sont possibles. Leurs opérations peuvent concerner des pays hors EEE. Les conditions de traitement de Supabase décrivent garanties, sous-traitants et clauses contractuelles types applicables. Google et GitHub expliquent leurs transferts dans leurs politiques. Contactez-nous pour connaître les garanties applicables.',
+        'Supabase fournit authentification, base de données et pièces jointes cloud. Google fournit connexion facultative, Drive, emails de service via Gmail et hébergement du support email. GitHub Pages héberge ce site. Ils traitent identité, contenu et données techniques nécessaires ; des divulgations légales ou pour protéger des droits sont possibles. Leurs opérations peuvent concerner des pays hors EEE. Les conditions de traitement de Supabase décrivent garanties, sous-traitants et clauses contractuelles types applicables. Google, Cloudflare et GitHub expliquent leurs transferts dans leurs politiques. Contactez-nous pour connaître les garanties applicables.',
+        `Cloudflare protège et distribue ce site et transfère les messages envoyés à ${site.supportEmail} vers notre boîte de support Gmail. Ce transfert traite les adresses de l’expéditeur et du destinataire, le contenu, les pièces jointes et les données techniques de livraison. Cloudflare ne fournit pas la synchronisation financière de Vetra.`,
       ],
     },
     {
@@ -75,7 +77,7 @@ export default {
       id: 'website',
       title: '8. Site et diagnostic',
       paragraphs: [
-        'Le site n’utilise pas de traceurs publicitaires ou analytiques Vetra. Il conserve uniquement langue et thème choisis manuellement en stockage local ; la langue du navigateur est lue localement pour choisir une traduction compatible. Bloquer le stockage ne bloque pas le site. GitHub peut traiter IP et journaux d’hébergement ; les liens externes ont leurs politiques. L’application garde un diagnostic local limité conçu pour exclure montants, noms et emails. Aucun envoi automatique : vous pouvez le supprimer ou le partager au support. Vérifiez vos pièces jointes. Les prestataires gardent leurs propres journaux opérationnels et de sécurité.',
+        'Le site n’utilise pas de traceurs publicitaires ou analytiques Vetra. Il conserve uniquement langue et thème choisis manuellement en stockage local ; la langue du navigateur est lue localement pour choisir une traduction compatible. Bloquer le stockage ne bloque pas le site. GitHub et Cloudflare peuvent traiter les adresses IP et journaux techniques pour héberger, distribuer et protéger le site ; les liens externes ont leurs politiques. L’application garde un diagnostic local limité conçu pour exclure montants, noms et emails. Aucun envoi automatique : vous pouvez le supprimer ou le partager au support. Vérifiez vos pièces jointes. Les prestataires gardent leurs propres journaux opérationnels et de sécurité.',
       ],
     },
     {

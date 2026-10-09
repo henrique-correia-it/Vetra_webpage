@@ -1,9 +1,10 @@
+import { site } from '../../config/site';
 import type { PrivacyCopy } from './types';
 export default {
   title: 'Datenschutzerklärung',
   intro:
     'Wie Vetra Informationen verarbeitet, was auf deinem Gerät bleibt und was bei Online-Funktionen geschieht. Diese Erklärung gilt für die Vetra-App und diese Website.',
-  updated: 'Stand: 8. Oktober 2026',
+  updated: 'Stand: 9. Oktober 2026',
   contents: 'Auf dieser Seite',
   contact: 'Datenschutzkontakt',
   contactText:
@@ -15,7 +16,7 @@ export default {
   deletion: 'Vetra-Konto und Daten löschen',
   deletionSteps: [
     'In der App: Öffne die Einstellungen und wähle Konto und Daten löschen. Bestätige bei bestehender Internetverbindung.',
-    'Ohne App: Schreibe an vetra.app.support@gmail.com mit dem Betreff „Vetra-Konto löschen“ und nenne die E-Mail-Adresse deines Kontos. Eine Neuinstallation ist nicht nötig.',
+    `Ohne App: Schreibe an ${site.supportEmail} mit dem Betreff „Vetra-Konto löschen“ und nenne die E-Mail-Adresse deines Kontos. Eine Neuinstallation ist nicht nötig.`,
     'Vor der Löschung prüfen wir deine Kontrolle über das Konto, gegebenenfalls durch Bestätigung von dessen registrierter E-Mail-Adresse. Wir fragen nie nach deinem Passwort. Datenschutzanfragen beantworten wir innerhalb eines Monats; gesetzlich zulässige Verlängerungen werden erläutert.',
   ],
   deletionNote:
@@ -61,7 +62,8 @@ export default {
       id: 'recipients',
       title: '6. Anbieter und internationale Verarbeitung',
       paragraphs: [
-        'Supabase stellt Authentifizierung, Datenbank und Cloud-Anhänge bereit. Google stellt optionale Anmeldung, Drive, Service-E-Mails über Gmail und Support-E-Mail-Hosting bereit. GitHub Pages hostet die Website. Sie verarbeiten für ihren Dienst erforderliche Identitäts-, Inhalts- und Verbindungsdaten. Gesetzliche Offenlegung oder Schutz rechtlicher Ansprüche kann erforderlich sein. Verarbeitung kann außerhalb des EWR erfolgen. Supabases Auftragsverarbeitungsbedingungen beschreiben Garantien, Unterauftragsverarbeiter und geltende Standardvertragsklauseln. Google und GitHub erläutern internationale Verarbeitung in ihren Richtlinien. Informationen zu einschlägigen Garantien erhältst du auf Anfrage.',
+        'Supabase stellt Authentifizierung, Datenbank und Cloud-Anhänge bereit. Google stellt optionale Anmeldung, Drive, Service-E-Mails über Gmail und Support-E-Mail-Hosting bereit. GitHub Pages hostet die Website. Sie verarbeiten für ihren Dienst erforderliche Identitäts-, Inhalts- und Verbindungsdaten. Gesetzliche Offenlegung oder Schutz rechtlicher Ansprüche kann erforderlich sein. Verarbeitung kann außerhalb des EWR erfolgen. Supabases Auftragsverarbeitungsbedingungen beschreiben Garantien, Unterauftragsverarbeiter und geltende Standardvertragsklauseln. Google, Cloudflare und GitHub erläutern internationale Verarbeitung in ihren Richtlinien. Informationen zu einschlägigen Garantien erhältst du auf Anfrage.',
+        `Cloudflare schützt und verteilt diese Website und leitet Nachrichten an ${site.supportEmail} an unser Gmail-Supportpostfach weiter. Dabei werden Absender- und Empfängeradressen, Nachrichteninhalte, Anhänge und technische Zustelldaten verarbeitet. Cloudflare stellt nicht die Finanzsynchronisierung von Vetra bereit.`,
       ],
     },
     {
@@ -75,7 +77,7 @@ export default {
       id: 'website',
       title: '8. Website und Diagnose',
       paragraphs: [
-        'Die Website enthält keine Vetra-Werbe- oder Analysetracker. Nur manuell gewählte Sprache und Design werden lokal im Browser gespeichert; seine Sprache wird lokal zur Auswahl einer unterstützten Übersetzung gelesen. Gesperrter Speicher verhindert den Zugriff nicht. GitHub kann IP und technische Hostingprotokolle verarbeiten; externe Links haben eigene Richtlinien. Die App führt ein begrenztes lokales Diagnoseprotokoll, das Beträge, Namen und E-Mails ausschließen soll. Keine automatische Übermittlung: Du kannst es löschen oder für Support teilen. Prüfe Anhänge vor Versand. Anbieter führen eigene Betriebs- und Sicherheitsprotokolle.',
+        'Die Website enthält keine Vetra-Werbe- oder Analysetracker. Nur manuell gewählte Sprache und Design werden lokal im Browser gespeichert; seine Sprache wird lokal zur Auswahl einer unterstützten Übersetzung gelesen. Gesperrter Speicher verhindert den Zugriff nicht. GitHub und Cloudflare können IP-Adressen und technische Protokolle zum Hosten, Verteilen und Schützen der Website verarbeiten; externe Links haben eigene Richtlinien. Die App führt ein begrenztes lokales Diagnoseprotokoll, das Beträge, Namen und E-Mails ausschließen soll. Keine automatische Übermittlung: Du kannst es löschen oder für Support teilen. Prüfe Anhänge vor Versand. Anbieter führen eigene Betriebs- und Sicherheitsprotokolle.',
       ],
     },
     {

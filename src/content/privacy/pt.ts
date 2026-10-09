@@ -1,9 +1,10 @@
+import { site } from '../../config/site';
 import type { PrivacyCopy } from './types';
 export default {
   title: 'Política de privacidade',
   intro:
     'Como a Vetra trata a tua informação, o que fica no dispositivo e o que acontece quando usas funções online. Esta política abrange a app Vetra e este website.',
-  updated: 'Atualizada em 8 de outubro de 2026',
+  updated: 'Atualizada em 9 de outubro de 2026',
   contents: 'Nesta página',
   contact: 'Contacto de privacidade',
   contactText:
@@ -15,7 +16,7 @@ export default {
   deletion: 'Eliminar a tua conta Vetra e os dados',
   deletionSteps: [
     'Na app: abre Definições e escolhe Eliminar conta e dados. Confirma a operação com ligação à Internet.',
-    'Sem a app: envia um email para vetra.app.support@gmail.com com o assunto «Eliminar conta Vetra», indicando o email da tua conta Vetra. Não precisas de reinstalar a app.',
+    `Sem a app: envia um email para ${site.supportEmail} com o assunto «Eliminar conta Vetra», indicando o email da tua conta Vetra. Não precisas de reinstalar a app.`,
     'Confirmamos que controlas a conta antes de a eliminar. Podemos pedir confirmação através do email registado, nunca a tua palavra-passe. Respondemos aos pedidos de privacidade no prazo de um mês; eventuais prorrogações legalmente previstas são explicadas.',
   ],
   deletionNote:
@@ -67,7 +68,8 @@ export default {
       title: '6. Fornecedores e tratamento internacional',
       paragraphs: [
         'O Supabase fornece autenticação, base de dados e armazenamento de anexos na nuvem. A Google fornece login opcional, backups no Drive, envio de emails de serviço pelo Gmail e alojamento do email de apoio. O GitHub Pages aloja este website. Tratam os dados de identificação, conteúdo e ligação necessários aos respetivos serviços. Também pode haver divulgação para cumprir a lei ou proteger direitos legais.',
-        'A operação dos fornecedores pode envolver países fora do teu país, incluindo fora do EEE. Os termos de tratamento de dados do Supabase descrevem garantias, subcontratantes e cláusulas contratuais-tipo aplicáveis a transferências restritas. A Google e o GitHub descrevem o tratamento internacional nas suas políticas. Contacta-nos para saber as garantias aplicáveis aos teus dados.',
+        `A Cloudflare protege e distribui este website e encaminha as mensagens enviadas para ${site.supportEmail} para o nosso email de apoio no Gmail. O encaminhamento trata os endereços de remetente e destinatário, o conteúdo das mensagens, os anexos e os dados técnicos de entrega. A Cloudflare não fornece a sincronização financeira da Vetra.`,
+        'A operação dos fornecedores pode envolver países fora do teu país, incluindo fora do EEE. Os termos de tratamento de dados do Supabase descrevem garantias, subcontratantes e cláusulas contratuais-tipo aplicáveis a transferências restritas. A Google, a Cloudflare e o GitHub descrevem o tratamento internacional nas suas políticas. Contacta-nos para saber as garantias aplicáveis aos teus dados.',
       ],
     },
     {
@@ -82,7 +84,7 @@ export default {
       id: 'website',
       title: '8. Website e diagnóstico',
       paragraphs: [
-        'Este website não usa rastreadores publicitários ou analíticos da Vetra. Guarda apenas o idioma e tema que escolhes manualmente no armazenamento local do browser. O idioma do browser é lido localmente para selecionar uma tradução suportada. Bloquear o armazenamento não impede o acesso. O GitHub pode tratar IP e registos técnicos de pedidos para alojar o site. Links externos para Google Play e fornecedores têm políticas próprias.',
+        'Este website não usa rastreadores publicitários ou analíticos da Vetra. Guarda apenas o idioma e tema que escolhes manualmente no armazenamento local do browser. O idioma do browser é lido localmente para selecionar uma tradução suportada. Bloquear o armazenamento não impede o acesso. O GitHub e a Cloudflare podem tratar IP e registos técnicos de pedidos para alojar, distribuir e proteger o site. Links externos para Google Play e fornecedores têm políticas próprias.',
         'A app mantém um diagnóstico técnico local limitado, concebido para excluir valores monetários, nomes e emails. Não é enviado automaticamente para nós. Podes limpá-lo ou partilhá-lo para obter apoio; revê os anexos antes de enviar. Os fornecedores de alojamento e autenticação também mantêm os seus registos operacionais e de segurança.',
       ],
     },
