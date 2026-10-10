@@ -1232,8 +1232,10 @@ html:not(.custom-cursor-enabled) .showcase-track.is-dragging {
     margin-bottom: 24px;
   }
   .showcase-nav-btn {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
+    z-index: 70;
+    pointer-events: auto !important;
   }
   .showcase-nav-btn.prev {
     left: 8px;
@@ -1245,12 +1247,17 @@ html:not(.custom-cursor-enabled) .showcase-track.is-dragging {
     flex: 0 0 224px;
     width: 224px;
     margin-inline: -12px;
+    touch-action: pan-y !important;
+    pointer-events: none;
   }
   .showcase-phone-frame {
     max-width: 224px;
   }
   .showcase-track {
     padding: 20px calc(50% - 112px) 36px;
+    overflow-x: hidden !important;
+    touch-action: pan-y !important;
+    -webkit-overflow-scrolling: auto;
   }
 
   /* FAQ Mobile */

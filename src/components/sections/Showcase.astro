@@ -444,8 +444,12 @@ const items = screens[locale] ?? screens.en;
       }
     });
 
-    // Grab-and-drag functionality (Mouse / Pointer)
+    // Grab-and-drag functionality (Mouse / Pointer on Desktop fine pointers only)
     track.addEventListener('pointerdown', (e) => {
+      // On mobile / touch devices, disable dragging — navigate exclusively via arrows (< and >)
+      if (e.pointerType === 'touch' || window.matchMedia('(max-width: 768px), (pointer: coarse)').matches) {
+        return;
+      }
       if (e.pointerType === 'mouse' && e.button !== 0) return;
       stopAnimation();
       isDown = true;
@@ -503,10 +507,11 @@ const items = screens[locale] ?? screens.en;
     track.addEventListener('pointerup', finishDrag);
     track.addEventListener('pointercancel', finishDrag);
 
-    // Clicking any card centers it smoothly
+    // Clicking any card centers it smoothly (desktop fine pointers only)
     cards.forEach((card, idx) => {
       card.addEventListener('click', () => {
         if (isDragging || !track) return;
+        if (window.matchMedia('(max-width: 768px), (pointer: coarse)').matches) return;
         animateToCard(idx, 380);
       });
     });
