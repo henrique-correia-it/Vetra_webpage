@@ -1,7 +1,9 @@
 ---
+import { site } from '../config/site';
 import { privacyPath } from '../content/locales';
 import type { LocaleId, SiteCopy } from '../content/types';
 import GooglePlayButton from './GooglePlayButton.astro';
+import WebAppButton from './WebAppButton.astro';
 interface Props {
   copy: SiteCopy;
   locale: LocaleId;
@@ -16,13 +18,17 @@ const { copy, locale } = Astro.props;
       <h2>{copy.footer.title}</h2>
       <p>{copy.footer.text}</p>
     </div>
-    <GooglePlayButton locale={locale} />
+    <div class="footer-actions">
+      <GooglePlayButton locale={locale} />
+      <WebAppButton locale={locale} />
+    </div>
   </div>
   <div class="wrap footer-bottom">
     <span>
       © {new Date().getUTCFullYear()} Vetra. {copy.footer.rights}
     </span>
     <nav aria-label={copy.footer.contact}>
+      <a href={site.webAppUrl} target="_blank" rel="noopener noreferrer">{copy.nav.webApp}</a>
       <a href={privacyPath(locale)}>{copy.footer.privacy}</a>
       <a href={privacyPath(locale, 'contact')}>{copy.footer.contact}</a>
       <a href={privacyPath(locale, 'delete-account')}>{copy.footer.deletion}</a>

@@ -8,6 +8,7 @@ export default {
     features: 'Descubrir',
     faq: 'Preguntas',
     download: 'Ver en Google Play',
+    webApp: 'Web App',
     language: 'Idioma',
     theme: 'Cambiar tema de color',
     skip: 'Saltar al contenido',
@@ -16,7 +17,7 @@ export default {
     eyebrow: 'MÁS CLARIDAD. MUCHA MÁS CALMA.',
     title: 'Haz espacio para lo importante.',
     text: 'Tus gastos, tus planes, tu próxima etapa. Reúne tu dinero en un lugar que hace todo más sencillo.',
-    note: 'Disponible para Android en Google Play.',
+    note: 'Disponible para Android en Google Play y en el navegador web.',
     chips: ['Sin anuncios', 'A tu ritmo', 'A tu manera'],
     views: ['Vista General', 'Bóvedas y Metas', 'Movimientos'],
   },
@@ -125,7 +126,7 @@ export default {
       },
       {
         title: '¿En qué plataformas está disponible Vetra?',
-        text: 'Vetra está disponible para teléfonos y tablets Android a través de Google Play. El equipo está concentrado en brindar la mejor experiencia posible dentro del ecosistema Android.',
+        text: 'Vetra está disponible para teléfonos y tablets Android a través de Google Play, y en tu ordenador o tablet directamente en el navegador a través de la versión Web App (en app.vetra-app.com), manteniendo tus finanzas siempre sincronizadas.',
       },
       {
         title: '¿Cómo empiezo a usar Vetra y recibo ayuda?',

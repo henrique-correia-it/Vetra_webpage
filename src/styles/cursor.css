@@ -61,6 +61,7 @@
     transition:
       width 0.28s cubic-bezier(0.16, 1, 0.3, 1),
       height 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+      border-radius 0.28s cubic-bezier(0.16, 1, 0.3, 1),
       background-color 0.25s ease,
       border-color 0.25s ease,
       box-shadow 0.25s ease,
@@ -90,6 +91,122 @@
     height: 26px;
     border-width: 2px;
     background: var(--accent-border);
+  }
+
+  /* --------------------------------------------------
+     Bespoke Showcase Grab & Drag Lens
+     (Horizontal glass capsule with directional chevrons)
+  -------------------------------------------------- */
+  .custom-cursor-ring.is-grab {
+    width: 66px;
+    height: 36px;
+    border-radius: 999px;
+    background: rgba(22, 96, 68, 0.06);
+    border: 1.5px solid var(--accent);
+    box-shadow: 0 0 18px -2px var(--glow), 0 4px 14px -2px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  :root[data-theme='dark'] .custom-cursor-ring.is-grab {
+    background: rgba(110, 231, 173, 0.09);
+    border-color: rgba(110, 231, 173, 0.85);
+    box-shadow: 0 0 22px -2px var(--glow), 0 4px 18px -2px rgba(0, 0, 0, 0.5);
+  }
+
+  .custom-cursor-ring.is-grab::before,
+  .custom-cursor-ring.is-grab::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    border-style: solid;
+    border-color: var(--accent);
+    opacity: 0.9;
+    pointer-events: none;
+    transition:
+      transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  :root[data-theme='dark'] .custom-cursor-ring.is-grab::before,
+  :root[data-theme='dark'] .custom-cursor-ring.is-grab::after {
+    border-color: rgba(110, 231, 173, 0.95);
+    filter: drop-shadow(0 0 4px var(--glow));
+  }
+
+  /* Left Micro-Chevron: ‹ */
+  .custom-cursor-ring.is-grab::before {
+    left: 11px;
+    border-width: 1.5px 0 0 1.5px;
+    transform: translateY(-50%) rotate(-45deg);
+  }
+
+  /* Right Micro-Chevron: › */
+  .custom-cursor-ring.is-grab::after {
+    right: 11px;
+    border-width: 1.5px 1.5px 0 0;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  .custom-cursor-dot.is-grab {
+    width: 5px;
+    height: 5px;
+    opacity: 0.95;
+  }
+
+  /* When hovering buttons/links, suppress chevrons */
+  .custom-cursor-ring.is-hovering::before,
+  .custom-cursor-ring.is-hovering::after {
+    opacity: 0 !important;
+    display: none !important;
+  }
+
+  /* Active Dragging / Gripped State - Tightly contracted high-energy gem */
+  body.is-showcase-dragging .custom-cursor-ring,
+  .custom-cursor-ring.is-grab.is-pressed,
+  .custom-cursor-ring.is-grab.is-dragging {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50% !important;
+    background: var(--accent) !important;
+    border-color: rgba(255, 255, 255, 0.92) !important;
+    border-width: 2px !important;
+    box-shadow: 0 0 24px 2px var(--glow), 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  :root[data-theme='dark'] body.is-showcase-dragging .custom-cursor-ring,
+  :root[data-theme='dark'] .custom-cursor-ring.is-grab.is-pressed,
+  :root[data-theme='dark'] .custom-cursor-ring.is-grab.is-dragging {
+    border-color: #ffffff !important;
+    box-shadow: 0 0 28px 2px var(--glow), 0 4px 18px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  body.is-showcase-dragging .custom-cursor-ring::before,
+  .custom-cursor-ring.is-grab.is-pressed::before,
+  .custom-cursor-ring.is-grab.is-dragging::before {
+    transform: translateY(-50%) translateX(6px) scale(0);
+    opacity: 0;
+  }
+
+  body.is-showcase-dragging .custom-cursor-ring::after,
+  .custom-cursor-ring.is-grab.is-pressed::after,
+  .custom-cursor-ring.is-grab.is-dragging::after {
+    transform: translateY(-50%) translateX(-6px) scale(0);
+    opacity: 0;
+  }
+
+  body.is-showcase-dragging .custom-cursor-dot,
+  .custom-cursor-dot.is-grab.is-pressed,
+  .custom-cursor-dot.is-grab.is-dragging {
+    width: 6px !important;
+    height: 6px !important;
+    background: #ffffff !important;
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.95) !important;
+    opacity: 1 !important;
   }
 
   .custom-cursor-ring.is-autoscrolling {

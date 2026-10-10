@@ -53,5 +53,20 @@ const { copy } = Astro.props;
         </ul>
       </div>
     </div>
+
+    <!-- Integrated Trust Pillars Strip -->
+    <div class="trust-strip">
+      {copy.trust.items.map((item, index) => (
+        <div class="trust-strip-item">
+          <div class="trust-strip-icon">
+            <Icon name={['shield', 'cloud', 'backup'][index]} size={22} />
+          </div>
+          <div class="trust-strip-content">
+            <h4>{item.title}</h4>
+            <p>{item.text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
   </div>
 </section>

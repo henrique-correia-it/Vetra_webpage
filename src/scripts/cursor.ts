@@ -263,8 +263,8 @@ export function initCustomCursor(): void {
 
     const hide = () => {
       isVisible = false;
-      dot.classList.remove('is-active');
-      ring.classList.remove('is-active');
+      dot.classList.remove('is-active', 'is-hovering', 'is-grab', 'is-dragging');
+      ring.classList.remove('is-active', 'is-hovering', 'is-pressed', 'is-grab', 'is-dragging');
       stopCursorLoop();
       stopAutoscroll();
     };
@@ -395,12 +395,17 @@ export function initCustomCursor(): void {
     window.addEventListener('pointerdown', (e) => {
       if (e.button === 0 && !isAutoscrolling) {
         ring.classList.add('is-pressed');
+        if (ring.classList.contains('is-grab')) {
+          ring.classList.add('is-dragging');
+          dot.classList.add('is-dragging');
+        }
       }
     });
 
     window.addEventListener('pointerup', (e) => {
       if (e.button === 0) {
-        ring.classList.remove('is-pressed');
+        ring.classList.remove('is-pressed', 'is-dragging');
+        dot.classList.remove('is-dragging');
       }
     });
 
@@ -412,36 +417,40 @@ export function initCustomCursor(): void {
 
     const interactiveSelector =
       'a, button, summary, input, select, textarea, [role="button"], [role="tab"], .currency-pill, .detail-card, .plan-step, .comparison-card, .faq-summary, .theme-toggle';
+    const grabSelector =
+      '[data-cursor="grab"], [data-showcase-track], .showcase-track';
 
-    document.addEventListener(
-      'mouseover',
-      (e) => {
-        const target = e.target as HTMLElement | null;
-        const related = e.relatedTarget as HTMLElement | null;
-        const currentTarget = target?.closest(interactiveSelector);
-        const relatedTarget = related?.closest(interactiveSelector);
-        if (currentTarget === relatedTarget) return;
+    const updateHoverState = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
 
-        if (currentTarget) {
-          ring.classList.add('is-hovering');
-          dot.classList.add('is-hovering');
-        }
-      },
-      { passive: true },
-    );
+      const interactive = target.closest(interactiveSelector);
+      const grab = !interactive && target.closest(grabSelector);
+
+      if (interactive) {
+        ring.classList.add('is-hovering');
+        dot.classList.add('is-hovering');
+        ring.classList.remove('is-grab');
+        dot.classList.remove('is-grab');
+      } else if (grab) {
+        ring.classList.remove('is-hovering');
+        dot.classList.remove('is-hovering');
+        ring.classList.add('is-grab');
+        dot.classList.add('is-grab');
+      } else {
+        ring.classList.remove('is-hovering', 'is-grab');
+        dot.classList.remove('is-hovering', 'is-grab');
+      }
+    };
+
+    document.addEventListener('mouseover', updateHoverState, { passive: true });
 
     document.addEventListener(
       'mouseout',
       (e) => {
-        const target = e.target as HTMLElement | null;
-        const related = e.relatedTarget as HTMLElement | null;
-        const currentTarget = target?.closest(interactiveSelector);
-        const relatedTarget = related?.closest(interactiveSelector);
-        if (currentTarget === relatedTarget) return;
-
-        if (currentTarget && !relatedTarget) {
-          ring.classList.remove('is-hovering');
-          dot.classList.remove('is-hovering');
+        if (!e.relatedTarget) {
+          ring.classList.remove('is-hovering', 'is-grab', 'is-dragging');
+          dot.classList.remove('is-hovering', 'is-grab', 'is-dragging');
         }
       },
       { passive: true },

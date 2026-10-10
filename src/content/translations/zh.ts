@@ -8,6 +8,7 @@ export default {
     features: '功能探索',
     faq: '常见疑问',
     download: '前往 Google Play 查看',
+    webApp: '网页版',
     language: '语言设置',
     theme: '切换色彩模式',
     skip: '跳转至核心内容',
@@ -16,7 +17,7 @@ export default {
     eyebrow: '多一份清晰，添一份从容。',
     title: '为真正重要的事情留出空间。',
     text: '您的每一笔开支、长远计划与未来憧憬。让资金管理回归纯粹与平静。',
-    note: '已在 Google Play 正式提供 Android 版本。',
+    note: '支持 Google Play 上的 Android 设备以及网页浏览器。',
     chips: ['零广告打扰', '依从您的节奏', '自主决定一切'],
     views: ['概览总览', '金库与目标', '明细账单'],
   },
@@ -125,7 +126,7 @@ export default {
       },
       {
         title: 'Vetra 支持哪些平台？',
-        text: 'Vetra 目前已在 Google Play 上架，支持 Android 手机与平板设备。团队目前专注于在 Android 生态中打造流畅出色的使用体验。',
+        text: 'Vetra 已在 Google Play 上架支持 Android 手机与平板设备，同时可直接在各大现代网页浏览器中通过 app.vetra-app.com 访问使用，数据无缝同步。',
       },
       {
         title: '如何开始使用 Vetra 以及获取支持帮助？',

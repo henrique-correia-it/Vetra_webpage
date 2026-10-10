@@ -1,0 +1,514 @@
+---
+import type { LocaleId } from '../../content/types';
+import type { SiteScene } from '../../content/images';
+import AppImage from '../AppImage.astro';
+
+interface Props {
+  locale: LocaleId;
+}
+
+const { locale } = Astro.props;
+
+const headers: Record<LocaleId, { eyebrow: string; title: string; hint: string }> = {
+  pt: {
+    eyebrow: 'INTERFACE & RECURSOS',
+    title: 'Conhece a Vetra ecrã a ecrã.',
+    hint: 'Desliza para ver os 8 ecrãs',
+  },
+  'pt-br': {
+    eyebrow: 'INTERFACE & RECURSOS',
+    title: 'Conheça o Vetra tela a tela.',
+    hint: 'Deslize para ver as 8 telas',
+  },
+  en: {
+    eyebrow: 'DESIGN & INTERFACE',
+    title: 'Explore Vetra, screen by screen.',
+    hint: 'Swipe to browse all 8 screens',
+  },
+  'en-gb': {
+    eyebrow: 'DESIGN & INTERFACE',
+    title: 'Explore Vetra, screen by screen.',
+    hint: 'Swipe to browse all 8 screens',
+  },
+  es: {
+    eyebrow: 'DISEÑO E INTERFAZ',
+    title: 'Explora Vetra, pantalla a pantalla.',
+    hint: 'Desliza para ver las 8 pantallas',
+  },
+  fr: {
+    eyebrow: 'DESIGN & INTERFACE',
+    title: 'Explorez Vetra, écran par écran.',
+    hint: 'Faites défiler pour voir les 8 écrans',
+  },
+  de: {
+    eyebrow: 'DESIGN & INTERFACE',
+    title: 'Vetra entdecken, Bildschirm für Bildschirm.',
+    hint: 'Wischen, um alle 8 Ansichten zu sehen',
+  },
+  it: {
+    eyebrow: 'DESIGN & INTERFACCIA',
+    title: 'Esplora Vetra, schermata per schermata.',
+    hint: 'Scorri per scoprire le 8 schermate',
+  },
+  zh: {
+    eyebrow: '精致界面 · 纯粹体验',
+    title: '逐屏探索 Vetra 纯净之美。',
+    hint: '滑动浏览全部 8 大核心画面',
+  },
+};
+
+const screens: Record<
+  LocaleId,
+  Array<{ scene: SiteScene; title: string; subtitle: string }>
+> = {
+  pt: [
+    { scene: 'overview', title: 'Visão Geral', subtitle: 'Saldos consolidados e fluxo do mês' },
+    { scene: 'planning', title: 'Planeamento', subtitle: 'Despesas fixas, dia a dia e poupanças' },
+    { scene: 'transactions', title: 'Movimentos', subtitle: 'Histórico claro e registo sem atrito' },
+    { scene: 'accounts', title: 'Contas', subtitle: 'Bancos, numerário e reservas separados' },
+    { scene: 'insights', title: 'Análises', subtitle: 'Gráficos e leitura inteligente de gastos' },
+    { scene: 'vaults', title: 'Cofres', subtitle: 'Isolamento de fundos e metas financeiras' },
+    { scene: 'saving', title: 'Poupanças', subtitle: 'Progresso em tempo real de cada meta' },
+    { scene: 'receivables', title: 'A Receber', subtitle: 'Gestão de valores e cobranças pendentes' },
+  ],
+  'pt-br': [
+    { scene: 'overview', title: 'Visão Geral', subtitle: 'Saldos consolidados e fluxo do mês' },
+    { scene: 'planning', title: 'Planejamento', subtitle: 'Despesas fixas, dia a dia e poupança' },
+    { scene: 'transactions', title: 'Movimentações', subtitle: 'Histórico claro e registro sem atrito' },
+    { scene: 'accounts', title: 'Contas', subtitle: 'Bancos, dinheiro e reservas separados' },
+    { scene: 'insights', title: 'Análises', subtitle: 'Gráficos e leitura inteligente de gastos' },
+    { scene: 'vaults', title: 'Cofres', subtitle: 'Isolamento de fundos e metas financeiras' },
+    { scene: 'saving', title: 'Poupança', subtitle: 'Progresso em tempo real de cada meta' },
+    { scene: 'receivables', title: 'A Receber', subtitle: 'Gestão de valores e cobranças pendentes' },
+  ],
+  en: [
+    { scene: 'overview', title: 'Overview', subtitle: 'Total balance and monthly cash flow' },
+    { scene: 'planning', title: 'Planning', subtitle: 'Fixed bills, daily budget, and savings' },
+    { scene: 'transactions', title: 'Transactions', subtitle: 'Clear ledger and effortless logging' },
+    { scene: 'accounts', title: 'Accounts', subtitle: 'Banks, cash, and segregated reserves' },
+    { scene: 'insights', title: 'Insights', subtitle: 'Visual analytics and spending trends' },
+    { scene: 'vaults', title: 'Vaults', subtitle: 'Dedicated spaces for key goals' },
+    { scene: 'saving', title: 'Savings', subtitle: 'Real-time progress toward milestones' },
+    { scene: 'receivables', title: 'Receivables', subtitle: 'Keep track of money owed to you' },
+  ],
+  'en-gb': [
+    { scene: 'overview', title: 'Overview', subtitle: 'Total balance and monthly cash flow' },
+    { scene: 'planning', title: 'Planning', subtitle: 'Fixed bills, daily budget, and savings' },
+    { scene: 'transactions', title: 'Transactions', subtitle: 'Clear ledger and effortless logging' },
+    { scene: 'accounts', title: 'Accounts', subtitle: 'Banks, cash, and segregated reserves' },
+    { scene: 'insights', title: 'Insights', subtitle: 'Visual analytics and spending trends' },
+    { scene: 'vaults', title: 'Vaults', subtitle: 'Dedicated spaces for key goals' },
+    { scene: 'saving', title: 'Savings', subtitle: 'Real-time progress toward milestones' },
+    { scene: 'receivables', title: 'Receivables', subtitle: 'Keep track of money owed to you' },
+  ],
+  es: [
+    { scene: 'overview', title: 'Vista General', subtitle: 'Saldos consolidados y flujo del mes' },
+    { scene: 'planning', title: 'Planificación', subtitle: 'Gastos fijos, día a día y ahorros' },
+    { scene: 'transactions', title: 'Movimientos', subtitle: 'Historial claro y registro ágil' },
+    { scene: 'accounts', title: 'Cuentas', subtitle: 'Bancos, efectivo y reservas separadas' },
+    { scene: 'insights', title: 'Análisis', subtitle: 'Gráficos e información visual de gastos' },
+    { scene: 'vaults', title: 'Cajas Fuertes', subtitle: 'Espacios separados para objetivos clave' },
+    { scene: 'saving', title: 'Ahorro', subtitle: 'Avance en tiempo real de cada meta' },
+    { scene: 'receivables', title: 'Por Cobrar', subtitle: 'Control de importes pendientes' },
+  ],
+  fr: [
+    { scene: 'overview', title: 'Vue d’ensemble', subtitle: 'Soldes consolidés et flux mensuel' },
+    { scene: 'planning', title: 'Planification', subtitle: 'Charges fixes, quotidien et épargne' },
+    { scene: 'transactions', title: 'Opérations', subtitle: 'Historique limpide et saisie rapide' },
+    { scene: 'accounts', title: 'Comptes', subtitle: 'Banques, espèces et réserves distinctes' },
+    { scene: 'insights', title: 'Analyses', subtitle: 'Visualisation claire des dépenses' },
+    { scene: 'vaults', title: 'Coffres', subtitle: 'Fonds isolés pour vos objectifs majeurs' },
+    { scene: 'saving', title: 'Épargne', subtitle: 'Suivi de progression en temps réel' },
+    { scene: 'receivables', title: 'Créances', subtitle: 'Gestion simple des sommes à recouvrer' },
+  ],
+  de: [
+    { scene: 'overview', title: 'Übersicht', subtitle: 'Gesamtsalden und Monatsüberblick' },
+    { scene: 'planning', title: 'Planung', subtitle: 'Fixkosten, Alltag und Ersparnisse' },
+    { scene: 'transactions', title: 'Umsätze', subtitle: 'Klare Historie und schnelle Erfassung' },
+    { scene: 'accounts', title: 'Konten', subtitle: 'Bankkonten, Bargeld und Rücklagen' },
+    { scene: 'insights', title: 'Einblicke', subtitle: 'Sinnvolle Auswertungen auf einen Blick' },
+    { scene: 'vaults', title: 'Tresore', subtitle: 'Geschützter Raum für konkrete Vorhaben' },
+    { scene: 'saving', title: 'Sparziele', subtitle: 'Fortschritt der Ersparnisse in Echtzeit' },
+    { scene: 'receivables', title: 'Forderungen', subtitle: 'Offene Rückzahlungen verwalten' },
+  ],
+  it: [
+    { scene: 'overview', title: 'Panoramica', subtitle: 'Saldi totali e flusso mensile' },
+    { scene: 'planning', title: 'Pianificazione', subtitle: 'Spese fisse, quotidiane e risparmi' },
+    { scene: 'transactions', title: 'Movimenti', subtitle: 'Cronologia limpida e registrazione agile' },
+    { scene: 'accounts', title: 'Conti', subtitle: 'Banche, contanti e riserve separate' },
+    { scene: 'insights', title: 'Analisi', subtitle: 'Grafici e lettura intuitiva delle spese' },
+    { scene: 'vaults', title: 'Casseforti', subtitle: 'Fondi separati per i traguardi principali' },
+    { scene: 'saving', title: 'Risparmi', subtitle: 'Avanzamento in tempo reale verso ogni meta' },
+    { scene: 'receivables', title: 'Crediti', subtitle: 'Traccia ordinata delle somme da ricevere' },
+  ],
+  zh: [
+    { scene: 'overview', title: '概览总览', subtitle: '全局资产汇总与月度现金流' },
+    { scene: 'planning', title: '月度规划', subtitle: '固定开支、日常花费与专项储蓄' },
+    { scene: 'transactions', title: '明细账单', subtitle: '清晰流水与极速便捷记账' },
+    { scene: 'accounts', title: '账户管理', subtitle: '银行卡、现金与专项独立管理' },
+    { scene: 'insights', title: '深度分析', subtitle: '可视化图表洞察开支结构' },
+    { scene: 'vaults', title: '心愿金库', subtitle: '隔离资金设立心愿专属基金' },
+    { scene: 'saving', title: '储蓄目标', subtitle: '实时掌握每个心愿的达成进度' },
+    { scene: 'receivables', title: '往来记账', subtitle: '借出垫付款项与回款清晰留痕' },
+  ],
+};
+
+const header = headers[locale] ?? headers.en;
+const items = screens[locale] ?? screens.en;
+---
+
+<section class="chapter showcase-chapter" aria-labelledby="showcase-title">
+  <div class="wrap">
+    <div class="showcase-header">
+      <div class="showcase-header-text">
+        <p class="eyebrow">{header.eyebrow}</p>
+        <h2 id="showcase-title">{header.title}</h2>
+      </div>
+    </div>
+
+    <!-- 3D Coverflow Game Gallery Track with Infinite Loop & Grab-to-Scroll -->
+    <div class="showcase-track-container">
+      <!-- Floating Navigation Arrows -->
+      <button
+        type="button"
+        class="showcase-nav-btn prev"
+        data-showcase-prev
+        aria-label={locale === 'pt' || locale === 'pt-br' ? 'Ecrã anterior' : 'Previous screen'}
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <button
+        type="button"
+        class="showcase-nav-btn next"
+        data-showcase-next
+        aria-label={locale === 'pt' || locale === 'pt-br' ? 'Próximo ecrã' : 'Next screen'}
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+
+      <div
+        class="showcase-track"
+        data-showcase-track
+        tabindex="0"
+        role="region"
+        aria-label={header.title}
+      >
+        {[0, 1, 2].flatMap((loopIdx) =>
+          items.map((item, i) => {
+            const cardIdx = loopIdx * items.length + i;
+            return (
+              <article
+                class="showcase-card"
+                data-showcase-card={cardIdx}
+                data-loop-index={loopIdx}
+                data-screen-index={i}
+              >
+                <div class="showcase-phone-frame phone-frame">
+                  <AppImage
+                    locale={locale}
+                    scene={item.scene}
+                    alt={item.title}
+                    eager={true}
+                  />
+                </div>
+                <div class="showcase-card-caption">
+                  <div class="showcase-card-badge">
+                    <span class="showcase-card-num">0{i + 1}</span>
+                    <span class="showcase-card-title">{item.title}</span>
+                  </div>
+                  <p class="showcase-card-desc">{item.subtitle}</p>
+                </div>
+              </article>
+            );
+          })
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const track = document.querySelector<HTMLElement>('[data-showcase-track]');
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-showcase-card]'));
+  const prevBtn = document.querySelector<HTMLButtonElement>('[data-showcase-prev]');
+  const nextBtn = document.querySelector<HTMLButtonElement>('[data-showcase-next]');
+
+  if (track && cards.length > 0) {
+    const itemCount = 8;
+    let targetIndex = itemCount; // Start at 8 (screen 1, middle set)
+    let isDown = false;
+    let startX = 0;
+    let scrollStart = 0;
+    let isDragging = false;
+    let dragDistance = 0;
+    let ticking = false;
+    let animId: number | null = null;
+
+    // Helper: calculate exact width of one 8-card cycle
+    const getLoopWidth = () => {
+      if (cards.length < 16) return 0;
+      return cards[itemCount].offsetLeft - cards[0].offsetLeft;
+    };
+
+    // Helper: get scrollLeft needed to center a card index
+    const getScrollForCard = (index: number) => {
+      const safeIdx = Math.max(0, Math.min(cards.length - 1, index));
+      const card = cards[safeIdx];
+      if (!card || !track) return 0;
+      return card.offsetLeft - (track.clientWidth / 2) + (card.offsetWidth / 2);
+    };
+
+    // Helper: get the index of the card closest to center
+    const getClosestCardIndex = () => {
+      if (!track) return itemCount;
+      const centerPos = track.scrollLeft + track.clientWidth / 2;
+      let closestIndex = itemCount;
+      let minDiff = Infinity;
+      cards.forEach((card, idx) => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const diff = Math.abs(cardCenter - centerPos);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestIndex = idx;
+        }
+      });
+      return closestIndex;
+    };
+
+    // 3D Coverflow Game Gallery Transform Calculation
+    // Uses un-transformed layout geometry to eliminate feedback loops and reflows
+    const update3DGallery = () => {
+      if (!track) return;
+      const trackCenter = track.scrollLeft + track.clientWidth / 2;
+      const cardWidth = cards[0]?.offsetWidth || 260;
+
+      cards.forEach((card) => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const offset = cardCenter - trackCenter;
+        const normalized = offset / (cardWidth * 0.72);
+
+        // Clamped normalized factor
+        const clamped = Math.max(-3, Math.min(3, normalized));
+        const absNorm = Math.abs(clamped);
+
+        // Left cards rotate positive (turn inward), right rotate negative (turn inward)
+        const angle = clamped * -18;
+        const scale = Math.max(0.86, 1.05 - Math.min(absNorm, 2) * 0.12);
+        const zIndex = Math.round(50 - Math.min(absNorm, 4) * 10);
+        const brightness = Math.max(0.78, 1 - Math.min(absNorm, 2) * 0.14);
+        const opacity = Math.max(0.72, 1 - Math.min(absNorm, 2.5) * 0.12);
+        const translateZ = Math.max(-20, 40 - absNorm * 30);
+
+        card.style.transform = `perspective(1100px) rotateY(${angle.toFixed(1)}deg) scale(${scale.toFixed(3)}) translateZ(${translateZ.toFixed(1)}px)`;
+        card.style.zIndex = `${zIndex}`;
+        card.style.filter = `brightness(${brightness.toFixed(2)})`;
+        card.style.opacity = `${opacity.toFixed(2)}`;
+      });
+      ticking = false;
+    };
+
+    const requestUpdate = () => {
+      if (!ticking) {
+        requestAnimationFrame(update3DGallery);
+        ticking = true;
+      }
+    };
+
+    track.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener(
+      'resize',
+      () => {
+        if (!track) return;
+        track.scrollLeft = getScrollForCard(targetIndex);
+        requestUpdate();
+      },
+      { passive: true },
+    );
+
+    const stopAnimation = () => {
+      if (animId !== null) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+    };
+
+    // Seamless coordinate wrapping across duplicate sets
+    const wrapCoordinates = () => {
+      if (!track || cards.length < 16) return;
+      const loopWidth = getLoopWidth();
+      if (loopWidth <= 0) return;
+
+      let changed = false;
+      while (targetIndex >= 16) {
+        targetIndex -= itemCount;
+        track.scrollLeft -= loopWidth;
+        changed = true;
+      }
+      while (targetIndex < 8) {
+        targetIndex += itemCount;
+        track.scrollLeft += loopWidth;
+        changed = true;
+      }
+      if (changed) {
+        update3DGallery();
+      }
+    };
+
+    // Silky frame-perfect RAF animation engine
+    const animateToCard = (destIndex: number, duration = 380, onDone?: () => void) => {
+      if (!track) return;
+      stopAnimation();
+
+      targetIndex = destIndex;
+      const targetScroll = getScrollForCard(targetIndex);
+      const startScroll = track.scrollLeft;
+      const distance = targetScroll - startScroll;
+
+      if (Math.abs(distance) < 0.5) {
+        track.scrollLeft = targetScroll;
+        wrapCoordinates();
+        update3DGallery();
+        onDone?.();
+        return;
+      }
+
+      const startTime = performance.now();
+      const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4);
+
+      const step = (now: number) => {
+        if (!track) return;
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const factor = easeOutQuart(progress);
+
+        track.scrollLeft = startScroll + distance * factor;
+        update3DGallery();
+
+        if (progress < 1) {
+          animId = requestAnimationFrame(step);
+        } else {
+          track.scrollLeft = targetScroll;
+          animId = null;
+          wrapCoordinates();
+          update3DGallery();
+          onDone?.();
+        }
+      };
+
+      animId = requestAnimationFrame(step);
+    };
+
+    // Initial center position at card 8 (Screen 1, middle loop)
+    const initCenter = () => {
+      if (!track || cards.length < 16) return;
+      stopAnimation();
+      targetIndex = itemCount;
+      track.scrollLeft = getScrollForCard(itemCount);
+      requestUpdate();
+    };
+
+    initCenter();
+    window.addEventListener('load', initCenter);
+
+    // Next (>) button - always advances forward seamlessly
+    nextBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (!track) return;
+      wrapCoordinates();
+      animateToCard(targetIndex + 1, 380);
+    });
+
+    // Prev (<) button - always advances backward seamlessly
+    prevBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (!track) return;
+      wrapCoordinates();
+      animateToCard(targetIndex - 1, 380);
+    });
+
+    // Keyboard navigation
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        wrapCoordinates();
+        animateToCard(targetIndex + 1, 380);
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        wrapCoordinates();
+        animateToCard(targetIndex - 1, 380);
+      }
+    });
+
+    // Grab-and-drag functionality (Mouse / Pointer)
+    track.addEventListener('pointerdown', (e) => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      stopAnimation();
+      isDown = true;
+      isDragging = false;
+      dragDistance = 0;
+      startX = e.pageX;
+      scrollStart = track.scrollLeft;
+      track.classList.add('is-dragging');
+      document.body.classList.add('is-showcase-dragging');
+      if (track.setPointerCapture) {
+        track.setPointerCapture(e.pointerId);
+      }
+    });
+
+    track.addEventListener('pointermove', (e) => {
+      if (!isDown || !track) return;
+      const delta = e.pageX - startX;
+      dragDistance = Math.abs(delta);
+      if (dragDistance > 4) {
+        isDragging = true;
+      }
+      track.scrollLeft = scrollStart - delta;
+
+      // Real-time seamless wrapping while dragging
+      const loopWidth = getLoopWidth();
+      if (loopWidth > 0) {
+        const minBound = getScrollForCard(4);
+        const maxBound = getScrollForCard(19);
+        if (track.scrollLeft < minBound) {
+          track.scrollLeft += loopWidth;
+          scrollStart += loopWidth;
+        } else if (track.scrollLeft > maxBound) {
+          track.scrollLeft -= loopWidth;
+          scrollStart -= loopWidth;
+        }
+      }
+
+      update3DGallery();
+    });
+
+    const finishDrag = (e: PointerEvent) => {
+      if (!isDown || !track) return;
+      isDown = false;
+      track.classList.remove('is-dragging');
+      document.body.classList.remove('is-showcase-dragging');
+      if (track.releasePointerCapture && track.hasPointerCapture(e.pointerId)) {
+        track.releasePointerCapture(e.pointerId);
+      }
+      if (dragDistance > 4) {
+        const closest = getClosestCardIndex();
+        animateToCard(closest, 320);
+      }
+    };
+
+    track.addEventListener('pointerup', finishDrag);
+    track.addEventListener('pointercancel', finishDrag);
+
+    // Clicking any card centers it smoothly
+    cards.forEach((card, idx) => {
+      card.addEventListener('click', () => {
+        if (isDragging || !track) return;
+        animateToCard(idx, 380);
+      });
+    });
+  }
+</script>

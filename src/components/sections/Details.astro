@@ -1,10 +1,13 @@
 ---
 import type { LocaleId, SiteCopy } from '../../content/types';
 import AppImage from '../AppImage.astro';
+import Icon from '../Icon.astro';
+
 interface Props {
   locale: LocaleId;
   copy: SiteCopy;
 }
+
 const { locale, copy } = Astro.props;
 
 const currencies = [
@@ -17,6 +20,8 @@ const currencies = [
   { code: 'AUD', symbol: 'A$' },
   { code: 'CAD', symbol: 'C$' },
 ];
+
+const scenes = ['saving', 'accounts', 'receivables'] as const;
 ---
 
 <section class="chapter details-chapter">
@@ -27,44 +32,152 @@ const currencies = [
       <p class="lede">{copy.details.text}</p>
     </div>
 
-    <!-- 3 Identical, Harmonious Feature Cards -->
-    <div class="details-gallery">
-      {copy.details.items.map((item, index) => (
-        <article class="detail-card">
-          <div class="detail-art">
-            <div class="phone-frame">
-              <AppImage
-                locale={locale}
-                scene={(['saving', 'accounts', 'receivables'] as const)[index]}
-                alt={item.title}
-              />
-            </div>
-          </div>
-          <div class="detail-content">
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
-          </div>
-        </article>
-      ))}
-    </div>
-
-    <!-- Native Currencies Precision Dock -->
-    <div class="currencies-dock">
-      <div class="currencies-info">
-        <span class="currencies-badge">
-          {copy.details.currencies.badge}
-        </span>
-        <h3 class="currencies-title">{copy.details.currencies.title}</h3>
-        <p class="currencies-desc">{copy.details.currencies.text}</p>
+    <!-- Compact Interactive Carousel -->
+    <div class="details-carousel" data-details-carousel>
+      <!-- Carousel Tab Switcher -->
+      <div class="carousel-tabs" role="tablist" aria-label={copy.details.title}>
+        {copy.details.items.map((item, index) => (
+          <button
+            type="button"
+            role="tab"
+            id={`detail-tab-${index}`}
+            aria-controls={`detail-slide-${index}`}
+            class={`carousel-tab ${index === 0 ? 'is-active' : ''}`}
+            data-carousel-tab={index}
+            aria-selected={index === 0 ? 'true' : 'false'}
+            tabindex={index === 0 ? 0 : -1}
+          >
+            <span class="carousel-tab-num">0{index + 1}</span>
+            <span class="carousel-tab-label">{item.title}</span>
+          </button>
+        ))}
       </div>
-      <div class="currencies-list" role="list">
-        {currencies.map((curr) => (
-          <div class="currency-pill" role="listitem">
-            <span class="currency-symbol">{curr.symbol}</span>
-            <span class="currency-code">{curr.code}</span>
+
+      <!-- Carousel Viewport & Slides -->
+      <div class="carousel-viewport">
+        {copy.details.items.map((item, index) => (
+          <div
+            class={`carousel-slide ${index === 0 ? 'is-active' : ''}`}
+            id={`detail-slide-${index}`}
+            role="tabpanel"
+            aria-labelledby={`detail-tab-${index}`}
+            data-carousel-slide={index}
+            hidden={index !== 0}
+          >
+            <div class="carousel-art">
+              <div class="phone-frame">
+                <AppImage
+                  locale={locale}
+                  scene={scenes[index]}
+                  alt={item.title}
+                />
+              </div>
+            </div>
+            <div class="carousel-info">
+              <div class="carousel-info-top">
+                <span class="carousel-counter">0{index + 1} / 03</span>
+                <div class="carousel-nav-arrows">
+                  <button
+                    type="button"
+                    class="carousel-nav-btn prev"
+                    data-carousel-prev
+                    aria-label="Slide anterior"
+                  >
+                    <Icon name="arrow" size={16} />
+                  </button>
+                  <button
+                    type="button"
+                    class="carousel-nav-btn next"
+                    data-carousel-next
+                    aria-label="Próximo slide"
+                  >
+                    <Icon name="arrow" size={16} />
+                  </button>
+                </div>
+              </div>
+              <h3 class="carousel-slide-title">{item.title}</h3>
+              <p class="carousel-slide-text">{item.text}</p>
+            </div>
           </div>
         ))}
       </div>
     </div>
+
+    <!-- Native Currencies Compact Accordion -->
+    <details class="currencies-accordion">
+      <summary class="currencies-summary">
+        <div class="currencies-summary-left">
+          <span class="currencies-badge">{copy.details.currencies.badge}</span>
+          <span class="currencies-summary-title">{copy.details.currencies.title}</span>
+        </div>
+        <span class="currencies-chevron" aria-hidden="true">
+          <Icon name="down" size={14} />
+        </span>
+      </summary>
+      <div class="currencies-body">
+        <p class="currencies-desc">{copy.details.currencies.text}</p>
+        <div class="currencies-list" role="list">
+          {currencies.map((curr) => (
+            <div class="currency-pill" role="listitem">
+              <span class="currency-symbol">{curr.symbol}</span>
+              <span class="currency-code">{curr.code}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </details>
   </div>
 </section>
+
+<script>
+  const carousel = document.querySelector('[data-details-carousel]');
+  if (carousel) {
+    const tabs = Array.from(carousel.querySelectorAll<HTMLButtonElement>('[data-carousel-tab]'));
+    const slides = Array.from(carousel.querySelectorAll<HTMLElement>('[data-carousel-slide]'));
+    const prevBtns = Array.from(carousel.querySelectorAll<HTMLButtonElement>('[data-carousel-prev]'));
+    const nextBtns = Array.from(carousel.querySelectorAll<HTMLButtonElement>('[data-carousel-next]'));
+
+    let currentIndex = 0;
+
+    const showSlide = (index: number) => {
+      currentIndex = (index + slides.length) % slides.length;
+
+      tabs.forEach((tab, i) => {
+        const active = i === currentIndex;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', active ? 'true' : 'false');
+        tab.tabIndex = active ? 0 : -1;
+      });
+
+      slides.forEach((slide, i) => {
+        const active = i === currentIndex;
+        slide.classList.toggle('is-active', active);
+        if (active) {
+          slide.removeAttribute('hidden');
+        } else {
+          slide.setAttribute('hidden', '');
+        }
+      });
+    };
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => showSlide(i));
+      tab.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          const next = (i + 1) % tabs.length;
+          tabs[next].focus();
+          showSlide(next);
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const prev = (i - 1 + tabs.length) % tabs.length;
+          tabs[prev].focus();
+          showSlide(prev);
+        }
+      });
+    });
+
+    prevBtns.forEach((btn) => btn.addEventListener('click', () => showSlide(currentIndex - 1)));
+    nextBtns.forEach((btn) => btn.addEventListener('click', () => showSlide(currentIndex + 1)));
+  }
+</script>

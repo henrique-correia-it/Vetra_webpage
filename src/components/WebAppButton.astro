@@ -1,0 +1,50 @@
+---
+import { site } from '../config/site';
+import type { LocaleId } from '../content/types';
+
+interface Props {
+  locale: LocaleId;
+  class?: string;
+}
+
+const { locale, class: className = '' } = Astro.props;
+
+const labels: Record<LocaleId, { sub: string; main: string }> = {
+  pt: { sub: 'USAR NO NAVEGADOR', main: 'Web App' },
+  'pt-br': { sub: 'USAR NO NAVEGADOR', main: 'Web App' },
+  en: { sub: 'OPEN IN BROWSER', main: 'Web App' },
+  'en-gb': { sub: 'OPEN IN BROWSER', main: 'Web App' },
+  es: { sub: 'USAR EN EL NAVEGADOR', main: 'Web App' },
+  fr: { sub: 'UTILISER SUR LE WEB', main: 'Web App' },
+  de: { sub: 'IM BROWSER NUTZEN', main: 'Web App' },
+  it: { sub: 'USA NEL BROWSER', main: 'Web App' },
+  zh: { sub: '在浏览器中打开', main: 'Web 网页版' },
+};
+
+const label = labels[locale] ?? labels.en;
+---
+
+<a
+  href={site.webAppUrl}
+  class={`web-app-btn ${className}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={`${label.sub} ${label.main} - Vetra`}
+>
+  <span class="web-icon-wrap" aria-hidden="true">
+    <svg class="web-logo" viewBox="0 0 28 28" width="28" height="28" fill="none" aria-hidden="true">
+      <rect x="2.5" y="4" width="23" height="20" rx="4.5" stroke="#6ee7ad" stroke-width="1.8" />
+      <line x1="2.5" y1="10" x2="25.5" y2="10" stroke="#6ee7ad" stroke-width="1.8" />
+      <circle cx="6.5" cy="7" r="1.1" fill="#6ee7ad" />
+      <circle cx="10" cy="7" r="1.1" fill="#6ee7ad" />
+      <circle cx="13.5" cy="7" r="1.1" fill="#6ee7ad" />
+      <circle cx="14" cy="17" r="4.2" stroke="#ffffff" stroke-width="1.5" />
+      <ellipse cx="14" cy="17" rx="2" ry="4.2" stroke="#ffffff" stroke-width="1.3" />
+      <line x1="9.8" y1="17" x2="18.2" y2="17" stroke="#ffffff" stroke-width="1.3" />
+    </svg>
+  </span>
+  <span class="play-copy">
+    <span class="play-sub">{label.sub}</span>
+    <span class="play-main">{label.main}</span>
+  </span>
+</a>

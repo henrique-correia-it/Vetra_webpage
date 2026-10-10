@@ -24,6 +24,12 @@ describe('localized navigation', () => {
       expect(copy.hero.title.trim().length).toBeGreaterThan(4);
       expect(copy.faq.items).toHaveLength(8);
       expect(copy.meta.description.length).toBeGreaterThan(30);
+      expect(copy.nav.webApp).toBeTruthy();
     }
+  });
+
+  it('configures web app url correctly', async () => {
+    const { site } = await import('../src/config/site');
+    expect(site.webAppUrl).toBe('https://app.vetra-app.com');
   });
 });

@@ -21,6 +21,7 @@ export type SiteCopy = {
     features: string;
     faq: string;
     download: string;
+    webApp: string;
     language: string;
     theme: string;
     skip: string;
